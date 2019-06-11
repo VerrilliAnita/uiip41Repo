@@ -54,7 +54,6 @@ public class Client {
 
 
 
-
 		ArrayList<Persona>listaCampaniaMorante = ResidentiCampaniaMorante.trovaResidentiCampania(listaPersone);
 
 
