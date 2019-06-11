@@ -9,12 +9,12 @@ public class Scontrino {
 	private ArrayList<Prodotto> listaProdotti;
 	private double importo;
 	
-	public Scontrino(String codice, Cliente cliente, ArrayList<Prodotto> listaProdotti, double importo) {
+	public Scontrino(String codice, Cliente cliente, ArrayList<Prodotto> listaProdotti) {
 		super();
 		this.codice = codice;
 		this.cliente = cliente;
 		this.listaProdotti = listaProdotti;
-		this.importo = importo;
+		this.importo = Supermercato.calcolaImporto(listaProdotti);
 	}
 
 	public String getCodice() {
