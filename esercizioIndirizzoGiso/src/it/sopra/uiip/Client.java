@@ -58,6 +58,16 @@ public class Client {
 			System.out.println(s.toString());
 		}
 		
+		System.out.println("PERSONA PIU' GIOVANE");
+		for (Persona pers: Giso.calcolaPiuGiovane(listaPersone)) {
+			System.out.println(pers.toString());
+		}
+		
+		System.out.println("PERSONA PIU' ADULTA");
+		for (Persona pers: Giso.calcolaPiuAdulto(listaPersone)) {
+			System.out.println(pers.toString());
+		}
+		
 	}
 	
 }
