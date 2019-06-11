@@ -81,6 +81,7 @@ public class Client {
 		
 		System.out.println(nisco.toString());
 		
+
 		ArrayList<Studente> listaGonchar = new ArrayList<Studente>();
 		listaGonchar.add(studente);
 		listaGonchar.add(gonchar);
@@ -91,10 +92,26 @@ public class Client {
 			System.out.println(s);
 		}
 
-				
-				
+		//Codice Giuseppe
+		ArrayList<Studente> studentiGiuseppe = new ArrayList<Studente>();
+		studentiGiuseppe.add(studente);
+		studentiGiuseppe.add(gonchar);
+		studentiGiuseppe.add(nisco);
+		System.out.println("Stampa della lista degli studenti che hanno almeno un corso di formazione: ");
+		for(Studente s: studentiGiuseppe) {
+			System.out.println(s.toString());
+		}
+		ArrayList<Studente> studenti = new ArrayList<Studente>();
+		studenti.add(gonchar);
+		studenti.add(nisco);
+		studenti.add(studente);
 		
+		ArrayList<Studente> st = FormazioneNisco.formazioneStudenti(studenti);
 		
+		System.out.println("La lista di Antonio Nisco");
+		for(Studente r: st) {
+			System.out.println(r.toString());
+		}
 		
 	}
 
