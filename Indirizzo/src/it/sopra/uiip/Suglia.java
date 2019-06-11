@@ -1,29 +1,44 @@
 package it.sopra.uiip;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Suglia {
 	
-	public static Persona personaPiuGiovane(ArrayList<Persona> listaPersone) {
-		Persona giovane = null;
-		giovane=listaPersone.get(0);
+	public static ArrayList<Persona> personaPiuGiovane(ArrayList<Persona> listaPersone) {
+		Date dataPiuGiovane=listaPersone.get(0).getDataDiNascita();
+		ArrayList<Persona> listaGiovani = new ArrayList<Persona>();
+		
 		for (int i = 0; i < listaPersone.size(); i++) {
-			if(listaPersone.get(i).getDataDiNascita().after(giovane.getDataDiNascita())) {
-				giovane=listaPersone.get(i);
+			if(listaPersone.get(i).getDataDiNascita().after(dataPiuGiovane)) {
+				dataPiuGiovane=listaPersone.get(i).getDataDiNascita();
 			}
 		}
-		return giovane;
+		
+		for (int i = 0; i < listaPersone.size(); i++) {
+			if(listaPersone.get(i).getDataDiNascita().compareTo(dataPiuGiovane)==0){
+				listaGiovani.add(listaPersone.get(i));
+			}
+		}
+		return listaGiovani;
 	}
 	
-	public static Persona personaPiuAnziana(ArrayList<Persona>listaPersone) {
-		Persona anziana=null;
-		anziana=listaPersone.get(0);
+	public static ArrayList<Persona> personaPiuAnziana(ArrayList<Persona>listaPersone) {
+		Date dataPiuAnziana=listaPersone.get(0).getDataDiNascita();
+		ArrayList<Persona> listaAnziani = new ArrayList<Persona>();
+		
 		for (int i = 0; i < listaPersone.size(); i++) {
-			if(listaPersone.get(i).getDataDiNascita().before(anziana.getDataDiNascita())) {
-				anziana=listaPersone.get(i);
+			if(listaPersone.get(i).getDataDiNascita().before(dataPiuAnziana)) {
+				dataPiuAnziana=listaPersone.get(i).getDataDiNascita();
 			}
 		}
-		return anziana;
+		
+		for (int i = 0; i < listaPersone.size(); i++) {
+			if(listaPersone.get(i).getDataDiNascita().compareTo(dataPiuAnziana)==0){
+				listaAnziani.add(listaPersone.get(i));
+			}
+		}
+		return listaAnziani;
 		
 	}
 	

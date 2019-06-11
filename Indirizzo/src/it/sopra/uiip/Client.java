@@ -114,8 +114,19 @@ public class Client {
 		
 		//Suglia persona più giovane e persona più anziana
 		System.out.println("____Pompilio_______GIOVANE______ANZIANO___");
-		System.out.println("Persona più giovane: " + Suglia.personaPiuGiovane(listaPersone));
-		System.out.println("Persona più anziana: " + Suglia.personaPiuAnziana(listaPersone));
+		ArrayList<Persona>listaPersoneGiovani = new ArrayList<Persona>();
+		ArrayList<Persona>listaPersoneAnziani = new ArrayList<Persona>();
+		
+		listaPersoneGiovani=Suglia.personaPiuGiovane(listaPersone);
+		listaPersoneAnziani=Suglia.personaPiuAnziana(listaPersone);
+
+		for (int i = 0; i < listaPersoneGiovani.size(); i++) {
+			System.out.println("Persona giovane "+ i + " "+ listaPersoneGiovani.get(i).toString());
+		}
+		
+		for (int i = 0; i < listaPersoneAnziani.size(); i++) {
+			System.out.println("Persona anziana "+ i + " "+ listaPersoneAnziani.get(i).toString());
+		}
 		System.out.println("--------------------\n");
 
 	}
