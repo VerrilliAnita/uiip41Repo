@@ -58,6 +58,11 @@ public class Client {
 			System.out.println(p.toString());
 		}
 		System.out.println("----------------------------------------");
+		
+		Indirizzo is = new Indirizzo("Via Matteotti",18,"Avellino",83100,"Avellino","Campania");
+		Persona s = new Studente("Mario","Rossi",is,2,"informatica");
+		
+		System.out.println(s.toString());
 
 	}
 	
