@@ -9,6 +9,11 @@ public class Client {
 		
 		System.out.println(oksana.toString());
 
+		Persona giuseppe = new Persona("Giuseppe", "Ristaino", new Date(1989, 4, 25), 
+				new Indirizzo("Via prov. Cerzete", 22, "Atripalda", 83042, "AV", 
+						"Campania"));
+		
+		System.out.println(giuseppe.toString());
 	}
 
 }
