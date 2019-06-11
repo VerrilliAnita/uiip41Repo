@@ -1,5 +1,7 @@
 package it.sopra.uiip;
 
+import java.util.ArrayList;
+
 public class Principale {
 
 	public static void main(String[] args) {
@@ -40,7 +42,23 @@ public class Principale {
 		System.out.println(prodotto1);
 		//Fine codice Oksana
 		
-
+		// Test metodo Oksana
+		ArrayList<Prodotto>prodot = new ArrayList<Prodotto>();
+		prodot.add(prodotto1);
+		prodot.add(prodottoGiuseppe1);
+		prodot.add(p1Nisco);
+		double importo=Supermercato.calcolaImporto(prodot);
+		Scontrino scontrino = new Scontrino("jkdjfur",cliente, prodot, importo);
+		
+		int punti = Supermercato.calcolaPunti(scontrino);
+		System.out.println(scontrino);
+		System.out.println(punti);
+		// fine Test Oksana
+		
+		
+		
+		
+			
 	}
 
 }
