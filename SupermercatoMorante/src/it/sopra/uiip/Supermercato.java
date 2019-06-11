@@ -25,9 +25,22 @@ public class Supermercato {
 		int MaxPunti = 0;
 		
 		for(int i=0; i<listaClienti.size() ;i++) {
-	
+			if(listaClienti.get(i).getPunti()>MaxPunti) {
+				MaxPunti=listaClienti.get(i).getPunti();
+				listaClientiFedeli.add(listaClienti.get(i));
+			}
+		
+		
 			
 		}
+		
+		
+		
+		
+		
+		
+		
+		
 		return listaClientiFedeli;
 	}
 
