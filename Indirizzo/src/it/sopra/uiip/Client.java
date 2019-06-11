@@ -1,8 +1,14 @@
 package it.sopra.uiip;
 
+import java.util.ArrayList;
+
 public class Client {
 
 	public static void main(String[] args) {
+		
+		ArrayList<Persona> listaPersone = new ArrayList<Persona>();
+		ArrayList<Persona> listaCampania = null;
+		
 		
 		Indirizzo i1 = new Indirizzo("Via dei Santini",15,"Cesinali",83020,"Avellino","Campania");
 		
@@ -15,10 +21,24 @@ public class Client {
 		System.out.println(morich.toString());
 		
 
-		Indirizzo i1 = new Indirizzo("Via Roma", 23, "Roma", 80045, "Roma", "Lazio");
-		Persona suglia = new Persona("Pompilio", "Suglia", i1);
+		Indirizzo i = new Indirizzo("Via Roma", 23, "Montecalvo", 83037, "Avellino", "Campania");
+		Persona suglia = new Persona("Pompilio", "Suglia", i);
 		
 		System.out.println(suglia.toString());
+		
+
+		listaPersone.add(suglia);
+		listaPersone.add(morich);
+		listaPersone.add(danilo);
+		listaCampania=ResidentiCampaniaSuglia.trovaResidentiCampania(listaPersone);
+		
+		System.out.println("LISTA PERSONE CAMPANIA");
+		for (int j = 0; j < listaCampania.size(); j++) {
+			System.out.println(listaCampania.get(j).toString());
+		}
+		
+		
+	
 
 
 	}
