@@ -55,7 +55,14 @@ public class Client {
 			System.out.println(r.toString());
 		}
 		
+		ArrayList<String>listaCorsiDiFormazione= new ArrayList<String>();
+		listaCorsiDiFormazione.add("Italiano");
+		listaCorsiDiFormazione.add("Ingeneria");
+		Studente gonchar = new Studente("Gonchar", "Oksana", new Date(1990, 5, 3), 
+				new Indirizzo("Via prov. Cerzete", 22, "Atripalda", 83042, "AV", 
+						"Campania"), 3, "ingeneria", listaCorsiDiFormazione);
 		
+		System.out.println(gonchar.toString());
 	}
 
 }
