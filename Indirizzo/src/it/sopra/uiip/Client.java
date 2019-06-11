@@ -60,7 +60,7 @@ public class Client {
 		System.out.println("----------------------------------------");
 		
 		Indirizzo is = new Indirizzo("Via Matteotti",18,"Avellino",83100,"Avellino","Campania");
-		Persona s = new Studente("Mario","Rossi",is,2,"informatica");
+		Studente s = new Studente("Mario","Rossi",is,2,"informatica");
 		
 		System.out.println(s.toString());
 
@@ -68,7 +68,18 @@ public class Client {
 		Studente morichStudente = new Studente(morich.getNome(), morich.getCognome(), morich.getIndirizzo(), 66, "Magistrale");
 		System.out.println(morichStudente.toString());
 		
+		ArrayList<Studente> listaStudenti = new ArrayList<Studente>();
+		ArrayList<Studente> listaStudentiFormazione = null;
 		
+		listaStudenti.add(morichStudente);
+		listaStudenti.add(s);
+		
+		listaStudentiFormazione = FormazioneFerrara.formazioneStudenti(listaStudenti);
+		
+		for(int j=0;j<listaStudentiFormazione.size();j++) {
+			System.out.println(listaStudentiFormazione.get(j).toString());
+		}
+	
 	}
 	
 }
