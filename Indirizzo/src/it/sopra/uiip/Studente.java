@@ -42,8 +42,11 @@ public class Studente extends Persona {
 	@Override
 	public String toString() {
 		return "Studente [livelloLaurea=" + livelloLaurea + ", titoloStudio=" + titoloStudio + ", corsiDiFormazione="
-				+ corsiDiFormazione + "]";
+				+ corsiDiFormazione + ", Nome=" + getNome() + ", Cognome=" + getCognome()
+				+ ", DataDiNascita=" + getDataDiNascita() + ", Indirizzo=" + getIndirizzo() + "]";
 	}
+
+	
 	
 
 }
