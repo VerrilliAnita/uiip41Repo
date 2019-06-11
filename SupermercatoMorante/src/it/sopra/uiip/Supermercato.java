@@ -19,29 +19,24 @@ public class Supermercato {
 		return conto;
 	}
 	
-	
-	public static ArrayList<Cliente> clientePiuFedele(ArrayList<Cliente> listaClienti) {
-		ArrayList<Cliente> listaClientiFedeli = new ArrayList<Cliente>();
-		int MaxPunti = 0;
+
+
+	public static ArrayList<Cliente> clientePiuFedele(ArrayList<Cliente> clienti) {
 		
-		for(int i=0; i<listaClienti.size() ;i++) {
-			if(listaClienti.get(i).getPunti()>MaxPunti) {
-				MaxPunti=listaClienti.get(i).getPunti();
-				listaClientiFedeli.add(listaClienti.get(i));
-			}
+		ArrayList<Cliente> clientiPiuFedeli = new ArrayList<Cliente>();
+		int puntiMaggiori = clienti.get(0).getPunti();
 		
+		for(Cliente c: clienti)
+			if(c.getPunti() > puntiMaggiori)
+				puntiMaggiori = c.getPunti();
 		
-			
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		return listaClientiFedeli;
+		for(Cliente c2: clienti)
+			if(c2.getPunti() == puntiMaggiori)
+				clientiPiuFedeli.add(c2);
+				
+		return clientiPiuFedeli;
 	}
+	
+
 
 }
