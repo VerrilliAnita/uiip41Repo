@@ -56,9 +56,8 @@ public class Client {
 		
 		
 		System.out.println("\n------Residenti Campania Morante---------");
-		for(Persona p : listaCampaniaMorante) {
+		for(Persona p : listaCampaniaMorante) 
 			System.out.println(p.toString());
-		}
 		System.out.println("----------------------------------------");
 		
 		Indirizzo is = new Indirizzo("Via Matteotti",18,"Avellino",83100,"Avellino","Campania");
@@ -69,6 +68,12 @@ public class Client {
 		
 		Studente morichStudente = new Studente(morich.getNome(), morich.getCognome(), morich.getIndirizzo(), 66, "Magistrale");
 		System.out.println(morichStudente.toString());
+		ArrayList<String> corsi = new ArrayList<String>();
+		corsi.add("uiip");
+		morichStudente.setCorsiDiFormazione(corsi);
+		
+		
+		
 		
 		Studente sugliaStudente = new Studente(suglia.getNome(), suglia.getCognome(), suglia.getIndirizzo(), 1, "Triennale");
 		ArrayList<String> listaCorsi =new ArrayList<String>();
