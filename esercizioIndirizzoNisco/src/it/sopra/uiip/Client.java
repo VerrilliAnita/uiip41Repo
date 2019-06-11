@@ -81,6 +81,19 @@ public class Client {
 		
 		System.out.println(nisco.toString());
 		
+		ArrayList<Studente> studenti = new ArrayList<Studente>();
+		studenti.add(gonchar);
+		studenti.add(nisco);
+		studenti.add(studente);
+		
+		ArrayList<Studente> st = FormazioneNisco.formazioneStudenti(studenti);
+		
+		System.out.println("La lista di Antonio Nisco");
+		for(Studente r: st) {
+			System.out.println(r.toString());
+		}
+		
+		
 	}
 
 }
