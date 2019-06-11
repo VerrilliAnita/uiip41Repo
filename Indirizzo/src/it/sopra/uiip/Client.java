@@ -22,7 +22,10 @@ public class Client {
 		Persona suglia = new Persona("Pompilio", "Suglia", new Date("12/25/1990"), iSuglia);
 
 		//studente danilo
-		Studente s = new Studente(danilo.getNome(),danilo.getCognome(),danilo.getDataDiNascita(),danilo.getIndirizzo(),2,"informatica");
+		Studente s = new Studente(danilo.getNome(),danilo.getCognome(),danilo.getDataDiNascita(),danilo.getIndirizzo(),2,"Magistrale");
+		ArrayList<String> listaCorsi1 = new ArrayList<String>();
+		listaCorsi1.add("Tedesco");
+		s.setCorsiDiFormazione(listaCorsi1);
 
 		//studente emanuele
 		Studente morichStudente = new Studente(morich.getNome(), morich.getCognome(), morich.getDataDiNascita(), morich.getIndirizzo(), 66, "Magistrale");
@@ -106,10 +109,16 @@ public class Client {
 		}
 		System.out.println("--------------------\n");
 
-		//morich persona più giovane e più ansiana
+		//morich persone più giovani e più anziani
 		System.out.println("____Emanuele_______GIOVANE______ANZIANO___");
-		System.out.println("Secondo morich la persona più giovane è " + Morante.cercaPersonaPiuGiovane(listaPersone));
-		System.out.println("Secondo morich la persona più anziana è " + Morante.cercaPersonaPiuAnziana(listaPersone));
+		ArrayList<Persona> anziani = Morante.cercaPersonePiuAnziane(listaPersone);
+		ArrayList<Persona> giovani = Morante.cercaPersonePiuGiovani(listaPersone);
+		System.out.println("Anziani");
+		for(Persona p : anziani)
+			System.out.println(p.toString());
+		System.out.println("Giovani");
+		for(Persona p : giovani)
+			System.out.println(p.toString());
 		System.out.println("--------------------\n");
 		
 		//Suglia persona più giovane e persona più anziana
@@ -128,6 +137,11 @@ public class Client {
 			System.out.println("Persona anziana "+ i + " "+ listaPersoneAnziani.get(i).toString());
 		}
 		System.out.println("--------------------\n");
+		
+		//Ferrara persona più giovane e persona più anziana
+		System.out.println("____Danilo_______GIOVANE______ANZIANO___");
+		System.out.println("La persona più giovane è: "+ Ferrara.personaPiuGiovane(listaPersone));
+		System.out.println("La persona più anziana è: "+ Ferrara.personaPiuAdulta(listaPersone));
 
 	}
 
