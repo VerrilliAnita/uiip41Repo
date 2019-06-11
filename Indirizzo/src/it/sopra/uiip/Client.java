@@ -52,9 +52,6 @@ public class Client {
 			System.out.println(listaCampania.get(j).toString());
 		}
 		
-		
-		
-		
 		ArrayList<Persona>listaCampaniaMorante = ResidentiCampaniaMorante.trovaResidentiCampania(listaPersone);
 		
 		
