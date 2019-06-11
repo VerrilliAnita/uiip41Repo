@@ -1,5 +1,7 @@
 package it.sopra.uiip;
 
+import java.util.ArrayList;
+
 public class Client {
 
 	public static void main(String[] args) {
@@ -15,11 +17,27 @@ public class Client {
 		System.out.println(morich.toString());
 		
 
-		Indirizzo i1 = new Indirizzo("Via Roma", 23, "Roma", 80045, "Roma", "Lazio");
-		Persona suglia = new Persona("Pompilio", "Suglia", i1);
+		Indirizzo i = new Indirizzo("Via Roma", 23, "Roma", 80045, "Roma", "Lazio");
+		Persona suglia = new Persona("Pompilio", "Suglia", i);
 		
 		System.out.println(suglia.toString());
-
+		
+		ArrayList<Persona> listaPersone = new ArrayList<Persona>();
+		
+		listaPersone.add(suglia);
+		listaPersone.add(morich);
+		listaPersone.add(danilo);
+		
+		ArrayList<Persona> listaCampania = ResidentiCampaniaMorante.trovaResidentiCampania(listaPersone);
+		
+		
+		System.out.println("\n------Residenti Campania Morante---------");
+		for(Persona p : listaCampania) {
+			System.out.println(p.toString());
+		}
+		System.out.println("----------------------------------------");
+		
+		
 
 	}
 
