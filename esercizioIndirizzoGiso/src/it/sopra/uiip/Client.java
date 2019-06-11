@@ -42,6 +42,15 @@ public class Client {
 		corsiTommaso.add("Architettura");
 		Studente s2=new Studente(tommaso, 1, "informatica", corsiTommaso);
 		System.out.println(s2.toString());
+		
+		ArrayList<Studente> studenti=new ArrayList<>();
+		studenti.add(s1);
+		studenti.add(s2);
+		System.out.println("LISTA STUDENTI CON ALMENO UN CORSO MINICHIELLO");
+		for(Studente s:studenti) {
+			System.out.println(s.toString());
+		}
+		
 	}
 
 }
