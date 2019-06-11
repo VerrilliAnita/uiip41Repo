@@ -1,5 +1,6 @@
 package it.sopra.uiip;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Client {
@@ -19,6 +20,16 @@ public class Client {
 						"Campania"));
 		
 		System.out.println(giuseppe.toString());
+		
+		ArrayList<Persona>listaPersone = new ArrayList<Persona>();
+		listaPersone.add(antonio);
+		listaPersone.add(giuseppe);
+		listaPersone.add(oksana);
+		ArrayList<Persona>result = ResidentiCampaniaGonchar.trovaResidentiCampania(listaPersone);
+		
+		System.out.println("Abbitanti di Campania");
+		for (Persona p: listaPersone) {
+			System.out.println(p);
+		}
 	}
-
 }
