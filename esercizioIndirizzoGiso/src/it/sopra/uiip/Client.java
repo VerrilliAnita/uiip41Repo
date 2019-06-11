@@ -11,6 +11,8 @@ public class Client {
 		Persona p1 = new Persona("Gianluca","Giso",new Date(91, 05, 22),
 				new Indirizzo("Via Carlo Alberto Dalla Chiesa",36,"Vallata",83059,"Avellino","Campania"));
 		
+		Indirizzo indi=new Indirizzo("c.da sant'andrea", 21, "Grottaminarda", 83035, "Avellino", "Campania");
+		Persona tommaso=new Persona("tommaso", "minichiello", new Date(94, 00, 05), indi);
 		
 		ArrayList<String> corsiS1 = new ArrayList<String>();
 		corsiS1.add("Ingegneria del Software");
@@ -20,8 +22,7 @@ public class Client {
 		System.out.println(p1.toString());
 		System.out.println(s1.toString());
 		
-		Indirizzo indi=new Indirizzo("c.da sant'andrea", 21, "Grottaminarda", 83035, "Avellino", "Campania");
-		Persona tommaso=new Persona("tommaso", "minichiello", new Date(94, 00, 05), indi);
+		
 		System.out.println(tommaso.toString());
 		listaPersone.add(p1);
 		listaPersone.add(tommaso);
@@ -58,16 +59,27 @@ public class Client {
 			System.out.println(s.toString());
 		}
 		
-		System.out.println("PERSONA PIU' GIOVANE");
+
+		System.out.println("PERSONA PIU' GIOVANE GISO");
 		for (Persona pers: Giso.calcolaPiuGiovane(listaPersone)) {
 			System.out.println(pers.toString());
 		}
 		
-		System.out.println("PERSONA PIU' ADULTA");
+		System.out.println("PERSONA PIU' ADULTA GISO");
 		for (Persona pers: Giso.calcolaPiuAdulto(listaPersone)) {
 			System.out.println(pers.toString());
 		}
 		
+
+		System.out.println("Persone più anziana MINICHIELLO");
+		for(Persona p:Minichiello.calcolaPersonaAdulta(listaPersone)) {
+			System.out.println(p.toString());
+		}
+		System.out.println("Persone più giovane MINICHIELLO");
+		for(Persona p:Minichiello.calcolaPersonaGiovane(listaPersone)) {
+			System.out.println(p.toString());
+		}
+
 	}
 	
 }
