@@ -1,5 +1,7 @@
 package it.sopra.uiip;
 
+import java.util.ArrayList;
+
 public class Principale {
 
 	public static void main(String[] args) {
@@ -40,6 +42,23 @@ public class Principale {
 		System.out.println(prodotto1);
 		//Fine codice Oksana
 		
+		//Inizio codice Giuseppe 
+		ArrayList<Prodotto> listaProdottiGiuseppe = new ArrayList<Prodotto>();
+		listaProdottiGiuseppe.add(prodottoGiuseppe1);
+		listaProdottiGiuseppe.add(prodottoGiuseppe2);
+		listaProdottiGiuseppe.add(prodottoGiuseppe3);
+		
+		double importoGiuseppe = Supermercato.calcolaImporto(listaProdottiGiuseppe);
+		
+		Scontrino scontrinoGiuseppe = new Scontrino("001", clienteGiuseppe, listaProdottiGiuseppe, importoGiuseppe);
+		
+		System.out.println("Scontrino Giuseppe:");
+		System.out.println(scontrinoGiuseppe);
+		
+		int puntiScontrinoGiuseppe = Supermercato.calcolaPunti(scontrinoGiuseppe);
+		
+		System.out.println("Punti scontrino Giuseppe: " +puntiScontrinoGiuseppe);
+		//Fine codice Giuseppe
 
 	}
 
