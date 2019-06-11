@@ -9,21 +9,16 @@ public class Client {
 		ArrayList<Persona> listaPersone = new ArrayList<Persona>();
 		ArrayList<Persona> listaCampania = null;
 		
-		
-		Indirizzo i1 = new Indirizzo("Via dei Santini",15,"Cesinali",83020,"Avellino","Campania");
-		
-		Persona danilo = new Persona("Danilo","Ferrara",i1);
+		Indirizzo iDanilo = new Indirizzo("Via dei Santini",15,"Cesinali",83020,"Avellino","Campania");
+		Indirizzo iSuglia = new Indirizzo("Via Roma", 23, "Montecalvo", 83037, "Avellino", "Campania");
+
+		Persona danilo = new Persona("Danilo","Ferrara",iDanilo);
+		Persona morich = new Persona("Emanuele", "Morante", new Indirizzo("Atlantici", 16, "Benevento", 82100, "BN", "Campania"));
+		Persona suglia = new Persona("Pompilio", "Suglia", iSuglia);
+
 		
 		System.out.println(danilo.toString());
-
-		Persona morich = new Persona("Emanuele", "Morante", new Indirizzo("Atlantici", 16, "Benevento", 82100, "BN", "Campania"));
-		
 		System.out.println(morich.toString());
-		
-
-		Indirizzo i = new Indirizzo("Via Roma", 23, "Montecalvo", 83037, "Avellino", "Campania");
-		Persona suglia = new Persona("Pompilio", "Suglia", i);
-		
 		System.out.println(suglia.toString());
 		
 
@@ -38,8 +33,17 @@ public class Client {
 		}
 		
 		
-	
-
+		
+		
+		ArrayList<Persona>listaCampaniaMorante = ResidentiCampaniaMorante.trovaResidentiCampania(listaPersone);
+		
+		
+		System.out.println("\n------Residenti Campania Morante---------");
+		for(Persona p : listaCampaniaMorante) {
+			System.out.println(p.toString());
+		}
+		System.out.println("----------------------------------------");
+		
 
 	}
 
