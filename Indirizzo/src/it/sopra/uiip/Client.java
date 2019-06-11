@@ -7,7 +7,9 @@ public class Client {
 	public static void main(String[] args) {
 		
 		
-		
+		ArrayList<Studente> listaStudenti = new ArrayList<Studente>();
+		ArrayList<Studente> listaStudentiFormazione = new ArrayList<Studente>();
+
 		ArrayList<Persona> listaPersone = new ArrayList<Persona>();
 		ArrayList<Persona> listaCampania = null;
 
@@ -19,6 +21,9 @@ public class Client {
 		Persona morich = new Persona("Emanuele", "Morante", new Indirizzo("Atlantici", 16, "Benevento", 82100, "BN", "Campania"));
 		Persona suglia = new Persona("Pompilio", "Suglia", iSuglia);
 
+		Studente studSuglia = new Studente(suglia.getNome(), suglia.getCognome(),suglia.getIndirizzo(),1,"Ingegneria Edile");
+		System.out.println(studSuglia.toString());
+		
 		
 		System.out.println(danilo.toString());
 		System.out.println(morich.toString());
@@ -68,11 +73,25 @@ public class Client {
 		Studente morichStudente = new Studente(morich.getNome(), morich.getCognome(), morich.getIndirizzo(), 66, "Magistrale");
 		System.out.println(morichStudente.toString());
 		
-		ArrayList<Studente> listaStudenti = new ArrayList<Studente>();
-		ArrayList<Studente> listaStudentiFormazione = null;
+		Studente sugliaStudente = new Studente(suglia.getNome(), suglia.getCognome(), suglia.getIndirizzo(), 1, "Triennale");
+		ArrayList<String> listaCorsi =new ArrayList<String>();
+		
+		listaCorsi.add("Inglese");
+		sugliaStudente.setCorsiDiFormazione(listaCorsi);
+		
+		System.out.println(sugliaStudente.toString());
+		
 		
 		listaStudenti.add(morichStudente);
+		listaStudenti.add(sugliaStudente);
 		listaStudenti.add(s);
+		
+		listaStudentiFormazione=FormazioneSuglia.formazioneStudente(listaStudenti);
+		
+		System.out.println("LISTA STUDENTI CON ALMENO UN CORSO DI FORMAZIONE");
+		for (int i = 0; i < listaStudentiFormazione.size(); i++) {
+			System.out.println(listaStudentiFormazione.get(i).toString());
+		}
 		
 		listaStudentiFormazione = FormazioneFerrara.formazioneStudenti(listaStudenti);
 		
