@@ -21,15 +21,30 @@ public class Client {
 		
 		System.out.println(giuseppe.toString());
 		
-		ArrayList<Persona>listaPersone = new ArrayList<Persona>();
-		listaPersone.add(antonio);
-		listaPersone.add(giuseppe);
-		listaPersone.add(oksana);
-		ArrayList<Persona>result = ResidentiCampaniaGonchar.trovaResidentiCampania(listaPersone);
+
+		ArrayList<Persona>listaPersoneOksana = new ArrayList<Persona>();
+		listaPersoneOksana.add(antonio);
+		listaPersoneOksana.add(giuseppe);
+		listaPersoneOksana.add(oksana);
+		ArrayList<Persona>resultoksana = ResidentiCampaniaGonchar.trovaResidentiCampania(listaPersoneOksana);
 		
 		System.out.println("Abbitanti di Campania");
-		for (Persona p: listaPersone) {
+		for (Persona p: resultoksana) {
 			System.out.println(p);
 		}
+		
+		ArrayList<Persona> listaPersone = new ArrayList<Persona>();
+		listaPersone.add(oksana);
+		listaPersone.add(antonio);
+		listaPersone.add(giuseppe);
+		
+		ArrayList<Persona> result = ResidentiCampaniaNisco.trovaResidentiCampania(listaPersone);
+		
+		System.out.println("La lista di Antonio Nisco");
+		for(Persona r: result) {
+			System.out.println(r.toString());
+		}
+		
+
 	}
 }
