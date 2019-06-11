@@ -8,11 +8,17 @@ public class Principale {
 		
 		ArrayList<Prodotto> listaProdottiFerrara = new ArrayList<Prodotto>();
 		ArrayList<Prodotto>listaProdottiSuglia=new ArrayList<Prodotto>();
+		ArrayList<Cliente> listaClienti=new ArrayList<Cliente>();
+		Cliente clientePiuFedele=null;
 		int puntiSuglia=0;
 		
 		Cliente Suglia = new Cliente("a01", "Pompilio", "Suglia", 122);		
 		Cliente morich = new Cliente("a03", "Morante", "Emanuele", 134);
 		Cliente Ferrara = new Cliente("b01", "Danilo", "Ferrara", 101);
+		listaClienti.add(Suglia);
+		listaClienti.add(morich);
+		listaClienti.add(Ferrara);
+		
 		
 		Prodotto p1 = new Prodotto("A01", "mele", 2.3, 20);
 		Prodotto p2 = new Prodotto("A02", "pane", 1.8, 10);
@@ -58,6 +64,10 @@ public class Principale {
 		System.out.println("L'importo è " + Supermercato.calcolaImporto(morichScontrino.getProdotti())+"Euro");
 		System.out.println("I punti sono " + Supermercato.calcolaPunti(morichScontrino)+"\n");	
 
+		//Cliente più fedele
+		clientePiuFedele=Supermercato.clientePiuFedele(listaClienti);
+		System.out.println("Cliente piu fedele\n" + clientePiuFedele);
+		
 	}
 
 }
