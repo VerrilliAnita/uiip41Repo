@@ -17,4 +17,16 @@ public class Supermercato {
 			result = result +p.getPunti();
 		return result;
 	}
+	
+	public static Cliente clientePiuFedele(ArrayList<Cliente> clienti) {
+		
+		if(clienti.size()>0) {
+		Cliente result = clienti.get(0);
+		for(Cliente c : clienti) 
+			if (c.getPunti()>result.getPunti())
+				result = c;
+		return result;
+		}
+	return null;	
+	}
 }
