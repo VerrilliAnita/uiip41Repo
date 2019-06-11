@@ -16,7 +16,15 @@ public class Scontrino {
 		this.listaProdotti = listaProdotti;
 		this.importo = Supermercato.calcolaImporto(listaProdotti);
 	}
-
+	
+	public Scontrino(String codice, Cliente cliente, ArrayList<Prodotto> listaProdotti, double importo) {
+		super();
+		this.codice = codice;
+		this.cliente = cliente;
+		this.listaProdotti = listaProdotti;
+		this.importo = importo;
+	}
+	
 	public String getCodice() {
 		return codice;
 	}
