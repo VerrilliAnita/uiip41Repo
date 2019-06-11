@@ -8,6 +8,7 @@ public class Studente extends Persona {
 	private String titoloStudio;
 	private ArrayList<String> corsiDiFormazione;
 	
+	
 	public Studente(String nome, String cognome, Indirizzo indirizzo, int livelloLaurea, String titoloStudio) {
 		super(nome, cognome, indirizzo);
 		this.livelloLaurea=livelloLaurea;

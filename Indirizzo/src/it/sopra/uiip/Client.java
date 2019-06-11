@@ -7,7 +7,9 @@ public class Client {
 	public static void main(String[] args) {
 		
 		
-		
+		ArrayList<Studente> listaStudenti = new ArrayList<Studente>();
+		ArrayList<Studente> listaStudentiFormazione = new ArrayList<Studente>();
+
 		ArrayList<Persona> listaPersone = new ArrayList<Persona>();
 		ArrayList<Persona> listaCampania = null;
 
@@ -65,6 +67,25 @@ public class Client {
 		
 		Studente morichStudente = new Studente(morich.getNome(), morich.getCognome(), morich.getIndirizzo(), 66, "Magistrale");
 		System.out.println(morichStudente.toString());
+		
+		Studente sugliaStudente = new Studente(suglia.getNome(), suglia.getCognome(), suglia.getIndirizzo(), 1, "Triennale");
+		ArrayList<String> listaCorsi =new ArrayList<String>();
+		
+		listaCorsi.add("Inglese");
+		sugliaStudente.setCorsiDiFormazione(listaCorsi);
+		
+		System.out.println(sugliaStudente.toString());
+		
+		
+		listaStudenti.add(morichStudente);
+		listaStudenti.add(sugliaStudente);
+		
+		listaStudentiFormazione=FormazioneSuglia.formazioneStudente(listaStudenti);
+		
+		System.out.println("LISTA STUDENTI CON ALMENO UN CORSO DI FORMAZIONE");
+		for (int i = 0; i < listaStudentiFormazione.size(); i++) {
+			System.out.println(listaStudentiFormazione.get(i).toString());
+		}
 		
 		
 	}
