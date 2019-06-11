@@ -1,5 +1,7 @@
 package it.sopra.uiip;
 
+import java.util.ArrayList;
+
 public class Principale {
 
 	public static void main(String[] args) {
@@ -40,7 +42,19 @@ public class Principale {
 		System.out.println(prodotto1);
 		//Fine codice Oksana
 		
-
+		// Test Antonio
+		ArrayList<Prodotto> prodo=new ArrayList<Prodotto>();
+		prodo.add(p3Nisco);
+		prodo.add(p2Nisco);
+		prodo.add(p1Nisco);
+		double impSconNisco =Supermercato.calcolaImporto(prodo);
+		Scontrino scontrNisco=new Scontrino("1111",antonio,prodo,impSconNisco);
+		int puntiSconNisco =Supermercato.calcolaPunti(scontrNisco);
+		
+		System.out.println(scontrNisco);
+		System.out.println("I punti dello scontrino di Nisco sono :"puntiSconNisco);
+		// fine test Antonio
+		
 	}
 
 }
