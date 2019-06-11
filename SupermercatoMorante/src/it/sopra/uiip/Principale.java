@@ -35,7 +35,7 @@ public class Principale {
 		s1.addProdotto(p6);
 		System.out.println("\n------------Scontrino Ferrara-----------");
 		System.out.println("I punti per lo scontrino s1 sono: "+ Supermercato.calcolaPunti(s1));
-		System.out.println("L'importo totale per i prodotti Ferrara è: "+ Supermercato.calcolaImporto(listaProdottiFerrara));
+		System.out.println("L'importo totale per i prodotti Ferrara è: "+ Supermercato.calcolaImporto(listaProdottiFerrara)+ "Euro");
 		
 		listaProdottiSuglia.add(p5);
 		listaProdottiSuglia.add(p2);
@@ -56,8 +56,8 @@ public class Principale {
 		morichScontrino.addProdotto(p1);
 		System.out.println("\n------------Scontrino Morante-----------");
 		System.out.println("L'importo è " + Supermercato.calcolaImporto(morichScontrino.getProdotti())+"Euro");
-		System.out.println("I punti sono " + Supermercato.calcolaPunti(morichScontrino)+"\n");	
-
+		System.out.println("I punti sono " + Supermercato.calcolaPunti(morichScontrino)+"\n");
+		
 	}
 
 }

@@ -18,5 +18,21 @@ public class Supermercato {
 			conto = conto+p.getCosto();
 		return conto;
 	}
-
-}
+	
+	public static Cliente clientePiuFedele(ArrayList<Cliente> listaClienti) {
+		int puntiPiuAlti = listaClienti.get(0).getPunti();
+		ArrayList<Cliente> clientiPiuFedeli = new ArrayList<Cliente>();
+		Cliente clientePiuFedele = listaClienti.get(0);
+		for(Cliente c: listaClienti) {
+			if(c.getPunti()>clientePiuFedele.getPunti())
+				puntiPiuAlti = c.getPunti();
+		}
+		
+		for (Cliente c: listaClienti) {
+			if(c.getPunti() == puntiPiuAlti)
+				clientiPiuFedeli.add(c);
+		}
+		return clientePiuFedele;
+		}	
+		
+	}
