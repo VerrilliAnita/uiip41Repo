@@ -55,6 +55,16 @@ public class Client {
 			System.out.println(r.toString());
 		}
 		
+		ArrayList<String> corsi= new ArrayList<String>();
+		
+		corsi.add("Economia");
+		corsi.add("Diritto");
+		corsi.add("Matematica");
+		corsi.add("Programmazione");
+		Studente nisco= new Studente("Antonio","Nisco",new Date(1996,10,9),new Indirizzo("Tufi",47,"Zungoli",83030,"AV","Campania"),1,"Economia",corsi);
+		
+		System.out.println(nisco.toString());
+		
 		
 	}
 
