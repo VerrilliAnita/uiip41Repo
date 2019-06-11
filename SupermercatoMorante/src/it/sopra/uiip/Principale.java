@@ -10,9 +10,10 @@ public class Principale {
 		ArrayList<Prodotto>listaProdottiSuglia= new ArrayList<Prodotto>();
 		ArrayList<Prodotto> listaProdottiMorich = new ArrayList<Prodotto>();
 		ArrayList<Cliente> listaClienti = new ArrayList<Cliente>();
+		ArrayList<Cliente> listaClientiPiuFedeli = new ArrayList<Cliente>();
 		int puntiSuglia=0;
 		
-		Cliente Suglia = new Cliente("a01", "Pompilio", "Suglia", 122);		
+		Cliente Suglia = new Cliente("a01", "Pompilio", "Suglia", 134);		
 		Cliente morich = new Cliente("a03", "Morante", "Emanuele", 134);
 		Cliente Ferrara = new Cliente("b01", "Danilo", "Ferrara", 101);
 		
@@ -65,8 +66,10 @@ public class Principale {
 		System.out.println("L'importo è " + Supermercato.calcolaImporto(morichScontrino.getProdotti())+"Euro");
 		System.out.println("I punti sono " + Supermercato.calcolaPunti(morichScontrino)+"\n");	
 		
-		System.out.println("TEST PIU' FEDELE");
-		System.out.println(Supermercato.clientePiuFedele(listaClienti).toString());
+		System.out.println("TEST PIU' FEDELI");
+		listaClientiPiuFedeli = Supermercato.clientePiuFedele(listaClienti); 
+		for(Cliente c : listaClientiPiuFedeli)
+			System.out.println(c.toString());
 		
 		
 		

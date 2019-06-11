@@ -19,13 +19,20 @@ public class Supermercato {
 		return conto;
 	}
 	
-	public static Cliente clientePiuFedele(ArrayList<Cliente> clienti) {
+	public static ArrayList<Cliente> clientePiuFedele(ArrayList<Cliente> clienti) {
 		
-		Cliente piuFedele = clienti.get(0);
+		ArrayList<Cliente> clientiPiuFedeli = new ArrayList<Cliente>();
+		int puntiMaggiori = clienti.get(0).getPunti();
+		
 		for(Cliente c: clienti)
-			if(c.getPunti() > piuFedele.getPunti())
-				piuFedele = c;
-		return piuFedele;
+			if(c.getPunti() > puntiMaggiori)
+				puntiMaggiori = c.getPunti();
+		
+		for(Cliente c2: clienti)
+			if(c2.getPunti() == puntiMaggiori)
+				clientiPiuFedeli.add(c2);
+				
+		return clientiPiuFedeli;
 	}
 	
 
