@@ -18,12 +18,18 @@ public class Supermercato {
 		return result;
 	}
 	
-	public static Cliente clientePiuFedele(ArrayList<Cliente> clienti) {
+	public static ArrayList<Cliente> clientePiuFedele(ArrayList<Cliente> clienti) {
 		if(clienti.size()>0) {
-			Cliente c=clienti.get(0);
-			for(Cliente cl:clienti) 
-				if(cl.getPunti()>c.getPunti()) 
-					c=cl;
+			ArrayList<Cliente> c=new ArrayList<>();
+			c.add(clienti.get(0));
+			for(int i=1;i<clienti.size();i++) {
+				if(clienti.get(i).getPunti()>c.get(0).getPunti()) {
+					c=new ArrayList<>();
+					c.add(clienti.get(i));
+				}else if(clienti.get(i).getPunti()==c.get(0).getPunti()) {
+					c.add(clienti.get(i));
+				}
+			}
 				
 			return c;
 		}

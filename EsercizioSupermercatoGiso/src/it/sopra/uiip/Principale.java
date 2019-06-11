@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class Principale {
 
 	public static void main(String[] args) {
-		Cliente c1=new Cliente("c01", "tommaso", "minichiello", 0);
+		Cliente c1=new Cliente("c01", "tommaso", "minichiello", 40);
 		Cliente c2 = new Cliente("cartaGiso", "Gianluca", "Giso", 150);
+		Cliente c3 = new Cliente("cartaSuglia", "Pompilio", "Suglia", 150);
 		ArrayList<Cliente>clienti = new ArrayList<Cliente>();
 		clienti.add(c1);
 		clienti.add(c2);
+		clienti.add(c3);
 		
 		Prodotto p1=new Prodotto("01", "pane", 2.0, 10);
 		Prodotto p2=new Prodotto("02", "farina", 1.0, 10);
@@ -48,7 +50,10 @@ public class Principale {
 		System.out.println(Supermercato.calcolaPunti(sc1));
 		
 		System.out.println("CLIENTE PIU' FEDELE");
-		System.out.println(Supermercato.clientePiuFedele(clienti));
+		for(Cliente c:Supermercato.clientePiuFedele(clienti)) {
+			System.out.println(c.toString());
+		}
+		
 	}
 
 }
