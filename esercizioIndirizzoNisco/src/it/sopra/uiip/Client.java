@@ -52,6 +52,7 @@ public class Client {
 			System.out.println(r.toString());
 		}
 		
+
 		//Codice di Giuseppe
 		ArrayList<String> listaCorsiBaudo = new ArrayList<String>();
 		listaCorsiBaudo.add("Geometria applicata");
@@ -59,6 +60,26 @@ public class Client {
 		listaCorsiBaudo.add("Seduta spiritica");
 		Studente studente = new Studente("Pippo", "Baudo", new Date(1990, 2, 22), new Indirizzo("Via delle cirase", 88, "Tronto", 92033, "Ciao", "Lapponia"), 1, "Economia", listaCorsiBaudo);
 		System.out.println(studente.toString());
+
+
+		ArrayList<String>listaCorsiDiFormazione= new ArrayList<String>();
+		listaCorsiDiFormazione.add("Italiano");
+		listaCorsiDiFormazione.add("Ingeneria");
+		Studente gonchar = new Studente("Gonchar", "Oksana", new Date(1990, 5, 3), 
+				new Indirizzo("Via prov. Cerzete", 22, "Atripalda", 83042, "AV", 
+						"Campania"), 3, "ingeneria", listaCorsiDiFormazione);
+
+		System.out.println(gonchar.toString());
+		
+		ArrayList<String> corsi= new ArrayList<String>();
+		
+		corsi.add("Economia");
+		corsi.add("Diritto");
+		corsi.add("Matematica");
+		corsi.add("Programmazione");
+		Studente nisco= new Studente("Antonio","Nisco",new Date(1996,10,9),new Indirizzo("Tufi",47,"Zungoli",83030,"AV","Campania"),1,"Economia",corsi);
+		
+		System.out.println(nisco.toString());
 		
 	}
 
