@@ -7,6 +7,8 @@ public class Principale {
 	public static void main(String[] args) {
 		
 		ArrayList<Prodotto> listaProdottiFerrara = new ArrayList<Prodotto>();
+		ArrayList<Prodotto>listaProdottiSuglia=new ArrayList<Prodotto>();
+		int puntiSuglia=0;
 		
 		Cliente Suglia = new Cliente("a01", "Pompilio", "Suglia", 122);		
 		Cliente morich = new Cliente("a03", "Morante", "Emanuele", 134);
@@ -22,27 +24,39 @@ public class Principale {
 		Prodotto p8 = new Prodotto("OOO", "senape", 2.4, 18);
 		Prodotto p9 = new Prodotto("RRR", "cereali", 4.5, 40);
 		
-		
+		//Test metodi Supermercato
 		listaProdottiFerrara.add(p4);
 		listaProdottiFerrara.add(p5);
 		listaProdottiFerrara.add(p6);
-		
 		double contoFerrara = Supermercato.calcolaImporto(listaProdottiFerrara);
-		
 		Scontrino s1 = new Scontrino("S01",Ferrara,contoFerrara);
-		
 		s1.addProdotto(p4);
 		s1.addProdotto(p5);
 		s1.addProdotto(p6);
-		
-		//Calcolo punti scontrino Ferrara
+		System.out.println("\n------------Scontrino Ferrara-----------");
 		System.out.println("I punti per lo scontrino s1 sono: "+ Supermercato.calcolaPunti(s1));
-		//Calcolo importo prodotti Ferrara
 		System.out.println("L'importo totale per i prodotti Ferrara è: "+ Supermercato.calcolaImporto(listaProdottiFerrara));
 		
+		listaProdottiSuglia.add(p5);
+		listaProdottiSuglia.add(p2);
+		listaProdottiSuglia.add(p1);
+		double contoSuglia = Supermercato.calcolaImporto(listaProdottiSuglia);
+		Scontrino scontrinoSuglia = new Scontrino("s1", Suglia, contoSuglia);
+		scontrinoSuglia.setProdotti(listaProdottiSuglia);
+		puntiSuglia = Supermercato.calcolaPunti(scontrinoSuglia);
+		System.out.println("\n------------Scontrino Suglia-----------");
+		System.out.println("conto scontrino Suglia = " + contoSuglia + "Euro");
+		System.out.println("Punti scontrino Suglia = " + puntiSuglia+"\n");
 		
-		
-		
+		Scontrino morichScontrino = new Scontrino("ICH", morich, 23);
+		morichScontrino.addProdotto(p8);
+		morichScontrino.addProdotto(p8);
+		morichScontrino.addProdotto(p2);
+		morichScontrino.addProdotto(p3);
+		morichScontrino.addProdotto(p1);
+		System.out.println("\n------------Scontrino Morante-----------");
+		System.out.println("L'importo è " + Supermercato.calcolaImporto(morichScontrino.getProdotti())+"Euro");
+		System.out.println("I punti sono " + Supermercato.calcolaPunti(morichScontrino)+"\n");	
 
 	}
 
