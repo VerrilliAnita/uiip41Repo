@@ -111,6 +111,12 @@ public class Client {
 		System.out.println("Secondo morich la persona più giovane è " + Morante.cercaPersonaPiuGiovane(listaPersone));
 		System.out.println("Secondo morich la persona più anziana è " + Morante.cercaPersonaPiuAnziana(listaPersone));
 		System.out.println("--------------------\n");
+		
+		//Suglia persona più giovane e persona più anziana
+		System.out.println("____Pompilio_______GIOVANE______ANZIANO___");
+		System.out.println("Persona più giovane: " + Suglia.personaPiuGiovane(listaPersone));
+		System.out.println("Persona più anziana: " + Suglia.personaPiuAnziana(listaPersone));
+		System.out.println("--------------------\n");
 
 	}
 
