@@ -52,9 +52,42 @@ public class Principale {
 		int puntiSconNisco =Supermercato.calcolaPunti(scontrNisco);
 		
 		System.out.println(scontrNisco);
-		System.out.println("I punti dello scontrino di Nisco sono :"puntiSconNisco);
+		System.out.println("I punti dello scontrino di Nisco sono :" +puntiSconNisco);
 		// fine test Antonio
 		
+		// Test metodo Oksana
+		ArrayList<Prodotto>prodot = new ArrayList<Prodotto>();
+		prodot.add(prodotto1);
+		prodot.add(prodottoGiuseppe1);
+		prodot.add(p1Nisco);
+		double importo=Supermercato.calcolaImporto(prodot);
+		Scontrino scontrino = new Scontrino("jkdjfur",cliente, prodot, importo);
+		
+		int punti = Supermercato.calcolaPunti(scontrino);
+		System.out.println(scontrino);
+		System.out.println(punti);
+		// fine Test Oksana
+		
+
+		//Inizio codice Giuseppe 
+		ArrayList<Prodotto> listaProdottiGiuseppe = new ArrayList<Prodotto>();
+		listaProdottiGiuseppe.add(prodottoGiuseppe1);
+		listaProdottiGiuseppe.add(prodottoGiuseppe2);
+		listaProdottiGiuseppe.add(prodottoGiuseppe3);
+		
+		double importoGiuseppe = Supermercato.calcolaImporto(listaProdottiGiuseppe);
+		
+		Scontrino scontrinoGiuseppe = new Scontrino("001", clienteGiuseppe, listaProdottiGiuseppe, importoGiuseppe);
+		
+		System.out.println("Scontrino Giuseppe:");
+		System.out.println(scontrinoGiuseppe);
+		
+		int puntiScontrinoGiuseppe = Supermercato.calcolaPunti(scontrinoGiuseppe);
+		
+		System.out.println("Punti scontrino Giuseppe: " +puntiScontrinoGiuseppe);
+		//Fine codice Giuseppe
+
+
 	}
 
 }
