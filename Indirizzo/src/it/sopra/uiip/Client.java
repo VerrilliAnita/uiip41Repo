@@ -19,6 +19,9 @@ public class Client {
 		Persona morich = new Persona("Emanuele", "Morante", new Indirizzo("Atlantici", 16, "Benevento", 82100, "BN", "Campania"));
 		Persona suglia = new Persona("Pompilio", "Suglia", iSuglia);
 
+		Studente studSuglia = new Studente(suglia.getNome(), suglia.getCognome(),suglia.getIndirizzo(),1,"Ingegneria Edile");
+		System.out.println(studSuglia.toString());
+		
 		
 		System.out.println(danilo.toString());
 		System.out.println(morich.toString());
