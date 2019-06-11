@@ -39,7 +39,7 @@ public class Client {
 
 		
 		ArrayList<String> corsiTommaso=new ArrayList<>();
-		corsiTommaso.add("programmazione Java");
+		corsiTommaso.add("Programmazione Java");
 		corsiTommaso.add("Architettura");
 		Studente s2=new Studente(tommaso, 1, "informatica", corsiTommaso);
 		System.out.println(s2.toString());
