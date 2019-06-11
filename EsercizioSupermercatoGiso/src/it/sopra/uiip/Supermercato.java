@@ -10,4 +10,11 @@ public class Supermercato {
 		}
 		return temp;
 	}
+	
+	public static int calcolaPunti(Scontrino scontrino) {
+		int result = 0;
+		for (Prodotto p : scontrino.getProdotti()) 
+			result = result +p.getPunti();
+		return result;
+	}
 }
