@@ -22,7 +22,10 @@ public class Client {
 		Persona suglia = new Persona("Pompilio", "Suglia", new Date("12/25/1990"), iSuglia);
 
 		//studente danilo
-		Studente s = new Studente(danilo.getNome(),danilo.getCognome(),danilo.getDataDiNascita(),danilo.getIndirizzo(),2,"informatica");
+		Studente s = new Studente(danilo.getNome(),danilo.getCognome(),danilo.getDataDiNascita(),danilo.getIndirizzo(),2,"Magistrale");
+		ArrayList<String> listaCorsi1 = new ArrayList<String>();
+		listaCorsi1.add("Tedesco");
+		s.setCorsiDiFormazione(listaCorsi1);
 
 		//studente emanuele
 		Studente morichStudente = new Studente(morich.getNome(), morich.getCognome(), morich.getDataDiNascita(), morich.getIndirizzo(), 66, "Magistrale");
@@ -106,7 +109,7 @@ public class Client {
 		}
 		System.out.println("--------------------\n");
 
-		//morich persona più giovane e più ansiana
+		//morich persona più giovane e più anziana
 		System.out.println("____Emanuele_______GIOVANE______ANZIANO___");
 		System.out.println("Secondo morich la persona più giovane è " + Morante.cercaPersonaPiuGiovane(listaPersone));
 		System.out.println("Secondo morich la persona più anziana è " + Morante.cercaPersonaPiuAnziana(listaPersone));
@@ -117,6 +120,11 @@ public class Client {
 		System.out.println("Persona più giovane: " + Suglia.personaPiuGiovane(listaPersone));
 		System.out.println("Persona più anziana: " + Suglia.personaPiuAnziana(listaPersone));
 		System.out.println("--------------------\n");
+		
+		//Ferrara persona più giovane e persona più anziana
+		System.out.println("____Danilo_______GIOVANE______ANZIANO___");
+		System.out.println("La persona più giovane è: "+ Ferrara.personaPiuGiovane(listaPersone));
+		System.out.println("La persona più anziana è: "+ Ferrara.personaPiuAdulta(listaPersone));
 
 	}
 
