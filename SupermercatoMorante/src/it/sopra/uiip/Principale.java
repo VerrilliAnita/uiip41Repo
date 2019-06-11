@@ -8,12 +8,20 @@ public class Principale {
 		
 		ArrayList<Prodotto> listaProdottiFerrara = new ArrayList<Prodotto>();
 		ArrayList<Prodotto>listaProdottiSuglia=new ArrayList<Prodotto>();
+		ArrayList<Cliente> listaClienti=new ArrayList<Cliente>();
+		Cliente clientePiuFedele=null;
+
+		ArrayList<Prodotto> listaProdottiMorich = new ArrayList<Prodotto>();
+		ArrayList<Cliente> listaClientiPiuFedeli = new ArrayList<Cliente>();
 		int puntiSuglia=0;
 		
-		Cliente Suglia = new Cliente("a01", "Pompilio", "Suglia", 122);		
+		Cliente Suglia = new Cliente("a01", "Pompilio", "Suglia", 134);		
 		Cliente morich = new Cliente("a03", "Morante", "Emanuele", 134);
 		Cliente Ferrara = new Cliente("b01", "Danilo", "Ferrara", 101);
-		
+		listaClienti.add(Suglia);
+		listaClienti.add(morich);
+		listaClienti.add(Ferrara);
+			
 		Prodotto p1 = new Prodotto("A01", "mele", 2.3, 20);
 		Prodotto p2 = new Prodotto("A02", "pane", 1.8, 10);
 		Prodotto p3 = new Prodotto("A02", "biscotti", 2, 15);
@@ -48,15 +56,22 @@ public class Principale {
 		System.out.println("conto scontrino Suglia = " + contoSuglia + "Euro");
 		System.out.println("Punti scontrino Suglia = " + puntiSuglia+"\n");
 		
-		Scontrino morichScontrino = new Scontrino("ICH", morich, 23);
-		morichScontrino.addProdotto(p8);
-		morichScontrino.addProdotto(p8);
-		morichScontrino.addProdotto(p2);
-		morichScontrino.addProdotto(p3);
-		morichScontrino.addProdotto(p1);
+		listaProdottiMorich.add(p9);
+		listaProdottiMorich.add(p4);
+		listaProdottiMorich.add(p5);
+		listaProdottiMorich.add(p1);
+		double contoMorich = Supermercato.calcolaImporto(listaProdottiMorich);
+		Scontrino morichScontrino = new Scontrino("ICH", morich, contoMorich);
 		System.out.println("\n------------Scontrino Morante-----------");
+		morichScontrino.setProdotti(listaProdottiMorich);
 		System.out.println("L'importo è " + Supermercato.calcolaImporto(morichScontrino.getProdotti())+"Euro");
 		System.out.println("I punti sono " + Supermercato.calcolaPunti(morichScontrino)+"\n");
+		System.out.println("I punti sono " + Supermercato.calcolaPunti(morichScontrino)+"\n");	
+		
+		System.out.println("TEST PIU' FEDELI");
+		listaClientiPiuFedeli = Supermercato.clientePiuFedele(listaClienti); 
+		for(Cliente c : listaClientiPiuFedeli)
+			System.out.println(c.toString());
 		
 	}
 
