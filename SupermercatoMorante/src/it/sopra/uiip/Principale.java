@@ -23,11 +23,10 @@ public class Principale {
 		Prodotto p8 = new Prodotto("OOO", "senape", 2.4, 18);
 		Prodotto p9 = new Prodotto("RRR", "cereali", 4.5, 40);
 		
-		
+		//Test metodi Supermercato
 		listaProdottiSuglia.add(p5);
 		listaProdottiSuglia.add(p2);
 		listaProdottiSuglia.add(p1);
-		
 		double contoSuglia = Supermercato.calcolaImporto(listaProdottiSuglia);
 		Scontrino scontrinoSuglia = new Scontrino("s1", Suglia, contoSuglia);
 		scontrinoSuglia.setProdotti(listaProdottiSuglia);
@@ -36,7 +35,15 @@ public class Principale {
 		System.out.println("conto scontrino Suglia = " + contoSuglia + "Euro");
 		System.out.println("Punti scontrino Suglia = " + puntiSuglia+"\n");
 		
-		
+		Scontrino morichScontrino = new Scontrino("ICH", morich, 23);
+		morichScontrino.addProdotto(p8);
+		morichScontrino.addProdotto(p8);
+		morichScontrino.addProdotto(p2);
+		morichScontrino.addProdotto(p3);
+		morichScontrino.addProdotto(p1);
+		System.out.println("\n------------Scontrino Morante-----------");
+		System.out.println("L'importo è " + Supermercato.calcolaImporto(morichScontrino.getProdotti())+"Euro");
+		System.out.println("I punti sono " + Supermercato.calcolaPunti(morichScontrino)+"\n");
 		
 
 	}
