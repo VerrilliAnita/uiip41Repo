@@ -7,15 +7,15 @@ public class Client {
 
 	public static void main(String[] args) {
 		
-		Persona oksana =new Persona ("Oksana", "Gonchar", new Date(1986, 8, 4), new Indirizzo ("via Torreamando", 19,  "Ariano", 83010, "AV","Campania"));
+		Persona oksana =new Persona ("Oksana", "Gonchar", new Date("08/04/1986"), new Indirizzo ("via Torreamando", 19,  "Ariano", 83010, "AV","Campania"));
 		
 		System.out.println(oksana.toString());
 
-		Persona antonio= new Persona("Antonio","Nisco",new Date(1996,10,9),new Indirizzo("Tufi",47,"Zungoli",83030,"AV","Campania"));
+		Persona antonio= new Persona("Antonio","Nisco",new Date("10/09/1996"),new Indirizzo("Tufi",47,"Zungoli",83030,"AV","Campania"));
 		System.out.println(antonio.toString());
 
 		//Codice Giuseppe
-		Persona giuseppe = new Persona("Giuseppe", "Ristaino", new Date(1989, 3, 25), 
+		Persona giuseppe = new Persona("Giuseppe", "Ristaino", new Date("03/05/1989"), 
 				new Indirizzo("Via prov. Cerzete", 22, "Atripalda", 83042, "AV", 
 						"Campania"));
 		System.out.println(giuseppe.toString());
@@ -58,14 +58,14 @@ public class Client {
 		listaCorsiBaudo.add("Geometria applicata");
 		listaCorsiBaudo.add("Lirica");
 		listaCorsiBaudo.add("Seduta spiritica");
-		Studente studente = new Studente("Pippo", "Baudo", new Date(1990, 2, 22), new Indirizzo("Via delle cirase", 88, "Tronto", 92033, "Ciao", "Lapponia"), 1, "Economia", listaCorsiBaudo);
+		Studente studente = new Studente("Pippo", "Baudo", new Date("02/22/1990"), new Indirizzo("Via delle cirase", 88, "Tronto", 92033, "Ciao", "Lapponia"), 1, "Economia", listaCorsiBaudo);
 		System.out.println(studente.toString());
 
 
 		ArrayList<String>listaCorsiDiFormazione= new ArrayList<String>();
 		listaCorsiDiFormazione.add("Italiano");
 		listaCorsiDiFormazione.add("Ingeneria");
-		Studente gonchar = new Studente("Gonchar", "Oksana", new Date(1990, 5, 3), 
+		Studente gonchar = new Studente("Gonchar", "Oksana", new Date("03/05/1990"), 
 				new Indirizzo("Via prov. Cerzete", 22, "Atripalda", 83042, "AV", 
 						"Campania"), 3, "ingeneria", listaCorsiDiFormazione);
 
@@ -77,7 +77,7 @@ public class Client {
 		corsi.add("Diritto");
 		corsi.add("Matematica");
 		corsi.add("Programmazione");
-		Studente nisco= new Studente("Antonio","Nisco",new Date(1996,10,9),new Indirizzo("Tufi",47,"Zungoli",83030,"AV","Campania"),1,"Economia",corsi);
+		Studente nisco= new Studente("Antonio","Nisco",new Date("10/09/1996"),new Indirizzo("Tufi",47,"Zungoli",83030,"AV","Campania"),1,"Economia",corsi);
 		
 		System.out.println(nisco.toString());
 		
@@ -112,6 +112,15 @@ public class Client {
 		for(Studente r: st) {
 			System.out.println(r.toString());
 		}
+		
+		//Metodi Nisco Antonio e relativo test
+			ArrayList<Persona> giovaniNisco=Nisco.piùGiovane(listaPersone);
+			ArrayList<Persona> anzianiNisco=Nisco.piùAnziana(listaPersone);
+			System.out.println("TEST METODI HOMEWORK");
+			System.out.println(giovaniNisco.toString());
+			System.out.println(anzianiNisco.toString());
+		
+		
 		
 	}
 
