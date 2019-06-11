@@ -18,6 +18,16 @@ public class Principale {
 		Prodotto p8 = new Prodotto("OOO", "senape", 2.4, 18);
 		Prodotto p9 = new Prodotto("RRR", "cereali", 4.5, 40);
 		
+		Scontrino morichScontrino = new Scontrino("ICH", morich, 23);
+		morichScontrino.addProdotto(p8);
+		morichScontrino.addProdotto(p8);
+		morichScontrino.addProdotto(p2);
+		morichScontrino.addProdotto(p3);
+		morichScontrino.addProdotto(p1);
+		
+		System.out.println("L'importo è " + Supermercato.calcolaImporto(morichScontrino.getProdotti()));
+		System.out.println("I punti sono " + Supermercato.calcolaPunti(morichScontrino));
+		
 
 	}
 
