@@ -42,6 +42,15 @@ public class Client {
 		corsiTommaso.add("Architettura");
 		Studente s2=new Studente(tommaso, 1, "informatica", corsiTommaso);
 		System.out.println(s2.toString());
+		
+		ArrayList<Studente> listaStudenti = new ArrayList<Studente>();
+		listaStudenti.add(s1);
+		listaStudenti.add(s2);
+		
+		for (Studente studente : FormazioneGiso.formazioneStudenti(listaStudenti)) {
+			System.out.println(studente.toString());
+		}
+		
 	}
 
 }
