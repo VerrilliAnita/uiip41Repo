@@ -14,19 +14,16 @@ public class Client {
 		Persona antonio= new Persona("Antonio","Nisco",new Date(1996,10,9),new Indirizzo("Tufi",47,"Zungoli",83030,"AV","Campania"));
 		System.out.println(antonio.toString());
 
-
-		Persona giuseppe = new Persona("Giuseppe", "Ristaino", new Date(1989, 4, 25), 
+		//Codice Giuseppe
+		Persona giuseppe = new Persona("Giuseppe", "Ristaino", new Date(1989, 3, 25), 
 				new Indirizzo("Via prov. Cerzete", 22, "Atripalda", 83042, "AV", 
 						"Campania"));
-		
 		System.out.println(giuseppe.toString());
-	
 		ArrayList<Persona> listaPersoneGiuseppe = new ArrayList<Persona>();
 		listaPersoneGiuseppe.add(oksana);
 		listaPersoneGiuseppe.add(antonio);
 		listaPersoneGiuseppe.add(giuseppe);
 		ArrayList<Persona> resultGiuseppe = ResidentiCampaniaRistaino.trovaResidentiCampania(listaPersoneGiuseppe);
-
 		System.out.println("Lista delle persone che vivono in campania:");
 		for(Persona p: resultGiuseppe) {
 			System.out.println(p.toString());
@@ -55,6 +52,13 @@ public class Client {
 			System.out.println(r.toString());
 		}
 		
+		//Codice di Giuseppe
+		ArrayList<String> listaCorsiBaudo = new ArrayList<String>();
+		listaCorsiBaudo.add("Geometria applicata");
+		listaCorsiBaudo.add("Lirica");
+		listaCorsiBaudo.add("Seduta spiritica");
+		Studente studente = new Studente("Pippo", "Baudo", new Date(1990, 2, 22), new Indirizzo("Via delle cirase", 88, "Tronto", 92033, "Ciao", "Lapponia"), 1, "Economia", listaCorsiBaudo);
+		System.out.println(studente.toString());
 		
 	}
 
