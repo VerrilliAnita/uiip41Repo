@@ -59,7 +59,7 @@ public class Scontrino {
 
 	@Override
 	public String toString() {
-		return "Scontrino [codice=" + codice + ", cliente=" + cliente + "]";
+		return "Scontrino [codice=" + codice + ", cliente=" + cliente + ", importo: " +importo +"]";
 	}
 	
 	

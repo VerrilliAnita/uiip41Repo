@@ -42,6 +42,7 @@ public class Principale {
 		System.out.println(prodotto1);
 		//Fine codice Oksana
 		
+
 		// Test metodo Oksana
 		ArrayList<Prodotto>prodot = new ArrayList<Prodotto>();
 		prodot.add(prodotto1);
@@ -55,10 +56,25 @@ public class Principale {
 		System.out.println(punti);
 		// fine Test Oksana
 		
+
+		//Inizio codice Giuseppe 
+		ArrayList<Prodotto> listaProdottiGiuseppe = new ArrayList<Prodotto>();
+		listaProdottiGiuseppe.add(prodottoGiuseppe1);
+		listaProdottiGiuseppe.add(prodottoGiuseppe2);
+		listaProdottiGiuseppe.add(prodottoGiuseppe3);
 		
+		double importoGiuseppe = Supermercato.calcolaImporto(listaProdottiGiuseppe);
 		
+		Scontrino scontrinoGiuseppe = new Scontrino("001", clienteGiuseppe, listaProdottiGiuseppe, importoGiuseppe);
 		
-			
+		System.out.println("Scontrino Giuseppe:");
+		System.out.println(scontrinoGiuseppe);
+		
+		int puntiScontrinoGiuseppe = Supermercato.calcolaPunti(scontrinoGiuseppe);
+		
+		System.out.println("Punti scontrino Giuseppe: " +puntiScontrinoGiuseppe);
+		//Fine codice Giuseppe
+
 	}
 
 }
