@@ -7,7 +7,7 @@ public class Principale {
 	public static void main(String[] args) {
 
 		// Creazione  e Stampa di Cliente e Prodotto Nisco
-		Cliente antonio =new Cliente("an9666","Antonio","Nisco",100);
+		Cliente antonio =new Cliente("an9666","Antonio","Nisco",1200);
 		Prodotto p1Nisco=new Prodotto("zero1","pane",1.5,2);
 		Prodotto p2Nisco=new Prodotto("zero2","pasta",3,4);
 		Prodotto p3Nisco=new Prodotto("zero3","acqua",5,10);
@@ -59,6 +59,13 @@ public class Principale {
 		
 		System.out.println("Punti scontrino Giuseppe: " +puntiScontrinoGiuseppe);
 		//Fine codice Giuseppe
+		
+		ArrayList<Cliente> listaClienti = new ArrayList<Cliente>();
+		listaClienti.add(cliente);
+		listaClienti.add(clienteGiuseppe);
+		listaClienti.add(antonio);
+		System.out.println("Il cliente più fedele: ");
+		System.out.println(Supermercato.clientiPiuFedeli(listaClienti));
 
 	}
 

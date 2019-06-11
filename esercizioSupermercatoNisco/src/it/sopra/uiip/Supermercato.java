@@ -24,6 +24,24 @@ public class Supermercato {
 		
 		return importo;
 	}
+	
+	public static ArrayList<Cliente> clientiPiuFedeli(ArrayList<Cliente> listaClienti) {
+		ArrayList<Cliente> result = new ArrayList<Cliente>();
+		
+		int max = 0;
+		for(Cliente c : listaClienti) {
+			if(c.getPunti() > max) {
+				max = c.getPunti();
+			}
+		}
+		
+		for(Cliente c : listaClienti) {
+			if(max == c.getPunti()) {
+				result.add(c);
+			}
+		}
+		return result;
+	}
 
 
 
