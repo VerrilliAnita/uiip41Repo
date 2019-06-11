@@ -59,6 +59,11 @@ public class Client {
 		}
 		System.out.println("----------------------------------------");
 
+		
+		Studente morichStudente = new Studente(morich.getNome(), morich.getCognome(), morich.getIndirizzo(), 66, "Magistrale");
+		System.out.println(morichStudente.toString());
+		
+		
 	}
 	
 }
