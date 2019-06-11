@@ -57,9 +57,5 @@ public class Scontrino {
 		return "Scontrino [codiceScontrino=" + codiceScontrino + ", cliente=" + cliente + ", prodotti=" + prodotti
 				+ ", importo=" + importo + "]";
 	}
-	
-	
-	
-	
 
 }
