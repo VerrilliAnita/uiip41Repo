@@ -109,10 +109,16 @@ public class Client {
 		}
 		System.out.println("--------------------\n");
 
-		//morich persona più giovane e più anziana
+		//morich persone più giovani e più anziani
 		System.out.println("____Emanuele_______GIOVANE______ANZIANO___");
-		System.out.println("Secondo morich la persona più giovane è " + Morante.cercaPersonaPiuGiovane(listaPersone));
-		System.out.println("Secondo morich la persona più anziana è " + Morante.cercaPersonaPiuAnziana(listaPersone));
+		ArrayList<Persona> anziani = Morante.cercaPersonePiuAnziane(listaPersone);
+		ArrayList<Persona> giovani = Morante.cercaPersonePiuGiovani(listaPersone);
+		System.out.println("Anziani");
+		for(Persona p : anziani)
+			System.out.println(p.toString());
+		System.out.println("Giovani");
+		for(Persona p : giovani)
+			System.out.println(p.toString());
 		System.out.println("--------------------\n");
 		
 		//Suglia persona più giovane e persona più anziana
