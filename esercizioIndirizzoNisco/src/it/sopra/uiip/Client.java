@@ -81,6 +81,15 @@ public class Client {
 		
 		System.out.println(nisco.toString());
 		
+		//Codice Giuseppe
+		ArrayList<Studente> studentiGiuseppe = new ArrayList<Studente>();
+		studentiGiuseppe.add(studente);
+		studentiGiuseppe.add(gonchar);
+		studentiGiuseppe.add(nisco);
+		System.out.println("Stampa della lista degli studenti che hanno almeno un corso di formazione: ");
+		for(Studente s: studentiGiuseppe) {
+			System.out.println(s.toString());
+		}
 	}
 
 }
