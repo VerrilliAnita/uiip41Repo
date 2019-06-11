@@ -8,10 +8,10 @@ public class Persona {
 	private Date dataDiNascita;
 	private Indirizzo indirizzo;
 	
-	public Persona(String nome, String cognome, Date dataDiNascita, Indirizzo indirizzo) {
+	public Persona(String nome, String cognome, Indirizzo indirizzo) {
 		this.nome = nome;
 		this.cognome = cognome;
-		this.dataDiNascita = dataDiNascita;
+		this.dataDiNascita = new Date();
 		this.indirizzo = indirizzo;
 	}
 
