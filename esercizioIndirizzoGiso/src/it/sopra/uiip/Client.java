@@ -8,7 +8,7 @@ public class Client {
 	public static void main(String[] args) {
 
 		ArrayList<Persona> listaPersone = new ArrayList<Persona>();
-		Persona p1 = new Persona("Gianluca","Giso",new Date(11, 06, 2019),
+		Persona p1 = new Persona("Gianluca","Giso",new Date(91, 05, 22),
 				new Indirizzo("Via Carlo Alberto Dalla Chiesa",36,"Vallata",83059,"Avellino","Campania"));
 		
 		
@@ -21,7 +21,7 @@ public class Client {
 		System.out.println(s1.toString());
 		
 		Indirizzo indi=new Indirizzo("c.da sant'andrea", 21, "Grottaminarda", 83035, "Avellino", "Campania");
-		Persona tommaso=new Persona("tommaso", "minichiello", new Date(05, 01, 1994), indi);
+		Persona tommaso=new Persona("tommaso", "minichiello", new Date(94, 00, 05), indi);
 		System.out.println(tommaso.toString());
 		listaPersone.add(p1);
 		listaPersone.add(tommaso);
@@ -48,6 +48,7 @@ public class Client {
 		listaStudenti.add(s1);
 		listaStudenti.add(s2);
 		
+		System.out.println("LISTA STUDENTI CON ALMENO UN CORSO GISO");
 		for (Studente studente : FormazioneGiso.formazioneStudenti(listaStudenti)) 
 			System.out.println(studente.toString());
 
