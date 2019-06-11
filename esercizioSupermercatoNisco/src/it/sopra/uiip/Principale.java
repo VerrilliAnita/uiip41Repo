@@ -17,7 +17,15 @@ public class Principale {
 		System.out.println(prodottoGiuseppe2);
 		System.out.println(prodottoGiuseppe3);
 		//Fine codice Giuseppe
-		
+	
+		//Inizio codice Oksana
+		Cliente cliente =new Cliente ("FD657DG", "Oksana","Gonchar", 300);
+		Prodotto prodotto =new Prodotto ("D5674", "pane", 3 , 13);
+		Prodotto prodotto1 = new Prodotto ("v5647", "latte", 2.3, 34);
+		System.out.println(cliente);
+		System.out.println(prodotto);
+		System.out.println(prodotto1);
+		//Fine codice Oksana
 		
 	}
 
