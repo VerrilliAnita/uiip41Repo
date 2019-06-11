@@ -42,6 +42,33 @@ public class Principale {
 		System.out.println(prodotto1);
 		//Fine codice Oksana
 		
+		// Test Antonio
+		ArrayList<Prodotto> prodo=new ArrayList<Prodotto>();
+		prodo.add(p3Nisco);
+		prodo.add(p2Nisco);
+		prodo.add(p1Nisco);
+		double impSconNisco =Supermercato.calcolaImporto(prodo);
+		Scontrino scontrNisco=new Scontrino("1111",antonio,prodo,impSconNisco);
+		int puntiSconNisco =Supermercato.calcolaPunti(scontrNisco);
+		
+		System.out.println(scontrNisco);
+		System.out.println("I punti dello scontrino di Nisco sono :" +puntiSconNisco);
+		// fine test Antonio
+		
+		// Test metodo Oksana
+		ArrayList<Prodotto>prodot = new ArrayList<Prodotto>();
+		prodot.add(prodotto1);
+		prodot.add(prodottoGiuseppe1);
+		prodot.add(p1Nisco);
+		double importo=Supermercato.calcolaImporto(prodot);
+		Scontrino scontrino = new Scontrino("jkdjfur",cliente, prodot, importo);
+		
+		int punti = Supermercato.calcolaPunti(scontrino);
+		System.out.println(scontrino);
+		System.out.println(punti);
+		// fine Test Oksana
+		
+
 		//Inizio codice Giuseppe 
 		ArrayList<Prodotto> listaProdottiGiuseppe = new ArrayList<Prodotto>();
 		listaProdottiGiuseppe.add(prodottoGiuseppe1);
@@ -66,6 +93,7 @@ public class Principale {
 		listaClienti.add(antonio);
 		System.out.println("Il cliente più fedele: ");
 		System.out.println(Supermercato.clientiPiuFedeli(listaClienti));
+
 
 	}
 
