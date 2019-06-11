@@ -43,14 +43,20 @@ public class Client {
 		Studente s2=new Studente(tommaso, 1, "informatica", corsiTommaso);
 		System.out.println(s2.toString());
 		
+
 		ArrayList<Studente> listaStudenti = new ArrayList<Studente>();
 		listaStudenti.add(s1);
 		listaStudenti.add(s2);
 		
-		for (Studente studente : FormazioneGiso.formazioneStudenti(listaStudenti)) {
+		for (Studente studente : FormazioneGiso.formazioneStudenti(listaStudenti)) 
 			System.out.println(studente.toString());
+
+		
+		System.out.println("LISTA STUDENTI CON ALMENO UN CORSO MINICHIELLO");
+		for(Studente s:FormazioneMinichiello.formazioneStudenti(listaStudenti)) {
+			System.out.println(s.toString());
 		}
 		
 	}
-
+	
 }
