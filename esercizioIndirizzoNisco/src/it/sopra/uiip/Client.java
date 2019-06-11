@@ -81,6 +81,21 @@ public class Client {
 		
 		System.out.println(nisco.toString());
 		
+		ArrayList<Studente> listaGonchar = new ArrayList<Studente>();
+		listaGonchar.add(studente);
+		listaGonchar.add(gonchar);
+		listaGonchar.add(nisco);
+		
+		
+		for (Studente s:listaGonchar) {
+			System.out.println(s);
+		}
+
+				
+				
+		
+		
+		
 	}
 
 }
