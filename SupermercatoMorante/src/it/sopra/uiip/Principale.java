@@ -17,6 +17,7 @@ public class Principale {
 		Prodotto p7 = new Prodotto("MMM", "tonno", 2.6, 34);
 		Prodotto p8 = new Prodotto("OOO", "senape", 2.4, 18);
 		Prodotto p9 = new Prodotto("RRR", "cereali", 4.5, 40);
+		
 
 	}
 
