@@ -119,7 +119,12 @@ public class Client {
 			System.out.println("TEST METODI HOMEWORK");
 			System.out.println(giovaniNisco.toString());
 			System.out.println(anzianiNisco.toString());
-		
+		// test Gonchar
+			ArrayList<Persona> giovani=Gonchar.piùGiovane(listaPersoneOksana);
+			ArrayList<Persona> anziani=Gonchar.piùAnziana(listaPersoneOksana);
+			System.out.println("TEST");
+			System.out.println(giovani.toString());
+			System.out.println(anziani.toString());
 		
 		
 	}
