@@ -5,33 +5,33 @@ from aeroporto as a
 where a.npiste is null;
 
 #query2
-select a.nazione 
+select a1.nazione , a2.nazione
 from aeroporto as a1 join volo as v on a1.id = v.aeroportoPart join aeroporto as a2 on a2.id = v.aeroportoArr
 where v.idVolo=111111;
 
 
 
 #query3
-select p.tipoaereo
+select distinct p.tipoaereo
 from aereo as p join volo as v on p.tipoaereo = v.tipoaereo join aeroporto as a on v.aeroportoPart = a.id
 where a.citta='Roma';
 
 
 #query4
-select p.tipoaereo , p.npass
+select distinct p.tipoaereo , p.npass
 from aereo as p join volo as v on p.tipoaereo = v.tipoaereo join aeroporto as a on v.aeroportoPart = a.id
 where a.citta='Roma';
 
 
-#query5
-select a1.citta modificata da Amsterdam a Mosca
+#query5 modificata da Amsterdam a Mosca
+select a1.citta 
 from aeroporto as a1 join volo as v on a1.id = v.aeroportoPart join aeroporto as a2 on a2.id = v.aeroportoArr
 where a2.citta='Mosca'
 order by a1.citta;
 
 
 #query6 modificata da Napoli a Roma
-select count(v.idvolo)
+select count(v.idvolo) as VOLINapoliVenerdi
 from aeroporto as a1 join volo as v on a1.id = v.aeroportoPart join aeroporto as a2 on a2.id = v.aeroportoArr
 where a1.citta='roma' and v.giornoSett='venerdi';
 
