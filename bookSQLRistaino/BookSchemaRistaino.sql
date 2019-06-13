@@ -1,0 +1,20 @@
+DROP DATABASE IF EXISTS books;
+
+#DATABSE books
+CREATE DATABASE books
+	DEFAULT CHARACTER SET latin1
+	DEFAULT COLLATE latin1_general_ci;
+
+USE books;
+
+#Tabella book
+DROP TABLE IF EXISTS book;
+
+CREATE TABLE book (
+	id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(50) NOT NULL,
+    author VARCHAR(50) NOT NULL,
+    price FLOAT NOT NULL,
+    qty INT NOT NULL,
+    PRIMARY KEY (id)
+);
