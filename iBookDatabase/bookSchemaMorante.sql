@@ -16,4 +16,4 @@ CREATE TABLE IF NOT EXISTS book(
     price FLOAT NOT NULL,
     qty INT NOT NULL
     
-)AUTO_INCREMENT=14;
+);
