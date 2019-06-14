@@ -19,7 +19,7 @@ INSERT INTO aereo (tipoAereo,nPass,quantitaMerci) VALUES
                 
 INSERT INTO volo (idVolo,giornoSett,aeroportoPart,aeroportoArr,tipoAereo,oraPartenza,oraArrivo) VALUES
 				(1,"lunedi",3,2,"Boing 737",10,14),
-                (2,"martedi",6,2,"Boing 600",15,20),
+                (1,"martedi",6,2,"Boing 600",15,20),
                 (3,"lunedi",5,2,"Boing 737",03,14),
                 (4,"mercoledi",1,5,"Boing 600",13,14),
                 (5,"giovedi",7,5,"Boing 737",05,17),
