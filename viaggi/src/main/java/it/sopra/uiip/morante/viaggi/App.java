@@ -1,5 +1,7 @@
 package it.sopra.uiip.morante.viaggi;
 
+import java.util.ArrayList;
+
 import it.sopra.uiip.morante.viaggi.dao.impl.DefaultAereoDao;
 import it.sopra.uiip.morante.viaggi.dao.impl.DefaultAeroportoDao;
 import it.sopra.uiip.morante.viaggi.dao.impl.DefaultVoloDao;
@@ -70,9 +72,12 @@ public class App {
 			System.out.println("Inserimento volo andato a buon fine");
 		else
 			System.out.println("Inserimento volo fallito");
-
-
-
+		
+		//select volo
+		System.out.println("\nTest Select volo");
+		ArrayList<VoloModel> voli = dvd.seletcVolo(2);
+		for(VoloModel volo : voli)
+			System.out.println(volo.toString());
 
 	}
 }

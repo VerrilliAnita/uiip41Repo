@@ -41,7 +41,7 @@ public class DefaultAeroportoDao implements AeroportoDao {
 			conn = ConnectionManager.getConnection();
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(query);
-			while(rs.next()) {
+			if(rs.next()) {
 				result = new AeroportoModel(rs.getInt("id"), rs.getString("citta"), rs.getString("nazione"), rs.getInt("numeroPiste"));
 			}
 
