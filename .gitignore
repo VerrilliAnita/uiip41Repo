@@ -26,3 +26,5 @@ RemoteSystemsTempFiles/
 Servers/
 *.recommenders/
 *.metadata/
+*.MF
+pom.properties
