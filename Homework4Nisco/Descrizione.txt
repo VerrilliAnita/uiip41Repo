@@ -1,0 +1,12 @@
+Per la gestione del branch , ho staccato un branch da develop con il nome HomeWork4Nisco, 
+dopo aver elaborato il progetto ho eseguito le istruzioni per pushare i file.
+
+Per qunato riguarda il progetto ho aggiunto 3 nuove classi al precedente: 
+(Persona) contiene tutte le info di un passegero.
+
+(CompagniaAerea) contiene le info di una compagnia aerea che è titolare di un volo, ogni compagniaAerea può avere 
+		più tipi di aereo.
+		Infatti ho relazionato Aereo con compagniaAerea e quest' ultima con Volo.
+			
+(Prenotazione) contiene le info di una prenotazione e quindi un identificativo, un passeggero e un volo.
+ 
