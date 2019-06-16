@@ -1,0 +1,8 @@
+Per quanto riguarda la gestione del branch:
+1. Ho staccato un branch HomeWork4Giso da develop
+2. Attraverso git status mi sono accertato della presenza dei file da inserire per l'esercitazione all'interno della working directory
+3. Attraverso git add . ho aggiunto questi file all'area di stage
+4. Attraverso git commit -m"messaggio" ho portato questi file nell'area di HEAD
+5. Ho saltato la fase di merge da develop in quanto non necessaria in questo caso
+6. Ho effettuato il push in remoto del branch creato
+7. Infine ho eseguito la Pull Request
