@@ -1,0 +1,26 @@
+﻿
+DATABASE VIAGGI
+
+Il database viaggi formato dalle tabelle volo, aereo e aeroporto a seguito della richiesta fatta nella traccia dell’Homework è stato ampliato 
+dalle seguenti tabelle:
+
+ - Passeggero
+ - Prenotazione
+ - Compagnia
+
+Si è reso necessario definire una tabella passeggero in modo da poter avere una lista di passeggeri generale, 
+che attraverso la tabella prenotazioni permette di associare gli stessi ad uno specifico volo.
+
+La tabella prenotazione invece si è resa necessaria in modo da avere una lista di prenotazioni, 
+essa è legata strettamente con la tabella volo che permette di associare un passeggero ad uno specifico volo.
+
+In fine si è definita una tabella compagnia la quale è legata con volo ed areo. 
+Il legame con volo permette di associare un generico volo ad una compagnia mentre in legame con la tabella aereo permette di associare 
+alla compagnia uno o più tipi di aereo con diverse specifiche.
+
+Si specifica che rispetto al modello precedente il nuovo database riporta all'interno di volo un riferimento alla tabella compagnia
+e non più alla tabella aereo, tale scelta è giustificata dal fatto che introducendo la tabella compagnia si ha un riferimento diretto ad aereo, in quanto 
+ad ogni compagnia corrispondono più tipi di aereo con diverse caratteristiche.
+
+
+
