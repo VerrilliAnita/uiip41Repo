@@ -40,7 +40,6 @@
         <property name="priceComparator" ref="volumePriceComparator"/>
         <property name="catalogVersionService" ref="catalogVersionService"/>
     </bean>
-
     <bean id="volumePriceComparator" class="it.uiip.airport.core.comparators.VolumeAwarePriceInformationComparator" scope="singleton"/>
 
     <bean id="productVolumePricesProvider" class="it.uiip.airport.core.search.solrfacetsearch.provider.impl.ProductVolumePricesProvider"  parent="abstractPropertyFieldValueProvider">
