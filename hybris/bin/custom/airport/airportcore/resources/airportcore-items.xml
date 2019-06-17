@@ -16,7 +16,7 @@
         <collectiontype code="SwatchColorSet" elementtype="SwatchColorEnum" autocreate="true" generate="true"
                         type="set"/>
     </collectiontypes>
-
+	
     <enumtypes>
         <enumtype generate="true" code="SwatchColorEnum" autocreate="true" dynamic="true">
             <value code="BLACK"/>
@@ -32,12 +32,114 @@
             <value code="WHITE"/>
             <value code="YELLOW"/>
         </enumtype>
+        
+        <enumtype generate="true" code="giornoSett" autocreate="true" dynamic="true">
+            <value code="Lunedi"/>
+            <value code="Martedi"/>
+            <value code="Mercoledi"/>
+            <value code="Giovedi"/>
+            <value code="Venerdi"/>
+            <value code="Sabato"/>
+            <value code="Domenica"/>
+        </enumtype>
     </enumtypes>
-
+	<relations>
+		<relation localized="false" code="VoloAereoRelation" autocreate="true">
+			<sourceElement qualifier="volo" type="Volo" cardinality="one"></sourceElement>
+			<targetElement qualifier="aereo" type="Aereo" cardinality="many"></targetElement>
+		</relation>	
+		<relation localized="false" code="VoloAeroportoPartenzaRelation" autocreate="true">
+			<sourceElement qualifier="volo" type="Volo" cardinality="one"></sourceElement>
+			<targetElement qualifier="aeroporto" type="Aeroporto" cardinality="many"></targetElement>
+		</relation>	
+		<relation localized="false" code="VoloAeroportoArrivoRelation" autocreate="true">
+			<sourceElement qualifier="volo" type="Volo" cardinality="one"></sourceElement>
+			<targetElement qualifier="aeroporto" type="Aeroporto" cardinality="many"></targetElement>
+		</relation>	
+		
+	</relations>
     <itemtypes>
 
         <!-- Add your item definitions here -->
-
+		<itemtype code="Aeroporto" autocreate="true" generate="true" 
+		jaloclass="it.uiip.airport.core.jalo.Aeroporto">
+			<description>Aeroporto</description>
+			<deployment table="aereoporto" typecode="10021"/>
+			<attributes>
+				<attribute type="java.lang.Integer" qualifier="id">
+					<description>pk_aeroporto</description>
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="java.lang.String" qualifier="citta">
+					<description>Citta aeroporto</description>
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="java.lang.String" qualifier="nazione">
+					<description>nazione aeroporto</description>
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="nPiste">
+					<description>Numero piste aeroporto</description>
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+		<itemtype code="Aereo" autocreate="true" generate="true">
+			<description>Tipologia Aereo</description>
+			<deployment table="aereo" typecode="10031"/>
+			<attributes>
+				<attribute type="java.lang.String" qualifier="tipoAereo">
+					<description>pk_aereo</description>
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="nPass">
+					<description>Numero passeggero aereo</description>
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="quantitaMerci">
+					<description>Quantita merci trasportate</description>
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+		<itemtype code="Volo" autocreate="true" generate="true">
+			<description>Volo aereo</description>
+			<deployment table="volo" typecode="10041"/>
+			<attributes>
+				<attribute type="java.lang.Integer" qualifier="idVolo">
+					<description>pk_volo</description>
+					<persistence type="property"/>
+				</attribute>
+				
+				<attribute type="giornoSett" qualifier="giornoSett">
+					<description>Giorno settimana</description>
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="aeroportoPart">
+					<description>Id aeroporto Partenza</description>
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="aeroportoArr">
+					<description>Id aeroporto Arrivo</description>
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="java.lang.String" qualifier="tipoAereo">
+					<description>Tipologia aereo</description>
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="oraPartenza">
+					<description>Ora partenza volo</description>
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="oraArrivo">
+					<description>Ora arrivo volo</description>
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+		
 
         <!-- TypeGroups are for structure of this file only -->
 
