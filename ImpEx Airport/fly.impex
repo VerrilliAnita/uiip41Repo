@@ -1,0 +1,5 @@
+					
+INSERT_UPDATE Volo; idVolo[unique=true]; giornoSett;aeroportoPart(idAeroporto); aeroportoArr(idAeroporto); aereo(codiceAereo);oraPartenza;oraArrivo
+					;111111;lunedi;1;3;1;20;22
+					;222222;venerdi;2;3;2;12;14
+					;333333;sabato;3;1;3;10;13

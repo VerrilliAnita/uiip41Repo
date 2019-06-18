@@ -30,7 +30,8 @@
 	       parent="abstractCoreSystemSetup"/>
 
 	<!-- Solr field value providers -->
-
+	<bean id="DynamicAgePassengerImpls" class="it.uiip.airport.core.handler.impls.DynamicAgePassengerImpls"/>
+	
 	<bean id="volumeAwareProductPriceValueProvider" class="it.uiip.airport.core.search.solrfacetsearch.provider.impl.VolumeAwareProductPriceValueProvider"  parent="abstractPropertyFieldValueProvider">
         <property name="fieldNameProvider" ref="solrFieldNameProvider"/>
         <property name="priceService" ref="priceService"/>

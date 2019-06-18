@@ -1,0 +1,13 @@
+INSERT_UPDATE Aeroporto; idAeroporto[unique=true]; nome;citta[lang=en];citta[lang=it];nazione[lang=en];nazione[lang=it]; npiste
+				;1;San Pablo;Seville;Siviglia;Spain;Spagna;8
+				;2;El Prat;Barcelona;Barcellona;Spain;Spagna;15
+				;3;Capodichino;Naples;Napoli;Italy;Italia;12
+				
+
+
+
+					
+				
+								
+
+				

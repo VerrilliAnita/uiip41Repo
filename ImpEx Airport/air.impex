@@ -1,0 +1,4 @@
+INSERT_UPDATE Aereo; codiceAereo[unique=true]; tipoAereo;numPasseggeri; quantitaMerci
+				   ;1; Boeing;200;50
+				   ;2;Air1; 250;100
+				   ;3;AirBoeing;300;150

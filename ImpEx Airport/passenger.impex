@@ -1,0 +1,6 @@
+
+INSERT_UPDATE Passeggero; uid;codiceFiscale[unique=true]; nome; cognome; datadinascita; luogodinascita[lang=en];luogodinascita[lang=it]
+					
+					;2;BBBBBBBBBBBBBBBB; Barbara;Rossi;1998-11-09; Napoli; Naples
+					;3;CCCCCCCCCCCCCCCC; Carlo;Verdone;1994-01-19; Milan; Milano
+					;1;AAAAAAAAAAAAAAAA; Antonio;Nisco;09-10-1996; Rome; Roma
