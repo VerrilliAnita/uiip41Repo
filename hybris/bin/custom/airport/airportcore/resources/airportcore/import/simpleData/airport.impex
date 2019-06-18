@@ -1,0 +1,3 @@
+INSERT_UPDATE Aeroporto; idAeroporto[unique=true]; citta[lang=en]; citta[lang=it]; nazione[lang=en]; nazione[lang=it]; npiste
+;1;Rome;Roma;Italy;Italia;6
+;2;Milan;Milano;Italy;Italia;8

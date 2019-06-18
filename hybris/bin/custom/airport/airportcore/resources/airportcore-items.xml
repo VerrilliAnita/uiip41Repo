@@ -42,21 +42,7 @@
 			<value code="domenica" />
 		</enumtype>
 	</enumtypes>
-
-	<relations>
-		<relation code="Volo2Aereo" generate="true" localized="false" autocreate="true">
-	            <sourceElement type="Volo" cardinality="one" qualifier="tipoAereo"></sourceElement>
-	            <targetElement type="Aereo" cardinality="many" qualifier="tipoAereo"></targetElement>
-	    </relation>
-	    <relation code="Volo2AeroportoPartRelation" generate="true" localized="false" autocreate="true">
-	            <sourceElement type="Volo" cardinality="one" qualifier="aeroportoPart"></sourceElement>
-	            <targetElement type="Aeroporto" cardinality="many" qualifier="id"></targetElement>
-	    </relation>
-	    <relation code="Volo2AeroportoArrRelation" generate="true" localized="false" autocreate="true">
-	            <sourceElement type="Volo" cardinality="one" qualifier="aeroportoArr"></sourceElement>
-	            <targetElement type="Aeroporto" cardinality="many" qualifier="id"></targetElement>
-	    </relation>
-	</relations>
+	
 
 	<itemtypes>
 
@@ -65,39 +51,51 @@
 		<itemtype code="Aeroporto" generate="true" autocreate="true">
 			<deployment table="aeroporto" typecode="12345" />
 			<attributes>
-				<attribute qualifier="id" type="java.lang.Integer">
+				<attribute qualifier="idAeroporto" type="java.lang.String">
 					<description>Id aeroporto</description>
 					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
 				</attribute>
-				<attribute qualifier="citta" type="java.lang.String">
+				<attribute qualifier="citta" type="localized:java.lang.String">
 					<description>citta aeroporto</description>
 					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="nazione" type="java.lang.String">
+				<attribute qualifier="nazione" type="localized:java.lang.String">
 					<description>nazione aeroporto</description>
 					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
 				<attribute qualifier="npiste" type="java.lang.Integer">
 					<description>numero piste aeroporto</description>
 					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
 			</attributes>
 		</itemtype>
 
 		<itemtype code="Aereo" generate="true" autocreate="true">
-			<deployment table="aero" typecode="12346" />
+			<deployment table="aereo" typecode="12346" />
 			<attributes>
+				<attribute qualifier="codiceAereo" type="java.lang.Integer">
+					<description>identificativo dell'aereo</description>
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
 				<attribute qualifier="tipoAereo" type="java.lang.String">
 					<description>tipo di aereo</description>
 					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="nPass" type="java.lang.Integer">
+				<attribute qualifier="numPasseggeri" type="java.lang.Integer">
 					<description>numero di passeggeri</description>
 					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
 				<attribute qualifier="quantitaMerci" type="java.lang.Integer">
 					<description>Numero delle merci trasportabili</description>
 					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
 			</attributes>
 		</itemtype>
@@ -105,33 +103,40 @@
 		<itemtype code="Volo" generate="true" autocreate="true">
 			<deployment table="volo" typecode="12347" />
 			<attributes>
-				<attribute qualifier="idVolo" type="java.lang.Integer">
+				<attribute qualifier="idVolo" type="java.lang.String">
 					<description>id volo</description>
 					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
 				</attribute>
-				<attribute qualifier="giornoSett" type="giornoSettEnum">
+				<attribute qualifier="giornoSett" type="giorniSettEnum">
 					<description>giorno della settimana </description>
 					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="aeroportoPart" type="java.lang.Integer">
-					<description>id dell'aeroporto di partenza</description>
+				<attribute qualifier="aeroportoPart" type="Aeroporto">
+					<description>aeroporto di partenza </description>
 					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="aeroportoArr" type="java.lang.Integer">
-					<description>id dell'aeroporto di arrivo</description>
+				<attribute qualifier="aeroportoArr" type="Aeroporto">
+					<description>aeroporto di arrivo </description>
 					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="tipoAereo" type="java.lang.String">
-					<description>nome dell'aereo</description>
+				<attribute qualifier="aereo" type="Aereo">
+					<description>Aereo del volo </description>
 					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
 				<attribute qualifier="oraPartenza" type="java.lang.integer">
 					<description>ora partenza del volo</description>
 					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
 				<attribute qualifier="oraArrivo" type="java.lang.integer">
 					<description>ora arrivo del volo</description>
 					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
 			</attributes>
 		</itemtype>
