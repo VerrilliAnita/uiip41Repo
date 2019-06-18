@@ -13,7 +13,7 @@
 		<collectiontype code="SwatchColorSet" elementtype="SwatchColorEnum"
 			autocreate="true" generate="true" type="set" />
 	</collectiontypes>
-
+	
 	<enumtypes>
 		<enumtype generate="true" code="SwatchColorEnum" autocreate="true"
 			dynamic="true">
@@ -42,7 +42,12 @@
 			<value code="domenica" />
 		</enumtype>
 	</enumtypes>
-	
+	<relations>
+		<relation localized="false" generate="false" autocreate="false"  code="Volo2PassengerRelation">
+			<sourceElement qualifier="passeggero" type="Passeggero" cardinality="one" ></sourceElement>
+			<targetElement qualifier="volo" type="Volo" cardinality="many"></targetElement>
+		</relation>
+	</relations>
 
 	<itemtypes>
 
@@ -55,6 +60,11 @@
 					<description>Id aeroporto</description>
 					<persistence type="property"></persistence>
 					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="nome" type="java.lang.String">
+					<description>Nome aeroporto</description>
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
 				<attribute qualifier="citta" type="localized:java.lang.String">
 					<description>citta aeroporto</description>
@@ -138,6 +148,38 @@
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
+			</attributes>
+		</itemtype>
+		
+		<itemtype code="Passeggero" extends="User" generate="true" autocreate="true">
+			<deployment table="passeggero" typecode="12321" />
+			<attributes>
+				<attribute qualifier="cf" type="java.lang.String">
+					<description>Codice fiscale passeggero</description>
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="nome" type="java.lang.String">
+					<description>Nome Passeggero</description>
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="cognome" type="java.lang.String">
+					<description>Cognome Passeggero</description>
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="dataNascita" type="java.lang.String">
+					<description>Data di nascita</description>
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="eta" type="java.lang.Integer">
+					<description>Eta</description>
+					<persistence type="dynamic" attributeHandler="DynamicAgePassengerImpl"></persistence>
+					<modifiers optional="true" unique="false" read="true" write="true"/>
+				</attribute>
+
 			</attributes>
 		</itemtype>
 

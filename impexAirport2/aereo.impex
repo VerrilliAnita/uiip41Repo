@@ -1,0 +1,5 @@
+INSERT_UPDATE Aereo; codiceAereo[unique=true]; tipoAereo; numPasseggeri;quantitaMerci
+		;1;Boing12;452;121212
+		;2;Boing32;236;230000
+		;3;Boing54;453;300000
+		;4;Boing710;346;320000

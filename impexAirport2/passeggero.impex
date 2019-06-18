@@ -1,0 +1,3 @@
+INSERT_UPDATE Passeggero; uid[unique=true]; cf[unique=true]; nome; cognome; dataNascita
+						;1;mnctms94a05a399l ; tommaso ; minchiello; 1994-01-05
+						;2;mnntmm93a05a399l ; danilo; ferrara; 1993-04-06	

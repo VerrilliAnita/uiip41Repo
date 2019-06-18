@@ -1,0 +1,5 @@
+INSERT_UPDATE Aeroporto; idAeroporto[unique=true];nome; citta[lang=en]; citta[lang=it]; nazione[lang=en]; nazione[lang=it]; npiste
+		;AP01;Frest;Berlin;Berlino;Germany;Germania;5
+		;AP02;Fiumicino;Rome;Roma;Italy;Italia;9
+		;AP03;Ciampino;Rome;Roma;Italy;Italia;6
+		;AP04;Capodichino;Naples;Napoli;Italy;Italia;9
