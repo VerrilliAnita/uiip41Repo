@@ -1,3 +1,13 @@
 INSERT_UPDATE Aeroporto; idAeroporto[unique=true]; citta[lang=en]; citta[lang=it]; nazione[lang=en]; nazione[lang=it]; npiste
 ;1;Rome;Roma;Italy;Italia;6
 ;2;Milan;Milano;Italy;Italia;8
+
+INSERT_UPDATE Aereo; codiceAereo[unique=true];tipoAereo;numPasseggeri;quantitaMerci
+;1;Boing337;400;150
+;2;Boing436;560;200
+
+INSERT_UPDATE Volo; idVolo[unique=true];aeroportoPart(idAeroporto);aeroportoArr(idAeroporto);aereo(codiceAereo)
+;1;1;2;1
+
+INSERT_UPDATE Passeggero; uid[unique=true];codiceFiscale[unique=true];nome;cognome;dataNascita
+;1;ASB34HD56;Mario;Rossi;1999-12-04
