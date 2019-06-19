@@ -1,13 +1,13 @@
 /**
- * 
+ *
  */
 package it.uiip.airport.core.dao.impl;
 
 import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
-import de.hybris.platform.servicelayer.internal.dao.SortParameters;
+import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
+import de.hybris.platform.servicelayer.search.SearchResult;
 
 import java.util.List;
-import java.util.Map;
 
 import it.uiip.airport.core.dao.PassengerDao;
 import it.uiip.airport.core.model.PassengerModel;
@@ -16,57 +16,33 @@ import it.uiip.airport.core.model.PassengerModel;
  * @author soprasteria
  *
  */
-public class DefaultPassengerDao extends DefaultGenericDao<M> implements PassengerDao
+public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> implements PassengerDao
 {
 
-	/* (non-Javadoc)
-	 * @see de.hybris.platform.servicelayer.internal.dao.GenericDao#find()
+	/**
+	 * @param typecode
 	 */
-	@Override
-	public List<PassengerModel> find()
+	public DefaultPassengerDao(final String typecode)
 	{
-		// XXX Auto-generated method stub
-		return null;
+		super(typecode);
+		// XXX Auto-generated constructor stub
 	}
 
-	/* (non-Javadoc)
-	 * @see de.hybris.platform.servicelayer.internal.dao.GenericDao#find(java.util.Map)
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see it.uiip.airport.core.dao.PassengerDao#findPassengerbyFlyghtDay(java.lang.String)
 	 */
 	@Override
-	public List<PassengerModel> find(Map<String, ? extends Object> var1)
+	public List<PassengerModel> findPassengerByFlightDay(final String day)
 	{
-		// XXX Auto-generated method stub
-		return null;
-	}
+		final String queryStr = "select ";
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
+		final List<PassengerModel> passenger = result.getResult();
+		return passenger;
 
-	/* (non-Javadoc)
-	 * @see de.hybris.platform.servicelayer.internal.dao.GenericDao#find(de.hybris.platform.servicelayer.internal.dao.SortParameters)
-	 */
-	@Override
-	public List<PassengerModel> find(SortParameters var1)
-	{
-		// XXX Auto-generated method stub
-		return null;
-	}
 
-	/* (non-Javadoc)
-	 * @see de.hybris.platform.servicelayer.internal.dao.GenericDao#find(java.util.Map, de.hybris.platform.servicelayer.internal.dao.SortParameters)
-	 */
-	@Override
-	public List<PassengerModel> find(Map<String, ? extends Object> var1, SortParameters var2)
-	{
-		// XXX Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see de.hybris.platform.servicelayer.internal.dao.GenericDao#find(java.util.Map, de.hybris.platform.servicelayer.internal.dao.SortParameters, int)
-	 */
-	@Override
-	public List<PassengerModel> find(Map<String, ? extends Object> var1, SortParameters var2, int var3)
-	{
-		// XXX Auto-generated method stub
-		return null;
 	}
 
 }
