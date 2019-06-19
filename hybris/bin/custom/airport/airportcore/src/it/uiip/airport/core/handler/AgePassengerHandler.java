@@ -6,18 +6,16 @@ import de.hybris.platform.servicelayer.model.attribute.DynamicAttributeHandler;
 
 import it.uiip.airport.core.model.PasseggeroModel;
 
-public class AgePassengerHandler implements DynamicAttributeHandler<String, PasseggeroModel>{
+public class AgePassengerHandler implements DynamicAttributeHandler<Integer, PasseggeroModel>{
 
 	@Override
-	public String get(PasseggeroModel passeggero) {
-		return Integer.toString(passeggero.getCurrentDate().getYear()-new Date(passeggero.getDataNascita()).getYear());
+	public Integer get(PasseggeroModel passeggero) {
+		return passeggero.getCurrentDate().getYear()-passeggero.getDataNascita().getYear();
 	}
 
 	@Override
-	public void set(PasseggeroModel passeggero, String eta) {
-		passeggero.setEta(Integer.parseInt(eta));
-	}
+	public void set(PasseggeroModel passeggero, Integer eta) {
 
-	
+	}
 
 }
