@@ -31,7 +31,7 @@
 			<value code="YELLOW" />
 		</enumtype>
 
-		<enumtype generate="true" code="giorniSettEnum" autocreate="true"
+		<enumtype generate="true" code="daysEnum" autocreate="true"
 			dynamic="true">
 			<value code="lunedi" />
 			<value code="martedi" />
@@ -44,138 +44,142 @@
 	</enumtypes>
 	
 	<relations>
-		<relation localized="false" code="Volo2PasseggeroRelation">
-			<sourceElement qualifier="volo" type="Volo" cardinality="one"></sourceElement>
-			<targetElement qualifier="passeggero" type="Passeggero" cardinality="many"></targetElement>
+		<relation localized="false" code="Passenger2RouteRelation">
+			<sourceElement qualifier="passenger" type="Passenger" cardinality="many" collectiontype="set"></sourceElement>
+			<targetElement qualifier="route" type="Route" 
+						   cardinality="one" >
+			</targetElement>
 		</relation>
 	</relations>
-
 	<itemtypes>
 
 		<!-- Add your item definitions here -->
 
-		<itemtype code="Aeroporto" generate="true" autocreate="true">
-			<deployment table="aeroporto" typecode="12345" />
+		<itemtype code="Airport" generate="true" autocreate="true">
+			<deployment table="airport" typecode="22345" />
 			<attributes>
-				<attribute qualifier="idAeroporto" type="java.lang.String">
-					<description>Id aeroporto</description>
+				<attribute qualifier="codeAirport" type="java.lang.String">
 					<persistence type="property"></persistence>
 					<modifiers optional="false"/>
 				</attribute>
-				<attribute qualifier="nomeAeroporto" type="java.lang.String">
-					<description>Nome aeroporto</description>
+				<attribute qualifier="name" type="java.lang.String">
 					<persistence type="property"></persistence>
 				</attribute>
-				<attribute qualifier="citta" type="localized:java.lang.String">
-					<description>citta aeroporto</description>
+				<attribute qualifier="city" type="localized:java.lang.String">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="nazione" type="localized:java.lang.String">
-					<description>nazione aeroporto</description>
+				<attribute qualifier="country" type="localized:java.lang.String">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="npiste" type="java.lang.Integer">
-					<description>numero piste aeroporto</description>
+				<attribute qualifier="runways" type="java.lang.Integer">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
 			</attributes>
 		</itemtype>
 
-		<itemtype code="Aereo" generate="true" autocreate="true">
-			<deployment table="aereo" typecode="12346" />
+		<itemtype code="Plane" generate="true" autocreate="true">
+			<deployment table="plane" typecode="22346" />
 			<attributes>
-				<attribute qualifier="codiceAereo" type="java.lang.Integer">
-					<description>identificativo dell'aereo</description>
+				<attribute qualifier="codePlane" type="java.lang.String">
 					<persistence type="property"></persistence>
 					<modifiers optional="false"/>
 				</attribute>
-				<attribute qualifier="tipoAereo" type="java.lang.String">
-					<description>tipo di aereo</description>
+				<attribute qualifier="typePlane" type="java.lang.String">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="numPasseggeri" type="java.lang.Integer">
-					<description>numero di passeggeri</description>
+				<attribute qualifier="numOfSits" type="java.lang.Integer">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="quantitaMerci" type="java.lang.Integer">
-					<description>Numero delle merci trasportabili</description>
+				<attribute qualifier="goods" type="java.lang.Integer">
+					<description>quantity of goods</description>
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
 			</attributes>
 		</itemtype>
 
-		<itemtype code="Volo" generate="true" autocreate="true">
-			<deployment table="volo" typecode="12347" />
+		<itemtype code="Flight" generate="true" autocreate="true">
+			<deployment table="flight" typecode="22347" />
 			<attributes>
-				<attribute qualifier="idVolo" type="java.lang.String">
-					<description>id volo</description>
+				<attribute qualifier="codeFlight" type="java.lang.String">
 					<persistence type="property"></persistence>
 					<modifiers optional="false"/>
 				</attribute>
-				<attribute qualifier="giornoSett" type="giorniSettEnum">
-					<description>giorno della settimana </description>
+				<attribute qualifier="weekDay" type="daysEnum">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="aeroportoPart" type="Aeroporto">
-					<description>aeroporto di partenza </description>
+				<attribute qualifier="airportDep" type="Airport">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="aeroportoArr" type="Aeroporto">
-					<description>aeroporto di arrivo </description>
+				<attribute qualifier="airportArr" type="Airport">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="aereo" type="Aereo">
-					<description>Aereo del volo </description>
+				<attribute qualifier="plane" type="Plane">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="oraPartenza" type="java.lang.integer">
-					<description>ora partenza del volo</description>
+				<attribute qualifier="timeDep" type="java.lang.Integer">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="oraArrivo" type="java.lang.integer">
-					<description>ora arrivo del volo</description>
+				<attribute qualifier="timeArr" type="java.lang.Integer">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
 			</attributes>
 		</itemtype>
 		
-		<itemtype code="Passeggero" extends="User" generate="true" autocreate="true">
-			<deployment table="passeggero" typecode="30000" />
+		<itemtype code="Route" generate="true" autocreate="true">
+			<deployment table="route" typecode="21000" />
 			<attributes>
-				<attribute qualifier="codiceFiscale" type="java.lang.String">
-					<description>Codice fiscale</description>
+				<attribute qualifier="codeRoute" type="java.lang.String">
+						<persistence type="property"></persistence>
+						<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="flight" type="Flight">
+						<persistence type="property"></persistence>
+						<modifiers optional="true"/>
+				</attribute>
+				<attribute qualifier="dateRouteDep" type="java.util.Date">
+						<persistence type="property"></persistence>
+						<modifiers optional="true"/>
+				</attribute>
+				<attribute qualifier="dateRouteArr" type="java.util.Date">
+						<persistence type="property"></persistence>
+						<modifiers optional="true"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+		
+		<itemtype code="Passenger" extends="User" generate="true" autocreate="true">
+			<deployment table="passenger" typecode="22000" />
+			<attributes>
+				<attribute qualifier="codeFiscal" type="java.lang.String">
 					<persistence type="property"></persistence>
 					<modifiers optional="false"/>
 				</attribute>
-				<attribute qualifier="nome" type="java.lang.String">
-					<description>Nome</description>
+				<attribute qualifier="namePass" type="java.lang.String">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="cognome" type="java.lang.String">
-					<description>Cognome</description>
+				<attribute qualifier="surnamePass" type="java.lang.String">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="dataNascita" type="java.util.Date">
-					<description>Data di nascita</description>
+				<attribute qualifier="birthday" type="java.util.Date">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="eta" type="java.lang.Integer">
-					<description>eta</description>
+				<attribute qualifier="age" type="java.lang.Integer">
 					<persistence type="dynamic" attributeHandler="agePassengerHandler"></persistence>
 					<modifiers write="false"/>
 				</attribute>
