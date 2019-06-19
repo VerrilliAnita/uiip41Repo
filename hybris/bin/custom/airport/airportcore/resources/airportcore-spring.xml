@@ -30,7 +30,6 @@
 	       parent="abstractCoreSystemSetup"/>
 
 	<!-- Solr field value providers -->
-	<bean id="DynamicAgePassengerImpl" class="it.uiip.airport.core.handler.impl.DynamicAgePassengerImpl"/>
 
 	<bean id="agePassengerHandler" class="it.uiip.airport.core.handler.AgePassengerHandler"></bean>
 
