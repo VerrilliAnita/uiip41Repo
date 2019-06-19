@@ -45,7 +45,7 @@
 	
 	<relations>
 		<relation localized="false" code="Volo2PasseggeroRelation">
-			<sourceElement qualifier="volo" type="Volo" cardinality="one"></sourceElement>
+			<sourceElement qualifier="volo" type="Volo" cardinality="many"></sourceElement>
 			<targetElement qualifier="passeggero" type="Passeggero" cardinality="many"></targetElement>
 		</relation>
 	</relations>
@@ -88,7 +88,7 @@
 		<itemtype code="Aereo" generate="true" autocreate="true">
 			<deployment table="aereo" typecode="12346" />
 			<attributes>
-				<attribute qualifier="codiceAereo" type="java.lang.Integer">
+				<attribute qualifier="codiceAereo" type="java.lang.String">
 					<description>identificativo dell'aereo</description>
 					<persistence type="property"></persistence>
 					<modifiers optional="false"/>
