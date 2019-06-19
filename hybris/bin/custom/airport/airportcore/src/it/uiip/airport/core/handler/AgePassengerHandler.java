@@ -10,13 +10,12 @@ public class AgePassengerHandler implements DynamicAttributeHandler<String, Pass
 	
 	@Override
 	public String get(PasseggeroModel passeggero) {
-		return Integer.toString(passeggero.getCurrentDate().getYear() - new Date(passeggero.getDataNascita()).getYear());
+		return Integer.toString(passeggero.getCurrentDate().getYear() - passeggero.getDataNascita().getYear());
 	}
 
 	@Override
 	public void set(PasseggeroModel passeggero, String eta) {
 		// TODO Auto-generated method stub
-		//passeggero.setEta(Integer.parseInt(eta));
 	}
 
 }

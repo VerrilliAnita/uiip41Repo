@@ -170,7 +170,7 @@
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="dataNascita" type="java.lang.String">
+				<attribute qualifier="dataNascita" type="java.util.Date">
 					<description>Data di nascita passeggero</description>
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
@@ -179,7 +179,7 @@
 					<description>Età del passeggero</description>
 					<persistence type="dynamic"
 						attributeHandler="agePassengerHandler"></persistence>
-					<modifiers write="true"/>
+					<modifiers write="false"/>
 				</attribute>
 			</attributes>
 		</itemtype>
