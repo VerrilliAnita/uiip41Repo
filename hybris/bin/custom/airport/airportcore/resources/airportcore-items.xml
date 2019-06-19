@@ -152,7 +152,7 @@
 		</itemtype>
 		
 		<itemtype code="Passeggero" extends="User" generate="true" autocreate="true">
-			<deployment table="passeggero" typecode="12348" />
+			<deployment table="passeggero" typecode="30000" />
 			<attributes>
 				<attribute qualifier="codiceFiscale" type="java.lang.String">
 					<description>Codice fiscale</description>
@@ -169,7 +169,7 @@
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="dataNascita" type="java.lang.String">
+				<attribute qualifier="dataNascita" type="java.util.Date">
 					<description>Data di nascita</description>
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
@@ -177,7 +177,7 @@
 				<attribute qualifier="eta" type="java.lang.Integer">
 					<description>eta</description>
 					<persistence type="dynamic" attributeHandler="agePassengerHandler"></persistence>
-					<modifiers write="true"/>
+					<modifiers write="false"/>
 				</attribute>
 			</attributes>
 		</itemtype>
