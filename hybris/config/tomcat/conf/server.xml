@@ -98,15 +98,11 @@
 	      		 	pattern="combined"
           />
 
-<<<<<<< HEAD
       <Host startStopThreads="0"   	name="localhost"
-=======
-      <Host startStopThreads="0"    	name="localhost"
->>>>>>> origin/developHybris
       			appBase="webapps"
 		       	unpackWARs="false"
 		       	autoDeploy="false"
-		       	startStopThreads="${tomcat.startStopThreads}">
+		       	>
 		       	
 		        <Valve className="org.apache.catalina.valves.ErrorReportValve" 
 		               showReport="${tomcat.errorReport.showReport}" 
@@ -125,7 +121,3 @@
 
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/developHybris
