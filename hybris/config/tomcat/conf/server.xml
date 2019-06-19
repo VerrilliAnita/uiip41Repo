@@ -98,7 +98,11 @@
 	      		 	pattern="combined"
           />
 
+<<<<<<< HEAD
       <Host startStopThreads="0"   	name="localhost"
+=======
+      <Host startStopThreads="0"    	name="localhost"
+>>>>>>> origin/developHybris
       			appBase="webapps"
 		       	unpackWARs="false"
 		       	autoDeploy="false"
@@ -121,3 +125,7 @@
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/developHybris
