@@ -100,6 +100,10 @@
 					<persistence type="property"></persistence>
 					<modifiers optional="false" />
 				</attribute>
+				<attribute qualifier="name" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="true" />
+				</attribute>
 				<attribute qualifier="city" type="localized:java.lang.String">
 					<persistence type="property"></persistence>
 					<modifiers optional="true" />
