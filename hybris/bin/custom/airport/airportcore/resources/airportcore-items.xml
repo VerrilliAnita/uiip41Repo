@@ -187,36 +187,7 @@
 			</attributes>
 		</itemtype>
 		
-		<itemtype code="Passeggero" extends="User" generate="true" autocreate="true">
-			<deployment table="passeggero" typecode="12348" />
-			<attributes>
-				<attribute qualifier="nome" type="java.lang.String">
-					<description>Nome del passeggero</description>
-					<persistence type="property"></persistence>
-					<modifiers optional="false"/>
-				</attribute>
-				<attribute qualifier="cognome" type="java.lang.String">
-					<description>Cognome del passeggero</description>
-					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
-				</attribute>
-				<attribute qualifier="codiceFiscale" type="java.lang.String">
-					<description>Codice fiscale del passeggero</description>
-					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
-				</attribute>
-				<attribute qualifier="dataDiNascita" type="java.lang.String">
-					<description>Data di nascita del passeggero</description>
-					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
-				</attribute>
-				<attribute qualifier="eta" type="java.lang.Integer">
-					<description>Eta del passeggero</description>
-					<persistence type="dynamic" attributeHandler="dynamicAgePassengerImpl" ></persistence>
-					<modifiers optional="true" unique="false" read="true" write="false"/>
-				</attribute>
-			</attributes>
-		</itemtype>
+
 
 		<!-- TypeGroups are for structure of this file only -->
 
