@@ -34,6 +34,7 @@
 	<bean id="defaultPlaneDao" class="it.uiip.airport.core.dao.impl.DefaultPlaneDao">
 	<constructor-arg value="#{T(it.uiip.airport.core.model.PlaneModel)._TYPECODE}"/>
 	</bean>
+	
 	<alias alias="planeService" name="defaultPlaneService"/>
 	<bean id="defaultPlaneService" class="it.uiip.airport.core.service.impl.DefaultPlaneService">
 	</bean>
@@ -63,8 +64,10 @@
 	</bean>
 	
 	
-	<alias alias="passengerService" name="defaultPassengerDao"/>
-	<bean id="defaultPassengerService" class="it.uiip.airport.core.service.impl" parent="defaultUserService" />
+	<alias alias="passengerService" name="defaultPassengerService"/>
+	<bean id="defaultPassengerService" class="it.uiip.airport.core.service.impl.DefaultPassengerService" parent="defaultUserService" >
+	<property name ="passengerDao" ref = "passengerDao"/>
+	</bean>
 
 	<alias alias="airportService" name="defaultAirportService"/>
 	<bean id="defaultAirportService" class="it.uiip.airport.core.service.impl.DefaultAirportService">
