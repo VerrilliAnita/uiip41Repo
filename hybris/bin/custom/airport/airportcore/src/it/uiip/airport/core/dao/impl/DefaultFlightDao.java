@@ -32,7 +32,7 @@ public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements 
 		StringBuilder queryStr=new StringBuilder();
 		queryStr.append("SELECT {f.PK} FROM { Flight AS f ") ;
 		queryStr.append("	JOIN Route AS r ON {f.pk} = {r.flight}") ;
-		queryStr.append("} WHERE {r.dateRouteDep} LIKE '?date%'") ;
+		queryStr.append("} WHERE {r.dateRouteDep} = '?date'") ;
 		
 	
 		FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
