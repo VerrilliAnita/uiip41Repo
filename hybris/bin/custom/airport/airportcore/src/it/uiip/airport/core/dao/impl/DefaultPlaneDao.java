@@ -16,19 +16,18 @@ public class DefaultPlaneDao extends DefaultGenericDao<PlaneModel> implements Pl
 	}
 
 	@Override
-	public List<PlaneModel> findPlaneByArrivalCity(String city) {
-		String queryStr="\r\n" + 
-				"SELECT {p.PK} FROM { plane AS p\r\n" + 
-				"	JOIN Flight AS f ON {p.pk} = {f.plane}\r\n" + 
-				"    	JOIN Route AS r ON {r.flight} = {f.pk}\r\n" + 
-				"        	JOIN Airport AS a ON {a.pk} = {f.airportArr}\r\n" + 
-				"}	WHERE {a.city} = ?city";
+	public List<PlaneModel> findPlanesByArrivalCity(String city) {
+		StringBuilder queryStr=new StringBuilder();
+		queryStr.append("SELECT {p.PK} FROM { plane AS p") ;
+		queryStr.append("    	JOIN Route AS r ON {r.flight} = {f.pk}") ;
+		queryStr.append("        	JOIN Airport AS a ON {a.pk} = {f.airportArr}") ;
+		queryStr.append("}	WHERE {a.city} = ?city") ;
+	
 		FlexibleSearchQuery fsq = new FlexibleSearchQuery( queryStr );
 		fsq.addQueryParameter("?city", city);
 
 		SearchResult<PlaneModel> result = getFlexibleSearchService().search( fsq );
-		List<PlaneModel> plane = result.getResult();
-		return plane;
+		return 	result.getResult();
 
 	}
 
