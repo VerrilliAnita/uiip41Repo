@@ -30,9 +30,9 @@ public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements 
 	@Override
 	public List<FlightModel> findFlightsByDate(String date) {
 		StringBuilder queryStr=new StringBuilder();
-		queryStr.append("SELECT {f.PK} FROM { Flight AS f ") ;
-		queryStr.append("	JOIN Route AS r ON {f.pk} = {r.flight}") ;
-		queryStr.append("} WHERE {r.dateRouteDep} = '?date'") ;
+		queryStr.append("SELECT {f.PK} FROM { Flight AS f ");
+		queryStr.append("	JOIN Route AS r ON {f.pk} = {r.flight}");
+		queryStr.append("} WHERE {r.dateRouteDep} = '?date'");
 		
 	
 		FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
