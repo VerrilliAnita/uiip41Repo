@@ -37,10 +37,15 @@
 	
 	<bean id="agePassengerHandler" class="it.uiip.airport.core.handler.AgePassengerHandler"></bean>
 	
+	<!-- FLIGHT DAO -->
 	<alias alias="flightDao" name="defaultFlightDao"/>
 	<bean id="defaultFlightDao" class="it.uiip.airport.core.dao.impl.DefaultFlightDao">
 	<constructor-arg value="#T{(it.uiip.airport.core.FlightModel)._TYPECODE"></constructor-arg>
 	</bean>
+	
+	<!-- FLIGHT SERVICE -->
+	<alias alias="flightService" name="defaultFlightService"/>
+	<bean id="defaultFlightService" class="it.uiip.airport.core.service.impl.DefaultFlightService"/>
 	
 	<alias alias="airportDao" name="defaultAirportDao"/>
 	<bean id="defaultAirportDao" class="it.uiip.airport.core.dao.impl.DefaultAirportDao">
