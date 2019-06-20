@@ -3,9 +3,9 @@
  */
 package it.uiip.airport.core.dao;
 
-import java.util.List;
-
 import de.hybris.platform.servicelayer.internal.dao.GenericDao;
+
+import java.util.List;
 
 import it.uiip.airport.core.model.PlaneModel;
 
@@ -15,6 +15,8 @@ import it.uiip.airport.core.model.PlaneModel;
  *
  */
 public interface PlaneDao extends GenericDao<PlaneModel> {
-	
+
 	public List<PlaneModel> findPlanesByCity(String city);
+
+	public List<PlaneModel> findAllPlanes();
 }

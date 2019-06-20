@@ -50,4 +50,20 @@ public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements 
 		return result.getResult();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see it.uiip.airport.core.dao.FlightDao#findAllFlight()
+	 */
+	@Override
+	public List<FlightModel> findAllFlight()
+	{
+		final StringBuilder queryString = new StringBuilder();
+		queryString.append("SELECT {f.pk} ");
+		queryString.append("FROM {Flight AS f}}");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryString);
+		final SearchResult<FlightModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
+
 }

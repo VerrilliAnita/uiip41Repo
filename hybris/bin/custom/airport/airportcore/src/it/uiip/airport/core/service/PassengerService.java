@@ -18,4 +18,6 @@ import it.uiip.airport.core.model.PassengerModel;
 public interface PassengerService extends UserService
 {
 	public List<PassengerModel> getPassengersForDate(Date date);
+
+	public List<PassengerModel> getAllPassengers();
 }

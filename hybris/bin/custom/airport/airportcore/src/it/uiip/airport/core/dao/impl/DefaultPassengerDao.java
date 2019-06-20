@@ -51,6 +51,23 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 		return result.getResult();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see it.uiip.airport.core.dao.PassengerDao#findAllPassengers()
+	 */
+	@Override
+	public List<PassengerModel> findAllPassengers()
+	{
+		final StringBuilder queryString = new StringBuilder();
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("SELECT {P:PK}");
+		queryStr.append("FROM{Passenger as P}}");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
+
 
 
 }
