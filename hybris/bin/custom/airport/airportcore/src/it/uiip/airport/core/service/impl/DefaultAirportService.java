@@ -45,4 +45,17 @@ public class DefaultAirportService implements AirportService
 	}
 
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see it.uiip.airport.core.service.AirportService#getAllAirport()
+	 */
+	@Override
+	public List<AirportModel> getAllAirport()
+	{
+		// XXX Auto-generated method stub
+		return airportDao.findAllAirport();
+	}
+
+
 }

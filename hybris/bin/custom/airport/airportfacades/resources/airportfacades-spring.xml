@@ -19,6 +19,28 @@
 		
 	<context:annotation-config/> 
 
+	<alias alias="airportFacade" name="defaultAirportfacade"/>
+	<bean id="defaultAirportfacade" class="it.uiip.airport.facades.impl.DefaultAirportfacade">
+		<property name="airportService" ref="airportService"/>
+		<property name="airportCoverter" ref="airportCoverter"/>
+	</bean>
+	
+	<alias alias="airportConverter" name="defaultAirportConverter"/>
+	<bean id="defaultAirportConverter" parent="abstractPopulatingConverter" >
+		<property name="targetClass" ref="it.uiip.airport.facades.data.AirportData"/>
+		<property name="populators">
+			<list>
+				<ref bean="airportPopulator"/>
+			</list>
+		</property>
+	</bean>
+	
+	<alias name="defaultAirportPopulator" alias="airportPopulator"/>
+	<bean id="defaultAirportPopulator" class="it.uiip.airport.facades.populators.AirportPopulator">
+	</bean>
+	
+	
+
 	<alias alias="simpleSuggestionFacade" name="defaultSimpleSuggestionFacade"/>
 	<bean id="defaultSimpleSuggestionFacade" class="it.uiip.airport.facades.suggestion.impl.DefaultSimpleSuggestionFacade" >
 		<property name="simpleSuggestionService" ref="simpleSuggestionService"/>

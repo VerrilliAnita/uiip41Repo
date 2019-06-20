@@ -16,4 +16,6 @@ public interface AirportService
 {
 	public List<AirportModel> getAirportsForCity(String city);
 
+	public List<AirportModel> getAllAirport();
+
 }
