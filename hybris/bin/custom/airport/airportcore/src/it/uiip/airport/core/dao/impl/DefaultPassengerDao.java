@@ -7,6 +7,7 @@ import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.SearchResult;
 
+import java.util.Date;
 import java.util.List;
 
 import it.uiip.airport.core.dao.PassengerDao;
@@ -34,18 +35,18 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 	 * @see it.uiip.airport.core.dao.PassengerDao#findPassengerByFlightDay(java.lang.String)
 	 */
 	@Override
-	public List<PassengerModel> findPassengersByFlightDay(final String day)
+	public List<PassengerModel> findPassengersByFlightDate(final Date date)
 	{
 
 		final StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT {P.pk}");
-		queryString.append("FROM {Passenger AS P");
-		queryString.append("JOIN Pass2Rout AS PR ON {PR.source} = {P.pk}");
-		queryString.append("JOIN Rout AS R ON {PR.target} = {R.pk}");
-		queryString.append("JOIN Flight F ON {R.flight} = {F.pk}}");
-		queryString.append("WHERE {F.weekday} = ?day");
-		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryString);
-		fsq.addQueryParameter("day", day);
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("SELECT {P:PK}");
+		queryStr.append("FROM{Passenger as P JOIN PassengerRouteRelation as rel");
+		queryStr.append("ON {P:PK} = {rel:source}");
+		queryStr.append("JOIN Route AS R ON {rel:target} = {R:PK}");
+		queryStr.append("} WHERE {R.dateRouteDep} LIKE '?date'");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("date", date);
 		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
 		return result.getResult();
 	}
