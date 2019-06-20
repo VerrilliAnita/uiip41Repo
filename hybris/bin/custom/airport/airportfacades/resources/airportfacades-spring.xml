@@ -80,6 +80,28 @@
 	 </bean>
 	
 	
+	<alias alias="passengerFacade" name="defaultPassengerFacade"/>
+	<bean id="defaultPassengerFacade" class="it.uiip.airport.facades.impl.DefaultPassengerFacade">
+	<property name ="passengerService" ref = "passengerService"/>
+	<property name = "passengerConverter" ref ="passengerConverter"/>
+	</bean>
+	
+	<alias name="defaultPassengerConverter" alias="passengerConverter"/>
+	<bean id="defaultPassengerConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value = "it.uiip.airport.facades.data.PassengerData"/>
+			<property name="populators">
+			<list >
+				<ref bean="passengerPopulator"/>
+			</list>
+		</property>
+	</bean>
+	
+	<alias name="defaultPassengerPopulator" alias="passengerPopulator"/>
+	<bean id = "defaultPassengerPopulator"
+			class = "it.uiip.airport.facades.populators.PassengerPopulator"></bean>
+	
+	
+	
 	<bean id="carouselProductConverter" parent="defaultProductConverter">
 		<property name="populators">
 			<list merge="true">

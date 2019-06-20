@@ -8,37 +8,37 @@
   <property name="code" type="String"/>
   <property name="name" type="String"/>
  </bean>
- 
- <bean class="it.uiip.airport.facades.data.AirportData">
- <property name="codeAirport" type="String"></property>
- <property name="name" type="String"></property>
- <property name="city" type="String"></property>
- <property name="country" type="String"></property>
- <property name="ranways" type="Integer"></property>
+	
+	<bean class="it.uiip.airport.facades.data.AirportData">
+	<property name="codeAirport" type="String"></property>
+	<property name="name" type="String"></property>
+	<property name="city" type="String"></property>
+	<property name="country" type="String"></property>
+	<property name="ranways" type="Integer"></property>
 </bean>
 
- <bean class="it.uiip.airport.facades.data.PlaneData">
-  <property name="codePlane" type="String"></property>
-  <property name="typePlane" type="String"></property>
-  <property name="numOfSits" type="Integer"></property>
-  <property name="goods" type="Integer"></property>
+	<bean class="it.uiip.airport.facades.data.PlaneData">
+		<property name="codePlane" type="String"></property>
+		<property name="typePlane" type="String"></property>
+		<property name="numOfSits" type="Integer"></property>
+		<property name="goods" type="Integer"></property>
  </bean>
  
   <bean class="it.uiip.airport.facades.data.FlightData">
- <property name="codeFlight" type="String"></property>
- <property name="weekDay" type="String"></property>
- <property name="airportDep" type="it.uiip.airport.facades.data.AirportData"></property>
- <property name="airportArr" type="it.uiip.airport.facades.data.AirportData"></property>
- <property name="plane" type="it.uiip.airport.facades.data.PlaneData"></property>
- <property name="timeDep" type="Integer"></property>
- <property name="timeArr" type="Integer"></property>
+	<property name="codeFlight" type="String"></property>
+	<property name="weekDay" type="String"></property>
+	<property name="airportDep" type="it.uiip.airport.facades.data.AirportData"></property>
+	<property name="airportArr" type="it.uiip.airport.facades.data.AirportData"></property>
+	<property name="plane" type="it.uiip.airport.facades.data.PlaneData"></property>
+	<property name="timeDep" type="Integer"></property>
+	<property name="timeArr" type="Integer"></property>
 </bean>
 
  <bean class="it.uiip.airport.facades.data.PassengerData">
- <property name="codeFiscal" type="String"></property>
- <property name="name" type="String"></property>
- <property name="birthday" type="String"></property>
- <property name="age" type="Integer"></property>
+	<property name="codeFiscal" type="String"></property>
+	<property name="name" type="String"></property>
+	<property name="birthday" type="java.util.Date"></property>
+	<property name="age" type="Integer"></property>
 </bean>
 
 
