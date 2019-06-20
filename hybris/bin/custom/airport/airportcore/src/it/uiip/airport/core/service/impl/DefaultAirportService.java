@@ -14,11 +14,6 @@ public class DefaultAirportService implements AirportService {
 	
 	
 	 private AirportDao airportDao;
-	 
-	 
-	  
-	
-
 
 
 	@Override
@@ -35,6 +30,11 @@ public class DefaultAirportService implements AirportService {
 	@Required
 	public void setAirportDao(AirportDao airportDao) {
 		this.airportDao = airportDao;
+	}
+
+	@Override
+	public List<AirportModel> getAllAirports() {
+		return airportDao.findAllAirports();
 	}
 
 }

@@ -25,4 +25,12 @@ public class DefaultAirportDao extends DefaultGenericDao<AirportModel>implements
 		return 	result.getResult();
 	}
 
+	@Override
+	public List<AirportModel> findAllAirports() {
+		String queryStr = "SELECT * FROM {Airport AS a }";
+		FlexibleSearchQuery fsq= new FlexibleSearchQuery(queryStr);
+		SearchResult<AirportModel>result = getFlexibleSearchService().search(fsq);
+		return 	result.getResult();
+	}
+
 }

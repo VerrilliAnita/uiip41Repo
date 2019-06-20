@@ -19,4 +19,12 @@
 		<property name="code" type="String"/>
 		<property name="name" type="String"/>
 	</bean>
+	
+	<bean class ="it.uiip.airport.facades.data.AirportData">
+	<property name="codeAirport" type="String"></property>
+	<property name="name" type="String"></property>
+	<property name="city" type="String"></property>
+	<property name="country" type="String"></property>
+	<property name="ranways" type="Integer"></property>
+	</bean>
 </beans>
