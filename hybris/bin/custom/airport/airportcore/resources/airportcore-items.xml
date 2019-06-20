@@ -46,9 +46,10 @@
 	
 	<relations>
 		<relation localized="false" code="Passenger2RouteRelation">
+			<deployment table="Passenger2Rel" typecode="23121" />
 			<sourceElement qualifier="passenger" type="Passenger" cardinality="many" collectiontype="set"></sourceElement>
 			<targetElement qualifier="route" type="Route" 
-						   cardinality="one" >
+						   cardinality="many" >
 			</targetElement>
 		</relation>
 	</relations>
@@ -169,14 +170,6 @@
 				<attribute qualifier="codeFiscal" type="java.lang.String">
 					<persistence type="property"></persistence>
 					<modifiers optional="false"/>
-				</attribute>
-				<attribute qualifier="namePass" type="java.lang.String">
-					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
-				</attribute>
-				<attribute qualifier="surnamePass" type="java.lang.String">
-					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
 				</attribute>
 				<attribute qualifier="birthday" type="java.util.Date">
 					<persistence type="property"></persistence>
