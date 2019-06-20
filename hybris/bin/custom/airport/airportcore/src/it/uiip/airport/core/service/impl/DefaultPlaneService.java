@@ -1,4 +1,4 @@
-package it.uiip.airport.cor.service.impl;
+package it.uiip.airport.core.service.impl;
 
 import java.util.List;
 
