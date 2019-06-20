@@ -43,9 +43,13 @@
 		<constructor-arg value="#{T(it.uiip.airport.core.model.FlightModel)._TYPECODE}"/>
 	</bean>
 	
-	<alias name="defaultPlanetDao" alias="PlaneDao"/>
-	<bean id="defaultPlanetDao" class="it.uiip.airport.core.dao.impl.DefaultPlaneDao">
+	<alias name="defaultPlaneDao" alias="PlaneDao"/>
+	<bean id="defaultPlaneDao" class="it.uiip.airport.core.dao.impl.DefaultPlaneDao">
 		<constructor-arg value="#{T(it.uiip.airport.core.model.PlaneModel)._TYPECODE}"/>
+	</bean>
+	
+	<alias name="defaultPlaneService" alias="PlaneService"/>
+	<bean id="defaultPlaneService" class="it.uiip.airport.core.service.impl.DefaultPlaneService">
 	</bean>
 	
 	<alias name="defaultPassengerDao" alias="PassengerDao"/>
