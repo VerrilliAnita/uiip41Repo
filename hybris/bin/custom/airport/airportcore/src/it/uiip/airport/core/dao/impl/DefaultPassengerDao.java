@@ -40,8 +40,8 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 		final StringBuilder queryString = new StringBuilder();
 		queryString.append("SELECT {P.pk}");
 		queryString.append("FROM {Passenger AS P");
-		queryString.append("JOIN Pass2Rout AS PR ON {PR.passenger} = {P.pk}");
-		queryString.append("JOIN Rout AS R ON {PR.route} = {R.pk}");
+		queryString.append("JOIN Pass2Rout AS PR ON {PR.source} = {P.pk}");
+		queryString.append("JOIN Rout AS R ON {PR.target} = {R.pk}");
 		queryString.append("JOIN Flight F ON {R.flight} = {F.pk}}");
 		queryString.append("WHERE {F.weekday} = ?day");
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryString);
