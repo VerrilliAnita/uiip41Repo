@@ -37,6 +37,7 @@
 	
 	<alias alias="planeService" name="defaultPlaneService"/>
 	<bean id="defaultPlaneService" class="it.uiip.airport.core.service.impl.DefaultPlaneService">
+	<property name="planeDao" ref="planeDao"/>
 	</bean>
 	
 	
@@ -50,7 +51,11 @@
 	
 	<!-- FLIGHT SERVICE -->
 	<alias alias="flightService" name="defaultFlightService"/>
-	<bean id="defaultFlightService" class="it.uiip.airport.core.service.impl.DefaultFlightService"/>
+	<bean id="defaultFlightService" class="it.uiip.airport.core.service.impl.DefaultFlightService">
+		<!-- Il name è il nome della variabile richiamata in DefaultFlightService -->
+		<!-- Il ref è il nome dell'alias di DefaultFlightDao -->
+		<property name="flightDao" ref="flightDao"></property> 
+	</bean>
 	
 	<alias alias="airportDao" name="defaultAirportDao"/>
 	<bean id="defaultAirportDao" class="it.uiip.airport.core.dao.impl.DefaultAirportDao">
@@ -71,6 +76,7 @@
 
 	<alias alias="airportService" name="defaultAirportService"/>
 	<bean id="defaultAirportService" class="it.uiip.airport.core.service.impl.DefaultAirportService">
+	<property name="airportDao" ref="airportDao" ></property>
 	</bean>
 	
 
