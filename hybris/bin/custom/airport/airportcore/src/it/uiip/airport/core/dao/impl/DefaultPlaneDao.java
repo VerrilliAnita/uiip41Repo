@@ -38,8 +38,7 @@ public class DefaultPlaneDao extends DefaultGenericDao<PlaneModel> implements Pl
 		FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		fsq.addQueryParameter("city", city);
 		SearchResult<PlaneModel> result = getFlexibleSearchService().search(fsq);
-		List<PlaneModel> planes = result.getResult();
-		return planes;
+		return result.getResult();
 	}
 	
 }
