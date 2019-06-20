@@ -17,8 +17,8 @@ import it.uiip.airport.core.model.FlightModel;
  */
 public interface FlightDao extends GenericDao<FlightModel>{
 	
-	public List<FlightModel> findFlightByDepartureCity(String city);
+	public List<FlightModel> findFlightsByDepartureCity(String city);
 	
-	public List<FlightModel> findFlightByDepartureDate(Date date);
+	public List<FlightModel> findFlightsByDepartureDate(Date date);
 
 }

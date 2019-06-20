@@ -25,30 +25,29 @@ public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements 
 	}
 
 	@Override
-	public List<FlightModel> findFlightByDepartureCity(String city) {
-		String queryString="SELECT {f.pk} \r\n" + 
-				"	FROM {Flight AS f\r\n" + 
-				"		JOIN Airport AS a ON {f.airportDep} = {a.pk}}\r\n" + 
-				"		WHERE {a.city} = ?city";
-		FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryString);
+	public List<FlightModel> findFlightsByDepartureCity(String city) {
+		StringBuilder queryStr= new StringBuilder();
+		queryStr.append("SELECT {f.pk}");
+		queryStr.append("FROM {Flight AS f");
+		queryStr.append("JOIN Airport AS a ON {f.airportDep} = {a.pk}}"); 
+		queryStr.append("WHERE {a.city} = ?city");
+		FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		fsq.addQueryParameter("city", city);
 		SearchResult<FlightModel> result = getFlexibleSearchService().search(fsq);
-		List<FlightModel> flight = result.getResult();
-		return flight;
+		return result.getResult();
 	}
 
 	@Override
-	public List<FlightModel> findFlightByDepartureDate(Date date) {
-		String queryString="SELECT {f.pk} \r\n" + 
-				"	FROM {Flight AS f\r\n" + 
-				"		JOIN Route AS r ON {r.flight} = {f.pk}}\r\n" + 
-				"        WHERE {r.dateRouteDep} LIKE '?date%'\r\n" + 
-				"		";
-		FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryString);
+	public List<FlightModel> findFlightsByDepartureDate(Date date) {
+		StringBuilder queryStr= new StringBuilder();
+		queryStr.append("SELECT {f.pk}"); 
+		queryStr.append("FROM {Flight AS f"); 
+		queryStr.append("JOIN Route AS r ON {r.flight} = {f.pk}}"); 
+		queryStr.append("WHERE {r.dateRouteDep} LIKE '?date%'");
+		FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		fsq.addQueryParameter("date", date);
 		SearchResult<FlightModel> result = getFlexibleSearchService().search(fsq);
-		List<FlightModel> flight = result.getResult();
-		return flight;
+		return result.getResult();
 	}
 
 }
