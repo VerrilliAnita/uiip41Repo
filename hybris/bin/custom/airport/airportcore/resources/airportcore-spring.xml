@@ -33,24 +33,24 @@
 
 	<bean id="agePassengerHandler" class="it.uiip.airport.core.handler.AgePassengerHandler"></bean>
 	
-	<alias name="DefaultAirportDao" alias="AirportDao"/>
-	<bean id="DefaultAirportDao" class="it.uiip.airport.core.dao.impl.DefaultAirportDao">
-		<constructor-arg value="22345"/>
+	<alias name="defaultAirportDao" alias="AirportDao"/>
+	<bean id="defaultAirportDao" class="it.uiip.airport.core.dao.impl.DefaultAirportDao">
+		<constructor-arg value="#{T(de.hybris.platform.core.model.AirPortModel)._TYPECODE}"/>
 	</bean>
 	
-	<alias name="DefaultFlightDao" alias="FlightDao"/>
-	<bean id="DefaultFlightDao" class="it.uiip.airport.core.dao.impl.DefaultFlightDao">
-		<constructor-arg value="22347"/>
+	<alias name="defaultFlightDao" alias="FlightDao"/>
+	<bean id="defaultFlightDao" class="it.uiip.airport.core.dao.impl.DefaultFlightDao">
+		<constructor-arg value="#{T(de.hybris.platform.core.model.FlightModel)._TYPECODE}"/>
 	</bean>
 	
-	<alias name="DefaultPlanetDao" alias="PlaneDao"/>
-	<bean id="DefaultPlanetDao" class="it.uiip.airport.core.dao.impl.DefaultPlanetDao">
-		<constructor-arg value="22346"/>
+	<alias name="defaultPlanetDao" alias="PlaneDao"/>
+	<bean id="defaultPlanetDao" class="it.uiip.airport.core.dao.impl.DefaultPlanetDao">
+		<constructor-arg value="#{T(de.hybris.platform.core.model.PlaneModel)._TYPECODE}"/>
 	</bean>
 	
-	<alias name="DefaultPassengerDao" alias="PassengerDao"/>
-	<bean id="DefaultPassengerDao" class="it.uiip.airport.core.dao.impl.DefaultPassengerDao">
-		<constructor-arg value="22000"/>
+	<alias name="defaultPassengerDao" alias="PassengerDao"/>
+	<bean id="defaultPassengerDao" class="it.uiip.airport.core.dao.impl.DefaultPassengerDao">
+		<constructor-arg value="#{T(de.hybris.platform.core.model.PassengerModel)._TYPECODE}"/>
 	</bean>
 
 

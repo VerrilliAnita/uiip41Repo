@@ -28,13 +28,13 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see it.uiip.airport.core.dao.PassengerDao#findPassengerByFlightDay(java.lang.String)
 	 */
 	@Override
-	public List<PassengerModel> findPassengerByFlightDay(final String day)
+	public List<PassengerModel> findPassengersByFlightDay(final String day)
 	{
-		// XXX Auto-generated method stub
+
 		return null;
 	}
 

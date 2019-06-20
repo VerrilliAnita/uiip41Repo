@@ -44,10 +44,15 @@
 	</enumtypes>
 	
 	<relations>
-		<relation localized="false" code="Passenger2RouteRelation">
-			<sourceElement qualifier="passenger" type="Passenger" cardinality="many" collectiontype="set"></sourceElement>
+		<relation localized="false" code="PassengerRouteRelation" autocreate="true" generate="true">
+		<deployment table="Pass2Rout" typecode="20099"/>
+			<sourceElement qualifier="passenger" type="Passenger" cardinality="many" 
+							collectiontype="set">
+			<modifiers read="true" write="true" search="true" optional="true"/>		
+			</sourceElement>
 			<targetElement qualifier="route" type="Route" 
-						   cardinality="one" >
+						   cardinality="many" collectiontype="set">
+			<modifiers read="true" write="true" search="true" optional="true"/>	
 			</targetElement>
 		</relation>
 	</relations>
