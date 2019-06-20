@@ -40,13 +40,14 @@
 
 	<alias alias="PassengerService" name="defaultPassengerService"/>
 	<bean id="defaultPassengerService" class="it.uiip.airport.core.service.impl.DefaultPassengerService" 
-					parent="DefaultUserService">
+					parent="defaultUserService">
+					<property name="passengerDao" ref="PassengerDao"></property>
 	
 	</bean>
 	
 	<alias alias="AirportService" name="defaultAirportService"/>
 	<bean id="defaultAirportService" class="it.uiip.airport.core.service.impl.DefaultAirportService" >
-	
+		<property name="airportDao" ref="AirportDao"></property>
 	</bean>
 	
 	
@@ -62,6 +63,7 @@
 	
 	<alias name="defaultPlaneService" alias="PlaneService"/>
 	<bean id="defaultPlaneService" class="it.uiip.airport.core.service.impl.DefaultPlaneService">
+	<property name="planeDao" ref="PlaneDao"></property>
 	</bean>
 	
 	<alias name="defaultPassengerDao" alias="PassengerDao"/>
@@ -70,7 +72,9 @@
 	</bean>
 	
 	<alias alias="flightService" name="defaultFlightService"/>
-	<bean id="defaultFlightService" class="it.uiip.airport.core.service.FlightService" />
+	<bean id="defaultFlightService" class="it.uiip.airport.core.service.FlightService" >
+		<property name="flightDao" ref="FlightDao"></property>
+	</bean>
 	
 	
 
