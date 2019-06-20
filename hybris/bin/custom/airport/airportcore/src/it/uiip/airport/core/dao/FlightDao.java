@@ -4,7 +4,7 @@ import java.util.List;
 
 import de.hybris.platform.servicelayer.internal.dao.GenericDao;
 import it.uiip.airport.core.model.FlightModel;
-import it.uiip.airport.core.model.PassengerModel;
+
 
 public interface FlightDao extends GenericDao<FlightModel>  {
 
