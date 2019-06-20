@@ -10,5 +10,5 @@ public interface FlightDao extends GenericDao<FlightModel>  {
 
 	public List<FlightModel> findFlightsByCity(String city);
 	public List<FlightModel> findFlightsByDate(String date);
-	
+	public List<FlightModel> findAllFlights();
 }

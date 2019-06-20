@@ -40,6 +40,19 @@ public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements 
 		SearchResult<FlightModel> result = getFlexibleSearchService().search(fsq);
 		return result.getResult();
 	}
+
+	@Override
+	public List<FlightModel> findAllFlights() {
+		StringBuilder queryStr=new StringBuilder();
+		queryStr.append("SELECT {f.PK} FROM { Flight AS f }");
+		
+		
+	
+		FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+
+		SearchResult<FlightModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
 	
 	
 

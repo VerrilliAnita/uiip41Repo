@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.service.PlaneService;
@@ -18,6 +18,8 @@ public class DefaultPlaneService implements PlaneService {
 
 	
 	private PlaneDao planeDao;
+	
+	private static final Logger LOG = Logger.getLogger(DefaultFlightService.class);
 	
 	
 	public PlaneDao getPlaneDao() {
@@ -33,7 +35,15 @@ public class DefaultPlaneService implements PlaneService {
 	@Override
 	public List<PlaneModel> getPlanesForArrivalCity(String city) {
 		// TODO Auto-generated method stub
+		LOG.info("Find planes by arrival city " + city);
 		return planeDao.findPlanesByArrivalCity(city);
+	}
+
+	@Override
+	public List<PlaneModel> getAllPlanes() {
+		// TODO Auto-generated method stub
+		LOG.info("Find all planes");
+		return planeDao.findAllPlane();
 	}
 
 }

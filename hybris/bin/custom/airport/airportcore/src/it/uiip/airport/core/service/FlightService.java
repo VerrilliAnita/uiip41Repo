@@ -8,5 +8,5 @@ public interface FlightService {
 	
 	public List<FlightModel> getFlightsForCity(String city);
 	public List<FlightModel> getFlightsForDate(String date);
-
+	public List<FlightModel> getAllFlights();
 }

@@ -31,4 +31,17 @@ public class DefaultPlaneDao extends DefaultGenericDao<PlaneModel> implements Pl
 
 	}
 
+	@Override
+	public List<PlaneModel> findAllPlane() {
+		StringBuilder queryStr=new StringBuilder();
+		queryStr.append("SELECT {p.PK} FROM { plane AS p}") ;
+		
+	
+		FlexibleSearchQuery fsq = new FlexibleSearchQuery( queryStr );
+		
+
+		SearchResult<PlaneModel> result = getFlexibleSearchService().search( fsq );
+		return 	result.getResult();
+	}
+
 }

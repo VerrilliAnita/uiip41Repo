@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.dao.AirportDao;
@@ -14,11 +15,13 @@ public class DefaultAirportService implements AirportService {
 	
 	
 	 private AirportDao airportDao;
+	 
+	 private static final Logger LOG = Logger.getLogger(DefaultAirportService.class);
 
 
 	@Override
 	public List<AirportModel> getAirportsForCity(String city) {
-		
+		LOG.info("Find airports by city");
 		return airportDao.findAirportsByCity(city);
 	}
 	

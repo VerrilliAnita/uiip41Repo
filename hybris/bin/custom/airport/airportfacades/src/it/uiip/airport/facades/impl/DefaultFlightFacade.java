@@ -29,9 +29,9 @@ public class DefaultFlightFacade implements FlightFacade
 	 * @see it.uiip.airport.facades.FlightFacade#getAllFlight()
 	 */
 	@Override
-	public List<FlightData> getAllFlight()
+	public List<FlightData> getAllFlights()
 	{
-		return flightConverter.convertAll(flightService.getAllFlight());
+		return flightConverter.convertAll(flightService.getAllFlights());
 	}
 
 	public FlightService getFlightService()

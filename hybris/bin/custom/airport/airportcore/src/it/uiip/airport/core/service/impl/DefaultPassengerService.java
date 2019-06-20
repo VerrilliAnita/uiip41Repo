@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Required;
 
 import de.hybris.platform.servicelayer.user.impl.DefaultUserService;
@@ -20,9 +21,12 @@ public class DefaultPassengerService extends DefaultUserService implements Passe
 	
 	private PassengerDao passengerDao;
 	
+	private static final Logger LOG = Logger.getLogger(DefaultFlightService.class);
+
+	
 	@Override
 	public List<PassengerModel> getPassengersForDate(Date date) {
-	
+		LOG.info("Find passengers by date");
 		return passengerDao.findPassengersByDate(date);
 	}
 

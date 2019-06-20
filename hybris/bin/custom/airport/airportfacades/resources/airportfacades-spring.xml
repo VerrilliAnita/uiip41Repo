@@ -79,6 +79,43 @@
 	 <property name="planeConverter" ref="planeConverter"/>
 	 </bean>
 	
+	<!--____________________________________________ PLANE Bean ____________________________________________________-->
+	
+ <alias name="defaultPlaneFacade" alias="planeFacade"/>
+ <bean id="defaultPlaneFacade" class="it.uiip.airport.facades.impl.DefaultPlaneFacade">
+  <property name="planeConverter" ref="planeConverter"></property>
+  <property name="defaultPlaneService" ref="defaultPlaneService"></property>
+ </bean>
+	
+	
+ <alias name="defaultPlaneConverter" alias="planeConverter"></alias>
+ <bean id="defaultPlaneConverter" parent="abstractPopulatingConverter">
+  <property name="targetClass" value="it.uiip.airport.facades.data.PlaneData" />
+   <property name="populators">
+    <list>
+     <ref bean="planePopulator"/>
+    </list>
+   </property>	
+ </bean>
+	
+ <alias name="defaultPlanePopulator" alias="planePopulator"/>
+ <bean id="defaultPlanePopulator"  class="it.uiip.airport.facades.populators.PlanePopulator" >
+ </bean>
+	
+ <alias name="defaultPlaneReverseConverter" alias="planeReverseConverter"/>
+ <bean id="defaultPlaneReverseConverter" parent="abstractPopulatingConverter">	
+  <property name="targetClass" value="it.uiip.airport.core.model.PlaneModel"/>
+  <property name="populators">
+    <list>
+     <ref bean="planeReversePopulator"/>
+    </list>
+   </property>	
+ </bean>
+	
+	
+ <alias name="defaultPlaneReversePopulator" alias="planeReversePopulator"/>
+ <bean id="defaultPlaneReversePopulator"  class="it.uiip.airport.facades.populators.PlaneReversePopulator" >
+ </bean>
 	
 	<alias alias="passengerFacade" name="defaultPassengerFacade"/>
 	<bean id="defaultPassengerFacade" class="it.uiip.airport.facades.impl.DefaultPassengerFacade">

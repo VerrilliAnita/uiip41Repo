@@ -2,6 +2,7 @@ package it.uiip.airport.core.service.impl;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.dao.FlightDao;
@@ -12,8 +13,12 @@ public class DefaultFlightService implements FlightService{
 
 	private FlightDao flightDao;
 	
+	private static final Logger LOG = Logger.getLogger(DefaultFlightService.class);
+
+	
 	@Override
 	public List<FlightModel> getFlightsForCity(String city) {
+		LOG.info("Find flights by city");
 		return flightDao.findFlightsByCity(city);
 	}
 
@@ -29,6 +34,12 @@ public class DefaultFlightService implements FlightService{
 	@Required
 	public void setFlightDao(FlightDao flightDao) {
 		this.flightDao = flightDao;
+	}
+
+	@Override
+	public List<FlightModel> getAllFlights() {
+		
+		return flightDao.findAllFlights();
 	}
 	
 	
