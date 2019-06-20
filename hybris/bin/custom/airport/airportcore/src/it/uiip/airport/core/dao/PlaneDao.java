@@ -16,5 +16,5 @@ import it.uiip.airport.core.model.PlaneModel;
  */
 public interface PlaneDao extends GenericDao<PlaneModel> {
 	
-	public List<PlaneModel> findPlaneByCity(String city);
+	public List<PlaneModel> findPlanesByCity(String city);
 }
