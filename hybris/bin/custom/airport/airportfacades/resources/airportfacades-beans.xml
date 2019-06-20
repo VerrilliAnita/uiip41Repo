@@ -1,30 +1,45 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<!--
- [y] hybris Platform
-
- Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
-
- This software is the confidential and proprietary information of SAP
- ("Confidential Information"). You shall not disclose such Confidential
- Information and shall use it only in accordance with the terms of the
- license agreement you entered into with SAP.
--->
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
 
-	<bean class="de.hybris.platform.commercefacades.product.data.ProductData">
-		<property name="genders" type="java.util.List&lt;it.uiip.airport.facades.product.data.GenderData>"/>
-	</bean>
+ <bean class="de.hybris.platform.commercefacades.product.data.ProductData">
+  <property name="genders" type="java.util.List&lt;it.uiip.airport.facades.product.data.GenderData>"/>
+ </bean>
 
-	<bean class="it.uiip.airport.facades.product.data.GenderData">
-		<property name="code" type="String"/>
-		<property name="name" type="String"/>
-	</bean>
-	
-	<bean class ="it.uiip.airport.facades.data.AirportData">
-	<property name="codeAirport" type="String"></property>
-	<property name="name" type="String"></property>
-	<property name="city" type="String"></property>
-	<property name="country" type="String"></property>
-	<property name="ranways" type="Integer"></property>
-	</bean>
+ <bean class="it.uiip.airport.facades.product.data.GenderData">
+  <property name="code" type="String"/>
+  <property name="name" type="String"/>
+ </bean>
+ 
+ <bean class="it.uiip.airport.facades.data.AirportData">
+ <property name="codeAirport" type="String"></property>
+ <property name="name" type="String"></property>
+ <property name="city" type="String"></property>
+ <property name="country" type="String"></property>
+ <property name="ranways" type="Integer"></property>
+</bean>
+
+ <bean class="it.uiip.airport.facades.data.PlaneData">
+  <property name="codePlane" type="String"></property>
+  <property name="typePlane" type="String"></property>
+  <property name="numOfSits" type="Integer"></property>
+  <property name="goods" type="Integer"></property>
+ </bean>
+ 
+  <bean class="it.uiip.airport.facades.data.FlightData">
+ <property name="codeFlight" type="String"></property>
+ <property name="weekDay" type="String"></property>
+ <property name="airportDep" type="it.uiip.airport.facades.data.AirportData"></property>
+ <property name="airportArr" type="it.uiip.airport.facades.data.AirportData"></property>
+ <property name="plane" type="it.uiip.airport.facades.data.PlaneData"></property>
+ <property name="timeDep" type="Integer"></property>
+ <property name="timeArr" type="Integer"></property>
+</bean>
+
+ <bean class="it.uiip.airport.facades.data.PassengerData">
+ <property name="codeFiscal" type="String"></property>
+ <property name="name" type="String"></property>
+ <property name="birthday" type="String"></property>
+ <property name="age" type="Integer"></property>
+</bean>
+
+
 </beans>

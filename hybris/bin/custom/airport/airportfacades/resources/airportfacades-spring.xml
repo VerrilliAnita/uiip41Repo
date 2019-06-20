@@ -30,7 +30,7 @@
 	</bean>
 	
 	
-	
+	<!-- AIRPORT FACADE -->
 	<alias alias="airportFacade" name="defaultAirportFacade"/>
 	<bean id="defaultAirportFacade" class="it.uiip.airport.facades.impl.DefaultAirportFacade">
 	<property name ="airportService" ref = "airportService"/>
@@ -38,6 +38,7 @@
 	</bean>
 	
 	
+	<!-- AIRPORT CONVERTER -->
 	<alias name="defaultAirportConverter" alias="airportConverter"/>
 	<bean id="defaultAirportConverter" parent="abstractPopulatingConverter">
 		<property name="targetClass" value = "it.uiip.airport.facades.data.AirportData"/>
@@ -48,9 +49,35 @@
 		</property>
 	</bean>
 	
+	<!-- AIRPORT POPULATOR -->
 	<alias name="defaultAirportPopulator" alias="airportPopulator"/>
 	<bean id = "defaultAirportPopulator"
 			class = "it.uiip.airport.facades.populators.AirportPopulator"></bean>
+	
+	<!-- FLIGHT FACADE -->
+	<alias alias="flightFacade" name="defaultFlightFacade"/>
+	 <bean id="defaultFlightFacade" class="it.uiip.airport.facades.impl.DefaultFlightFacade">
+	  <property name="flightService" ref="flightService"/>
+	  <property name="flightConverter" ref="flightConverter"/>
+	 </bean>
+	 
+	 <!-- FLIGHT CONVERTER -->
+	 <alias alias="flightConverter" name="defaultFlightConverter"/>
+	 <bean id="defaultFlightConverter" parent="abstractPopulatingConverter" >
+	  <property name="targetClass" ref="it.uiip.airport.facades.data.FlightData"/>
+	  <property name="populators">
+	   <list>
+	    <ref bean="flightPopulator"/>
+	   </list>
+	  </property>
+	 </bean>
+	 
+	 <!-- FLIGHT POPULATOR -->
+	 <alias name="defaultFlightPopulator" alias="flightPopulator"/>
+	 <bean id="defaultFlightPopulator" class="it.uiip.airport.facades.populators.FlightPopulator">
+	 <property name="airportConverter" ref="airportConverter"/>
+	 <property name="planeConverter" ref="planeConverter"/>
+	 </bean>
 	
 	
 	<bean id="carouselProductConverter" parent="defaultProductConverter">
