@@ -24,14 +24,14 @@ public class DefaultAirportDao extends DefaultGenericDao<AirportModel> implement
 	}
 
 	@Override
-	public List<AirportModel> findAirportByCity(String city) {
-		String queryStr = "SELECT {a.pk} FROM {Airport AS a}\r\n" + 
-				"WHERE {a.city} = ?city";
+	public List<AirportModel> findAirportsByCity(String city) {
+		StringBuilder queryStr = new StringBuilder();
+		queryStr.append("SELECT {a.pk} FROM {Airport AS a}");
+		queryStr.append("WHERE {a.city} = ?city");
 		FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		fsq.addQueryParameter("city", city);
 		SearchResult<AirportModel> result = getFlexibleSearchService().search(fsq);
-		List<AirportModel> airports = result.getResult();
-		return airports;
+		return result.getResult();
 	}
 
 
