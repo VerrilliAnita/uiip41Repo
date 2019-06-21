@@ -93,6 +93,11 @@ public interface ControllerConstants
 				String AccountRegisterPage = "pages/account/accountRegisterPage"; // NOSONAR
 			}
 
+			interface Airport
+			{
+				String AirportSearchPage = "pages/airport/searchAirport";
+			}
+
 			interface Checkout // NOSONAR
 			{
 				String CheckoutRegisterPage = "pages/checkout/checkoutRegisterPage"; // NOSONAR

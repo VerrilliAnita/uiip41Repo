@@ -60,5 +60,17 @@ public class DefaultAirportFacade implements AirportFacade
 	}
 
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see it.uiip.airport.facades.AirportFacade#getAirportforCity(java.lang.String)
+	 */
+	@Override
+	public List<AirportData> getAirportsforCity(final String city)
+	{
+		return airportConverter.convertAll(airportService.getAirportsForCity(city));
+	}
+
+
 
 }
