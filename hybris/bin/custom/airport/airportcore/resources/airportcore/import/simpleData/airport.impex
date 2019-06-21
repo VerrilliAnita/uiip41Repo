@@ -30,37 +30,37 @@ INSERT_UPDATE Flight; codeFlight[unique=true];weekDay(code);airportDep(codeAirpo
 ;v8;lunedi;AR8;AR9;A1;14;19
 
 
-INSERT_UPDATE Passenger; uid[unique=true];codeFiscal[unique=true];namePass;surnamePass;birthday[dateformat = dd.MM.yyyy, allownull=true]
-;1;ASB34HD56S;Mario;Rossi;04.12.1988
-;2;GPPRST65DS;Giuseppe;Ristaino;04.12.1989
-;3;GSIGLC67SX;Gianluca;Giso;22.06.1991
-;4;NSCNTN65SD;Antonio;Misco;12.10.1996
-;5;MNLMRN67SA;Emanuel;Morich;05.06.1991
-;6;ADLGNN67ND;Adalgisa;Giovannini;22.12.1985
-;7;POMPSUG67S;Pompilio;Suglia;01.01.1989
-;8;OKSGNCH66A;Oksana;Gonchar;08.03.1987
-;9;TOMCAT65AS;Tommaso;Minichiello;25.12.1989
-;10;DNNFRR25DS;Danilo;Ferrara;03.12.1988
-;11;RTFVL64DAS;Ritaflavia;Marchesiello;08.11.1993
-;12;PSUD67SADA;Pippo;Baudo;12.05.1923
-;13;MOR78SASML;Luka;Modric;26.07.1986
-;14;FRTTSD67SD;Francesco;Totti;07.04.1978
-;15;DMN78SDMSD;Mikadono;Igushi;12.09.1956
-;16;JCKLSD78SA;Jokopoko;Majoko;28.02.1967
-;17;RCCKKKYIS4;Riccardo;Kaka;22.04.1982
-;18;CLKSBL7384;Cholanka;Sbilenka;15.12.1980
-;19;MCHSHHH633;Michael;Minichiello;10.12.1918
-;20;ALLAMM6383;Alessandro;Amadori;03.12.1986
-;21;FLVLINGTT4;Flavia;Linguiti;11.11.1994
-;22;RBTRSS3888;Roberta;Rosso;02.08.1991
-;23;MRAVNRE333;Mara;Venier;14.07.1956
-;24;FRONRO7330;Franco;Nero;01.01.1978
-;25;PSQNTL6666;Pasquale;Natale;13.09.1957
-;26;NTNLLL7677;Antonio;Illiano;03.12.1967
-;27;NBRALL3388;Nabir;Albar;11.04.1990
-;28;MMHSLL3738;Mohamed;Ali;12.01.1995
-;29;CRLV55555E;Crystal;Minichiello;11.06.1928
-;30;POMMIN6839;Pompilio;Morante;03.12.1986
+INSERT_UPDATE Passenger; uid[unique=true];codeFiscal[unique=true];name;birthday[dateformat = dd.MM.yyyy, allownull=true]
+;1;ASB34HD56S;MarioRossi;04.12.1988
+;2;GPPRST65DS;GiuseppeRistaino;04.12.1989
+;3;GSIGLC67SX;GianlucaGiso;22.06.1991
+;4;NSCNTN65SD;AntonioMisco;12.10.1996
+;5;MNLMRN67SA;EmanuelMorich;05.06.1991
+;6;ADLGNN67ND;AdalgisaGiovannini;22.12.1985
+;7;POMPSUG67S;PompilioSuglia;01.01.1989
+;8;OKSGNCH66A;OksanaGonchar;08.03.1987
+;9;TOMCAT65AS;TommasoMinichiello;25.12.1989
+;10;DNNFRR25DS;DaniloFerrara;03.12.1988
+;11;RTFVL64DAS;RitaflaviaMarchesiello;08.11.1993
+;12;PSUD67SADA;PippoBaudo;12.05.1923
+;13;MOR78SASML;LukaModric;26.07.1986
+;14;FRTTSD67SD;FrancescoTotti;07.04.1978
+;15;DMN78SDMSD;MikadonoIgushi;12.09.1956
+;16;JCKLSD78SA;JokopokoMajoko;28.02.1967
+;17;RCCKKKYIS4;RiccardoKaka;22.04.1982
+;18;CLKSBL7384;CholankaSbilenka;15.12.1980
+;19;MCHSHHH633;MichaelMinichiello;10.12.1918
+;20;ALLAMM6383;AlessandroAmadori;03.12.1986
+;21;FLVLINGTT4;FlaviaLinguiti;11.11.1994
+;22;RBTRSS3888;RobertaRosso;02.08.1991
+;23;MRAVNRE333;MaraVenier;14.07.1956
+;24;FRONRO7330;FrancoNero;01.01.1978
+;25;PSQNTL6666;PasqualeNatale;13.09.1957
+;26;NTNLLL7677;AntonioIlliano;03.12.1967
+;27;NBRALL3388;NabirAlbar;11.04.1990
+;28;MMHSLL3738;MohamedAli;12.01.1995
+;29;CRLV55555E;CrystalMinichiello;11.06.1928
+;30;POMMIN6839;PompilioMorante;03.12.1986
 
 INSERT_UPDATE Route; codeRoute[unique=true];  flight(codeFlight); dateRouteDep [dateformat = dd.MM.yyyy hh:mm:ss, allownull=true]; dateRouteArr[dateformat = dd.MM.yyyy hh:mm:ss, allownull=true]; passenger(uid)[mode=append]
 	;R1	;v1	;12.03.2018 12:12:12; 12.03.2018 16:12:12; 1, 2, 3, 4, 5, 6, 7, 8, 9

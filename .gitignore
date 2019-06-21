@@ -36,7 +36,7 @@ hybris/log
 hybris/temp
 
 hybris/config/solr/instances/default/hsperfdata_*
-hybris/config/local.properties
+
 
 # Installed add-ons
 hybris/bin/custom/**/web/addonsrc/**
