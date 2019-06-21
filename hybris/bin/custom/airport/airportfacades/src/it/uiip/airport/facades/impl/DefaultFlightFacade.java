@@ -20,6 +20,10 @@ import it.uiip.airport.facades.data.FlightData;
  */
 public class DefaultFlightFacade implements FlightFacade
 {
+	
+
+	
+
 	private FlightService flightService;
 	private Converter<FlightModel, FlightData> flightConverter;
 
@@ -43,6 +47,14 @@ public class DefaultFlightFacade implements FlightFacade
 	public void setFlightService(final FlightService flightService)
 	{
 		this.flightService = flightService;
+	}
+	
+	public Converter<FlightModel, FlightData> getFlightConverter() {
+		return flightConverter;
+	}
+	@Required
+	public void setFlightConverter(Converter<FlightModel, FlightData> flightConverter) {
+		this.flightConverter = flightConverter;
 	}
 
 }

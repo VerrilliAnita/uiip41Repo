@@ -12,40 +12,37 @@ import it.uiip.airport.facades.data.AirportData;
 
 public class DefaultAirportFacade implements AirportFacade {
 
-	private Converter <AirportModel,AirportData> defaultAirportConverter;
-	private DefaultAirportService defaultAirportService;
+	private Converter <AirportModel,AirportData> airportConverter;
+	private DefaultAirportService airportService;
+
+	public Converter<AirportModel, AirportData> getAirportConverter() {
+		return airportConverter;
+	}
 	
-	
-	public Converter<AirportModel, AirportData> getDefaultAirportConverter() {
-		return defaultAirportConverter;
+	@Required
+	public void setAirportConverter(Converter<AirportModel, AirportData> airportConverter) {
+		this.airportConverter = airportConverter;
+	}
+
+	public DefaultAirportService getAirportService() {
+		return airportService;
 	}
 
 	@Required
-	public void setDefaultAirportConverter(Converter<AirportModel, AirportData> defaultAirportConverter) {
-		this.defaultAirportConverter = defaultAirportConverter;
+	public void setAirportService(DefaultAirportService airportService) {
+		this.airportService = airportService;
 	}
-
-
-	public DefaultAirportService getDefaultAirportService() {
-		return defaultAirportService;
-	}
-
-	@Required
-	public void setDefaultAirportService(DefaultAirportService defaultAirportService) {
-		this.defaultAirportService = defaultAirportService;
-	}
-
 
 	@Override
 	public List<AirportData> getAirportsForCity(String city) {
 		
-		return defaultAirportConverter.convertAll(defaultAirportService.getAirportsForCity(city));
+		return airportConverter.convertAll(airportService.getAirportsForCity(city));
 	}
 
 	@Override
 	public List<AirportData> getAllAirports() {
 		
-		return defaultAirportConverter.convertAll(defaultAirportService.getAllAirports());
+		return airportConverter.convertAll(airportService.getAllAirports());
 	}
 
 }
