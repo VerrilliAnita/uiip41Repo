@@ -9,7 +9,7 @@
 	<h1>Airport Listing</h1>
 	<ul>
 		<c:forEach var="airport" items="${airports}">
-			<li>${airports.name}</li>
+			<li>${airport.name}</li>
 		</c:forEach>
 	</ul>
 </body>
