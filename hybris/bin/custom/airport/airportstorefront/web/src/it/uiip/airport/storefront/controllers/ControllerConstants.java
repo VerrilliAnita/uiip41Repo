@@ -77,6 +77,11 @@ public interface ControllerConstants
 
 		interface Pages
 		{
+			interface Airport
+			{
+				String SearchAirports = "pages/airport/searchAirports";
+			}
+			
 			interface Account // NOSONAR
 			{
 				String AccountLoginPage = "pages/account/accountLoginPage"; // NOSONAR
