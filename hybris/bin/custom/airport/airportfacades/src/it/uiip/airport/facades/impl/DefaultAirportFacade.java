@@ -34,9 +34,6 @@ public class DefaultAirportFacade implements AirportFacade
 	}
 
 
-	/**
-	 * @return the airportService
-	 */
 	public AirportService getAirportService()
 	{
 		return airportService;
@@ -46,6 +43,20 @@ public class DefaultAirportFacade implements AirportFacade
 	public void setAirportService(final AirportService airportService)
 	{
 		this.airportService = airportService;
+	}
+
+
+
+	public Converter<AirportModel, AirportData> getAirportConverter()
+	{
+		return airportConverter;
+	}
+
+
+	@Required
+	public void setAirportConverter(final Converter<AirportModel, AirportData> airportConverter)
+	{
+		this.airportConverter = airportConverter;
 	}
 
 

@@ -16,44 +16,44 @@ public class DefaultFlightService implements FlightService {
 
 	private static final Logger LOG = Logger.getLogger(DefaultFlightService.class);
 	 @Resource
-	 private FlightDao FlightDao;
+	private FlightDao flightDao;
 
 	 @Override
 	 public List<FlightModel> getFlightsForCity(final String city) {
 		LOG.info("Invoke method findFlightsByDepartureCity in DefaultFlightService");
-		return FlightDao.findFlightsByDepartureCity(city);
+		return flightDao.findFlightsByDepartureCity(city);
 	 }
 
 	 @Override
 	 public List<FlightModel> getFlightsForDate(final Date date) {
 		LOG.info("Invoke method findFlightsByDepartureDate in DefaultFlightService");
-		return FlightDao.findFlightsByDepartureDate(date);
+		return flightDao.findFlightsByDepartureDate(date);
 	 }
+
+
+	@Override
+	public List<FlightModel> getAllFlight()
+	{
+		LOG.info("Invoke method findAllFlight in DefaultFlightService");
+		return flightDao.findAllFlight();
+	}
+
 
 	/**
 	 * @return the flightDao
 	 */
 	public FlightDao getFlightDao()
 	{
-		return FlightDao;
+		return flightDao;
 	}
 
 	@Required
 	public void setFlightDao(final FlightDao flightDao)
 	{
-		FlightDao = flightDao;
+		this.flightDao = flightDao;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see it.uiip.airport.core.service.FlightService#getAllFlight()
-	 */
-	@Override
-	public List<FlightModel> getAllFlight()
-	{
-		return FlightDao.findAllFlight();
-	}
+
 
 
 }

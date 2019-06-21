@@ -45,4 +45,20 @@ public class DefaultFlightFacade implements FlightFacade
 		this.flightService = flightService;
 	}
 
+	/**
+	 * @return the flightConverter
+	 */
+	public Converter<FlightModel, FlightData> getFlightConverter()
+	{
+		return flightConverter;
+	}
+
+	@Required
+	public void setFlightConverter(final Converter<FlightModel, FlightData> flightConverter)
+	{
+		this.flightConverter = flightConverter;
+	}
+
+
+
 }

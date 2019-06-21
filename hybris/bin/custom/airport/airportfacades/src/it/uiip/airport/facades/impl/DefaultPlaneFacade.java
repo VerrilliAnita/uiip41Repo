@@ -55,6 +55,20 @@ public class DefaultPlaneFacade implements PlaneFacade
 		this.planeService = planeService;
 	}
 
+	/**
+	 * @return the planeConverter
+	 */
+	public Converter<PlaneModel, PlaneData> getPlaneConverter()
+	{
+		return planeConverter;
+	}
+
+	@Required
+	public void setPlaneConverter(final Converter<PlaneModel, PlaneData> planeConverter)
+	{
+		this.planeConverter = planeConverter;
+	}
+
 
 
 

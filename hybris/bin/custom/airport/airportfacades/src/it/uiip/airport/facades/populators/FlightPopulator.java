@@ -7,6 +7,8 @@ import de.hybris.platform.converters.Populator;
 import de.hybris.platform.servicelayer.dto.converter.ConversionException;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 
+import org.springframework.beans.factory.annotation.Required;
+
 import it.uiip.airport.core.model.AirportModel;
 import it.uiip.airport.core.model.FlightModel;
 import it.uiip.airport.core.model.PlaneModel;
@@ -35,5 +37,35 @@ public class FlightPopulator implements Populator<FlightModel, FlightData>
 		target.setTimeDep(source.getTimeDep());
 		target.setTimeArr(source.getTimeArr());
 	}
+
+	/**
+	 * @return the airportConverter
+	 */
+	public Converter<AirportModel, AirportData> getAirportConverter()
+	{
+		return airportConverter;
+	}
+
+	@Required
+	public void setAirportConverter(final Converter<AirportModel, AirportData> airportConverter)
+	{
+		this.airportConverter = airportConverter;
+	}
+
+	/**
+	 * @return the planeConverter
+	 */
+	public Converter<PlaneModel, PlaneData> getPlaneConverter()
+	{
+		return planeConverter;
+	}
+
+	@Required
+	public void setPlaneConverter(final Converter<PlaneModel, PlaneData> planeConverter)
+	{
+		this.planeConverter = planeConverter;
+	}
+
+
 
 }

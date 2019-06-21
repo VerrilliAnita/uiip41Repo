@@ -72,7 +72,7 @@
 	</bean>
 	
 	<alias alias="flightService" name="defaultFlightService"/>
-	<bean id="defaultFlightService" class="it.uiip.airport.core.service.FlightService" >
+	<bean id="defaultFlightService" class="it.uiip.airport.core.service.impl.DefaultFlightService" >
 		<property name="flightDao" ref="flightDao"></property>
 	</bean>
 
