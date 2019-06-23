@@ -9,11 +9,11 @@ public class PassengerPopulator implements Populator <PassengerModel,PassengerDa
 
 	@Override
 	public void populate(PassengerModel source, PassengerData target) throws ConversionException {
+		target.setUid(source.getUid());
 		target.setName(source.getName());
 		target.setCodeFiscal(source.getCodeFiscal());
 		target.setBirthday(source.getBirthday());
 		target.setAge(source.getAge());
-		
 	}
 
 }

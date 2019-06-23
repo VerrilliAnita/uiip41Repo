@@ -7,6 +7,7 @@ import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.model.FlightModel;
@@ -20,6 +21,9 @@ import it.uiip.airport.facades.data.FlightData;
  */
 public class DefaultFlightFacade implements FlightFacade
 {
+	
+	private static final Logger LOG = Logger.getLogger(DefaultFlightFacade.class);
+	
 	private FlightService flightService;
 	private Converter<FlightModel, FlightData> flightConverter;
 
@@ -57,6 +61,12 @@ public class DefaultFlightFacade implements FlightFacade
 	public void setFlightConverter(final Converter<FlightModel, FlightData> flightConverter)
 	{
 		this.flightConverter = flightConverter;
+	}
+
+	@Override
+	public List<FlightData> findFlightById(String codeFlight) {
+		LOG.info("call method --> findFlightById(String codeFlight) in DefaultFlightFacade");
+		return flightConverter.convertAll(flightService.findFlightById(codeFlight));
 	}
 
 

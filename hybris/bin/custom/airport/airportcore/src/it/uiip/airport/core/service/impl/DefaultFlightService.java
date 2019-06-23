@@ -37,6 +37,13 @@ public class DefaultFlightService implements FlightService {
 		LOG.info("Invoke method findAllFlight in DefaultFlightService");
 		return flightDao.findAllFlight();
 	}
+	
+
+	@Override
+	public List<FlightModel> findFlightById(String codeFlight) {
+		LOG.info("Invoke method findFlightById in DefaultFlightService");
+		return flightDao.findFlightById(codeFlight);
+	}
 
 
 	/**

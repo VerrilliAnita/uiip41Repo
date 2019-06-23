@@ -51,4 +51,16 @@ public class DefaultPassengerService extends DefaultUserService implements Passe
 		this.passengerDao = passengerDao;
 	}
 
+	@Override
+	public List<PassengerModel> getPassengersForRoute(String codeRoute) {
+		LOG.info("Invoke method getPassengersForRoute(String codeRoute) in DefaultPassengerService");
+		return passengerDao.findPassengersByRoute(codeRoute);
+	}
+
+	@Override
+	public PassengerModel getPassengerForId(String uid) {
+		LOG.info("Invoke method getPassengerForId(String uid) in DefaultPassengerService");
+		return passengerDao.findPassengerById(uid);
+	}
+
 }

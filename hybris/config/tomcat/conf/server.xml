@@ -102,7 +102,7 @@
       			appBase="webapps"
 		       	unpackWARs="false"
 		       	autoDeploy="false"
-		       	startStopThreads="${tomcat.startStopThreads}">
+		       	>
 		       	
 		        <Valve className="org.apache.catalina.valves.ErrorReportValve" 
 		               showReport="${tomcat.errorReport.showReport}" 

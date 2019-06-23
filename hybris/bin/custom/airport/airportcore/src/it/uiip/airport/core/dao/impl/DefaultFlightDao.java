@@ -10,15 +10,20 @@ import de.hybris.platform.servicelayer.search.SearchResult;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import it.uiip.airport.core.dao.FlightDao;
 import it.uiip.airport.core.model.FlightModel;
+import it.uiip.airport.core.service.impl.DefaultFlightService;
 
 /**
  * @author soprasteria
  *
  */
 public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements FlightDao{
-
+	
+	private static final Logger LOG = Logger.getLogger(DefaultFlightDao.class);
+	
 	public DefaultFlightDao(final String typecode) {
 		super(typecode);
 		// TODO Auto-generated constructor stub
@@ -62,6 +67,18 @@ public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements 
 		queryString.append("SELECT {f.pk} ");
 		queryString.append("FROM {Flight AS f}}");
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryString);
+		final SearchResult<FlightModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
+
+	@Override
+	public List<FlightModel> findFlightById(String codeFlight) {
+		LOG.info("Invoke method findFlightById(String codeFlight) in DefaultFlightDao");
+		final StringBuilder queryString = new StringBuilder();
+		queryString.append("SELECT {f.pk} FROM {Flight AS f}");
+		queryString.append("WHERE {f.codeFlight} = ?codeFlight");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryString);
+		fsq.addQueryParameter("codeFlight", codeFlight);
 		final SearchResult<FlightModel> result = getFlexibleSearchService().search(fsq);
 		return result.getResult();
 	}

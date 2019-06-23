@@ -37,8 +37,6 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 	@Override
 	public List<PassengerModel> findPassengersByFlightDate(final Date date)
 	{
-
-		final StringBuilder queryString = new StringBuilder();
 		final StringBuilder queryStr = new StringBuilder();
 		queryStr.append("SELECT {P:PK}");
 		queryStr.append("FROM{Passenger as P JOIN PassengerRouteRelation as rel");
@@ -66,6 +64,32 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
 		return result.getResult();
+	}
+
+	@Override
+	public List<PassengerModel> findPassengersByRoute(String codeRoute) {
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("SELECT {p.PK} FROM { Passenger AS p ");
+		queryStr.append("JOIN PassengerRouteRelation AS pr ON {pr.source} = {p.pk} ");
+		queryStr.append("JOIN Route AS r ON {pr.target} = {r.pk} ");
+		queryStr.append("} WHERE {r.codeRoute} = ?codeRoute");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("codeRoute", codeRoute);
+		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
+
+	@Override
+	public PassengerModel findPassengerById(String uid) {
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("SELECT {p.pk} FROM { Passenger AS p ");
+		queryStr.append("} WHERE {p.uid} = ?uid");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("uid", uid);
+		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
+		if(result.getResult().isEmpty())
+			return null;
+		return result.getResult().get(0);
 	}
 
 

@@ -45,11 +45,34 @@
 	
 	</bean>
 	
+	<!-- TICKET DAO-->
+	<alias name="defaultTicketPlaneDao" alias="ticketPlaneDao"/>
+	<bean id="defaultTicketPlaneDao" class="it.uiip.airport.core.dao.impl.DefaultTicketPlaneDao">
+		<constructor-arg value="#{T(it.uiip.airport.core.model.TicketModel)._TYPECODE}"/>
+	</bean>
+	
+	<!-- TICKET SERVICE -->
+	<alias name="defaultTicketPlaneService" alias="ticketPlaneService"/>
+	<bean id="defaultTicketPlaneService" class="it.uiip.airport.core.service.impl.DefaultTicketPlaneService">
+		<property name="ticketPlaneDao" ref="ticketPlaneDao"></property>
+	</bean>
+	
+	<!-- ROUTE DAO -->
+	<alias name="defaultRouteDao" alias="routeDao"/>
+	<bean id="defaultRouteDao" class="it.uiip.airport.core.dao.impl.DefaultRouteDao">
+		<constructor-arg value="#{T(it.uiip.airport.core.model.RouteModel)._TYPECODE}"/>
+	</bean>
+	
+	<!-- ROUTE SERVICE -->
+	<alias name="defaultRoutePlaneService" alias="routePlaneService"/>
+	<bean id="defaultRoutePlaneService" class="it.uiip.airport.core.service.impl.DefaultRoutePlaneService">
+		<property name="routeDao" ref="routeDao"></property>
+	</bean>
+	
 	<alias alias="airportService" name="defaultAirportService"/>
 	<bean id="defaultAirportService" class="it.uiip.airport.core.service.impl.DefaultAirportService" >
 		<property name="airportDao" ref="airportDao"></property>
 	</bean>
-	
 	
 	<alias name="defaultFlightDao" alias="flightDao"/>
 	<bean id="defaultFlightDao" class="it.uiip.airport.core.dao.impl.DefaultFlightDao">
