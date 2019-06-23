@@ -39,7 +39,7 @@ public class DefaultTicketDao extends DefaultGenericDao<TicketModel> implements 
 		final StringBuilder queryStr = new StringBuilder();
 		queryStr.append("SELECT * FROM {Ticket as T JOIN Route AS R");
 		queryStr.append("ON {T.route} = {T.PK} }");
-		queryStr.append("WHERE {R.coseRoute} = ?codeRoute");
+		queryStr.append("WHERE {R.codeRoute} = ?codeRoute");
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		fsq.addQueryParameter("codeRoute", codeRoute);
 		final SearchResult<TicketModel> result = getFlexibleSearchService().search(fsq);
