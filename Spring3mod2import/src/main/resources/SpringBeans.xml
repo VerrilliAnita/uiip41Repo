@@ -1,0 +1,14 @@
+<!-- Spring-Common.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="AppConfig" class="com.mkyong.config.AppConfig"/>
+	<bean id="CustomerConfig" class="com.mkyong.config.CustomerConfig"/>
+	<bean id="SchedulerConfig" class="com.mkyong.config.SchedulerConfig"/>
+	
+	<bean id="CustomerBo" class="com.mkyong.core.CustomerBo" />
+	<bean id="SchedulerBo" class="com.mkyong.core.SchedulerBo" />
+		
+</beans>
