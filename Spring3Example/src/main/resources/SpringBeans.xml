@@ -1,0 +1,13 @@
+<!-- Spring-Common.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="CustomerBo" class="com.mkyong.core.CustomerBo"/>
+	<bean id="SchedulerBo" class="com.mkyong.core.SchedulerBo"/>
+	<bean id="AppConfig" class="com.mkyong.config.AppConfig" />
+	<bean id="CustomerConfig" class="com.mkyong.CustomerConfig" />
+	<bean id="HelloWorldImpl" class="com.mkyong.hello/impl/HelloWorldImpl" />
+		
+</beans>
