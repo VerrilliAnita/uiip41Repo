@@ -38,7 +38,6 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 	public List<PassengerModel> findPassengersByFlightDate(final Date date)
 	{
 
-		final StringBuilder queryString = new StringBuilder();
 		final StringBuilder queryStr = new StringBuilder();
 		queryStr.append("SELECT {P:PK}");
 		queryStr.append("FROM{Passenger as P JOIN PassengerRouteRelation as rel");
@@ -59,11 +58,41 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 	@Override
 	public List<PassengerModel> findAllPassengers()
 	{
-		final StringBuilder queryString = new StringBuilder();
+		
 		final StringBuilder queryStr = new StringBuilder();
 		queryStr.append("SELECT {P:PK}");
 		queryStr.append("FROM{Passenger as P}}");
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
+	
+
+	@Override
+	public PassengerModel findPassengerById(String passengerId) {
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("SELECT {p.pk} FROM { Passenger AS p ");
+		queryStr.append("} WHERE {p.uid} = ?passengerId");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("passengerId", passengerId);
+		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
+		if(result.getResult().isEmpty())
+			return null;
+		return result.getResult().get(0);
+	}
+
+
+	@Override
+	public List<PassengerModel> findPassengersByRoute(String codeRoute) {
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("SELECT {P:PK},{T.idSit}");
+		queryStr.append("FROM{Passenger as P JOIN PassengerRouteRelation as rel");
+		queryStr.append("ON {P:PK} = {rel:source}");
+		queryStr.append("JOIN Route AS R ON {rel:target} = {R:PK}");
+		queryStr.append("JOIN Ticket AS T ON {R:PK} ={T.route}");
+		queryStr.append("} WHERE {R.codeRoute} LIKE '?codeRoute'");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("codeRoute", codeRoute);
 		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
 		return result.getResult();
 	}

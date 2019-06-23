@@ -20,6 +20,20 @@ public class DefaultPassengerFacade implements PassengerFacade {
 	public List<PassengerData> getPassengersForDate(Date date) {
 		return passengerConverter.convertAll(passengerService.getPassengersForDate(date));
 	}
+	
+	@Override
+	public List<PassengerData> getPassengersForRoute(String codeRoute) {
+		// TODO Auto-generated method stub
+		return passengerConverter.convertAll(passengerService.getPassengersForRoute(codeRoute));
+	}
+	
+	@Override
+	public PassengerData getPassengerForId(String uid) {
+		// TODO Auto-generated method stub
+		return passengerConverter.convert(passengerService.getPassengerForId(uid));
+	}
+	
+	
 
 	public PassengerService getPassengerService() {
 		return passengerService;
@@ -37,5 +51,9 @@ public class DefaultPassengerFacade implements PassengerFacade {
 	public void setPassengerConverter(Converter<PassengerModel, PassengerData> passengerConverter) {
 		this.passengerConverter = passengerConverter;
 	}
+
+	
+
+	
 
 }

@@ -49,10 +49,26 @@
 	</bean>
 	
 	<bean class="it.uiip.airport.facades.data.PassengerData">
+		<property name="uid" type="String"></property>
  		<property name="codeFiscal" type="String"></property>
  		<property name="name" type="String"></property>
  		<property name="birthday" type="java.util.Date"></property>
  		<property name="age" type="Integer"></property>
+	</bean>
+	
+	<bean class="it.uiip.airport.facades.data.RouteData">
+ 		<property name="codeRoute" type="String"></property>
+ 		<property name="flight" type="it.uiip.airport.facades.data.FlightData"></property>
+ 		<property name="dateRouteDep" type="java.util.Date"></property>
+ 		<property name="dateRouteArr" type="java.util.Date"></property>
+	</bean>
+	
+	<bean class="it.uiip.airport.facades.data.TicketData">
+ 		<property name="codeTicket" type="String"></property>
+ 		<property name="passenger" type="it.uiip.airport.facades.data.PassengerData"></property>
+ 		<property name="route" type="it.uiip.airport.facades.data.RouteData"></property>
+ 		<property name="idSit" type="String"></property>
+ 		<property name="price" type="Double"></property>
 	</bean>
 
 </beans>

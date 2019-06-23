@@ -73,3 +73,12 @@ INSERT_UPDATE Route; codeRoute[unique=true];  flight(codeFlight); dateRouteDep [
 	;R8	;v8	;19.04.2018 07:11:45; 19.04.2018 16:45:12; 4, 5, 6, 7, 8, 9, 10, 11, 12
 
 
+INSERT_UPDATE Ticket; codeTicket[unique=true];  passenger(uid); route(codeRoute); idSit; price
+	;T1;1;R1;C4;66.99
+	;T2;2;R1;C7;57.99
+	;T3;3;R1;C9;78.99
+	;T4;4;R1;C5;45.99
+	;T5;5;R1;C2;77.99
+	;T6;6;R1;C3;33.99
+	;T7;7;R1;C6;77.99
+	;T8;8;R1;C8;73.99

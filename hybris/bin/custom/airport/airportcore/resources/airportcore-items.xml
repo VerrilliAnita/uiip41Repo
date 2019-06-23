@@ -166,7 +166,7 @@
 		
 		
 		<itemtype code="Passenger" extends="User" generate="true" autocreate="true">
-			<deployment table="passenger" typecode="23000" />
+			<deployment table="passenger" typecode="21349" />
 			<attributes>
 				<attribute qualifier="codeFiscal" type="java.lang.String">
 					<persistence type="property"></persistence>
@@ -182,6 +182,33 @@
 				</attribute>
 			</attributes>
 		</itemtype>
+		
+		<itemtype code="Ticket" generate="true" autocreate="true">
+			<deployment table="ticket" typecode="21350" />
+			<attributes>
+				<attribute qualifier="codeTicket" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="passenger" type="Passenger">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
+				<attribute qualifier="route" type="Route">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
+				<attribute qualifier="idSit" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
+				<attribute qualifier="price" type="java.lang.Double">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+		
 
 		<!-- TypeGroups are for structure of this file only -->
 

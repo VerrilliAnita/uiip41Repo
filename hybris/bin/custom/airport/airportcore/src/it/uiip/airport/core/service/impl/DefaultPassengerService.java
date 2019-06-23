@@ -38,6 +38,18 @@ public class DefaultPassengerService extends DefaultUserService implements Passe
 		LOG.info("Invoke method findPassengersByFlightDate in DefaultPassengerService");
 		return passengerDao.findPassengersByFlightDate(date);
 	}
+	
+	@Override
+	public List<PassengerModel> getPassengersForRoute(String codeRoute) {
+		LOG.info("Invoke method findPassengersByFlightDate in DefaultPassengerService");
+		return passengerDao.findPassengersByRoute(codeRoute);
+	}
+
+	@Override
+	public PassengerModel getPassengerForId(String uid) {
+		LOG.info("Invoke method findPassengersByFlightDate in DefaultPassengerService");
+		return passengerDao.findPassengerById(uid);
+	}
 
 	public PassengerDao getPassengerDao()
 	{
@@ -50,5 +62,7 @@ public class DefaultPassengerService extends DefaultUserService implements Passe
 	{
 		this.passengerDao = passengerDao;
 	}
+
+	
 
 }
