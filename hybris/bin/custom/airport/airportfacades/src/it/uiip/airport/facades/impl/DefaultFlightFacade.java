@@ -33,10 +33,10 @@ public class DefaultFlightFacade implements FlightFacade {
 	public List<FlightData> getAllFlight() {
 		return flightConverter.convertAll(flightService.getAllFlight());
 	}
+	
 	@Override
-	public FlightData getFlightForId(String codeFlight) {
-		// TODO Auto-generated method stub
-		return flightConverter.convert(flightService.getFlightForId(codeFlight));
+	public FlightData getFlightForCodeFlight(String codeFlight) {
+		return flightConverter.convert(flightService.getFlightForCodeFlight(codeFlight));
 	}
 
 	public FlightService getFlightService() {
@@ -59,5 +59,6 @@ public class DefaultFlightFacade implements FlightFacade {
 	public void setFlightConverter(final Converter<FlightModel, FlightData> flightConverter) {
 		this.flightConverter = flightConverter;
 	}
+	
 
 }

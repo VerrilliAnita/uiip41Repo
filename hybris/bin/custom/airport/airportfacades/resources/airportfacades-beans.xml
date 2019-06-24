@@ -61,10 +61,11 @@
  		<property name="flight" type="it.uiip.airport.facades.data.FlightData"></property>
  		<property name="dateRouteDep" type="java.util.Date"></property>
  		<property name="dateRouteArr" type="java.util.Date"></property>
-	</bean>
+ 		<property name="tickets" type="java.util.List&lt;it.uiip.airport.facades.data.TicketAirportData>"/>
+ 	</bean>
 	
-	<bean class="it.uiip.airport.facades.data.TicketData">
- 		<property name="codeTicket" type="String"></property>
+	<bean class="it.uiip.airport.facades.data.TicketAirportData">
+ 		<property name="codeTicketAirport" type="String"></property>
  		<property name="passenger" type="it.uiip.airport.facades.data.PassengerData"></property>
  		<property name="route" type="it.uiip.airport.facades.data.RouteData"></property>
  		<property name="idSit" type="String"></property>

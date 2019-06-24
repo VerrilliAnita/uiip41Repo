@@ -8,7 +8,7 @@ import de.hybris.platform.servicelayer.search.SearchResult;
 import it.uiip.airport.core.dao.RouteDao;
 import it.uiip.airport.core.model.RouteModel;
 
-public class DefaultRouteDao extends DefaultGenericDao<RouteModel> implements RouteDao{
+public class DefaultRouteDao extends DefaultGenericDao<RouteModel> implements RouteDao {
 
 	public DefaultRouteDao(String typecode) {
 		super(typecode);
@@ -25,7 +25,7 @@ public class DefaultRouteDao extends DefaultGenericDao<RouteModel> implements Ro
 		fsq.addQueryParameter("codeFlight", codeFlight);
 		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
 		return result.getResult().get(0);
-		
+
 	}
 
 	@Override
@@ -37,4 +37,16 @@ public class DefaultRouteDao extends DefaultGenericDao<RouteModel> implements Ro
 		return result.getResult();
 	}
 
+	@Override
+	public RouteModel findRouteByCodeRoute(String codeRoute) {
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("SELECT {r.pk} FROM {Route as r} ");
+		queryStr.append("WHERE {r.codeRoute} = ?codeRoute");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("codeRoute", codeRoute);
+		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		if (result.getResult().isEmpty())
+			return null;
+		return result.getResult().get(0);
+	}
 }

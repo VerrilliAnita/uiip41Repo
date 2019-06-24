@@ -39,9 +39,9 @@ public class DefaultFlightService implements FlightService {
 	}
 	
 	@Override
-	public FlightModel getFlightForId(String codeFlight) {
+	public FlightModel getFlightForCodeFlight(String codeFlight) {
 		LOG.info("Invoke method getFlightForId in DefaultFlightService");
-		return flightDao.findFlightById(codeFlight);
+		return flightDao.findFlightByCodeFlight(codeFlight);
 	}
 
 

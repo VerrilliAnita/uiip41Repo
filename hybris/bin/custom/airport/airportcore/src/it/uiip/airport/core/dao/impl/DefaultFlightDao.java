@@ -68,11 +68,11 @@ public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements 
 	}
 
 	@Override
-	public FlightModel findFlightById(String codeFlight) {
+	public FlightModel findFlightByCodeFlight(String codeFlight) {
 		FlightModel result = null;
 		final StringBuilder queryString = new StringBuilder();
 		queryString.append("SELECT {f.pk} ");
-		queryString.append("FROM {Flight AS f}}");
+		queryString.append("FROM {Flight AS f}");
 		queryString.append("WHERE {f.codeFlight} = ?codeFlight");
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryString);
 		fsq.addQueryParameter("codeFlight", codeFlight);
