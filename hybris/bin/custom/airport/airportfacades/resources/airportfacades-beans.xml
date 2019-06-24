@@ -35,11 +35,12 @@
 		<property name="goods" type="Integer"/>
 	</bean>
 	
-	<bean class="it.uiip.airport.facades.data.RouteData">
+	<bean class="it.uiip.airport.facades.data.AirportRouteData">
 		<property name="codeRoute" type="String"/>
 		<property name="flight" type="it.uiip.airport.facades.data.FlightData"/>
 		<property name="dateRouteDep" type="java.util.Date"/>
 		<property name="dateRouteArr" type="java.util.Date"/>
+		<property name="tickets" type="java.util.List&lt;it.uiip.airport.facades.data.AirportTicketData>"/>
 	</bean>
 	
 	<bean class="it.uiip.airport.facades.data.FlightData">
@@ -62,10 +63,9 @@
  		<property name="age" type="Integer"></property>
 	</bean>
 	
-	<bean class="it.uiip.airport.facades.data.TicketData">
-		<property name="codeTicket" type="String"/>
+	<bean class="it.uiip.airport.facades.data.AirportTicketData">
+		<property name="codeAirportTicket" type="String"/>
 		<property name="passenger" type="it.uiip.airport.facades.data.PassengerData"/>
-		<property name="route" type="it.uiip.airport.facades.data.RouteData"/>
 		<property name="price" type="Integer"/>
 		<property name="seat" type="String"/>
 	</bean>

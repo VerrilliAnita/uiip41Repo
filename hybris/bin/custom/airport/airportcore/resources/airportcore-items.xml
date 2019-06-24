@@ -55,27 +55,34 @@
 			<modifiers read="true" write="true" search="true" optional="true"/>	
 			</targetElement>
 		</relation>
+		
+		<relation localized="false" code="Ticket2Route">
+			<sourceElement qualifier="route" type="Route" cardinality="one">
+				<modifiers read="true" write="true" search="true" optional="false"/>		
+			</sourceElement>
+			<targetElement qualifier="airportTickets" type="AirportTicket" 
+						   cardinality="many" collectiontype="set">
+				<modifiers read="true" write="true" search="true" optional="true"/>	
+			</targetElement>
+		</relation>
 	</relations>
 	<itemtypes>
 
 		<!-- Add your item definitions here -->
-		<itemtype code="Ticket" generate="true" autocreate="true">
-			<deployment table="ticket" typecode="21350" />
+		<itemtype code="AirportTicket" generate="true" autocreate="true">
+			<deployment table="airportTicket" typecode="21350" />
 			<attributes>
-				<attribute qualifier="codeTicket" type="java.lang.String">
+				<attribute qualifier="codeAirportTicket" type="java.lang.String">
 					<persistence type="property"></persistence>
 					<modifiers optional="false"/>
 				</attribute>
 				<attribute qualifier="passenger" type="Passenger">
 					<persistence type="property"></persistence>
-				</attribute>
-				<attribute qualifier="route" type="Route">
-					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
+					<modifiers optional="false"/>
 				</attribute>
 				<attribute qualifier="price" type="java.lang.Integer">
 					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
+					<modifiers optional="false"/>
 				</attribute>
 				<attribute qualifier="seat" type="java.lang.String">
 					<persistence type="property"></persistence>
@@ -83,8 +90,6 @@
 				</attribute>
 			</attributes>
 		</itemtype>
-
-
 
 		<itemtype code="Airport" generate="true" autocreate="true">
 			<deployment table="airport" typecode="21345" />

@@ -6,12 +6,13 @@
 <title>InfoFlight</title>
 </head>
 <body>
-	<h1>dot notation ${tickets.get(0).flight.codeFlight}</h1>
-	<h1>${codeFlight}</h1>
+	<h1>Route code: ${route.getCodeRoute()}</h1>
+	<h1>Time departed ${route.getDateRouteDep()}</h1>
+	<h1>Time Arrived ${route.getDateRouteArr()}</h1>
+	
 	<ul>
-		<c:forEach var="ticket" items="${tickets}">
-			<li>${ticket.passenger.name}</li>
-			<li>${ticket.seat}</li>
+		<c:forEach var="ticket" items="${route.tickets}">
+			<li>${ticket.passenger.name} , ${ticket.seat}</li>
 		</c:forEach>
 	</ul>
 </body>

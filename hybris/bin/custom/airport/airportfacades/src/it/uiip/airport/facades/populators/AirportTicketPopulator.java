@@ -9,12 +9,11 @@ import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 import org.springframework.beans.factory.annotation.Required;
 
+import it.uiip.airport.core.model.AirportTicketModel;
 import it.uiip.airport.core.model.PassengerModel;
-import it.uiip.airport.core.model.RouteModel;
-import it.uiip.airport.core.model.TicketModel;
+import it.uiip.airport.facades.data.AirportTicketData;
 import it.uiip.airport.facades.data.PassengerData;
-import it.uiip.airport.facades.data.RouteData;
-import it.uiip.airport.facades.data.TicketData;
+
 
 
 
@@ -23,18 +22,16 @@ import it.uiip.airport.facades.data.TicketData;
  * @author soprasteria
  *
  */
-public class TicketPopulator implements Populator<TicketModel, TicketData>
+public class AirportTicketPopulator implements Populator<AirportTicketModel, AirportTicketData>
 {
 	private Converter<PassengerModel, PassengerData> passengerConverter;
-	private Converter<RouteModel, RouteData> routeConverter;
 
 
 	@Override
-	public void populate(final TicketModel source, final TicketData target) throws ConversionException
+	public void populate(final AirportTicketModel source, final AirportTicketData target) throws ConversionException
 	{
-		target.setCodeTicket(source.getCodeTicket());
+		target.setCodeAirportTicket(source.getCodeAirportTicket());
 		target.setPassenger(passengerConverter.convert(source.getPassenger()));
-		target.setRoute(routeConverter.convert(source.getRoute()));
 		target.setPrice(source.getPrice());
 		target.setSeat(source.getSeat());
 	}
@@ -53,23 +50,6 @@ public class TicketPopulator implements Populator<TicketModel, TicketData>
 	{
 		this.passengerConverter = passengerConverter;
 	}
-
-
-	/**
-	 * @return the routeConverter
-	 */
-	public Converter<RouteModel, RouteData> getRouteConverter()
-	{
-		return routeConverter;
-	}
-
-
-	@Required
-	public void setRouteConverter(final Converter<RouteModel, RouteData> routeConverter)
-	{
-		this.routeConverter = routeConverter;
-	}
-
 
 
 }
