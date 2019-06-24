@@ -98,6 +98,20 @@
 	<bean id="defaultFlightService" class="it.uiip.airport.core.service.impl.DefaultFlightService" >
 		<property name="flightDao" ref="flightDao"></property>
 	</bean>
+	
+	<!-- PASSENGER INTERCEPTOR -->
+	<!-- PASSENGER REMOVE -->
+	<alias name="defaultPassengerRemoveInterceptor" alias="passengerRemoveInterceptor"/>
+	<bean id="defaultPassengerRemoveInterceptor" class="it.uiip.airport.core.interceptors.PassengerRemoveInterceptor">
+		<property name="ticketPlaneService" ref="ticketPlaneService"/>
+	</bean>
+
+	<!-- HANDLER INTERCEPTOR -->
+	<bean id="MyValidateInterceptorMapping" 
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="passengerRemoveInterceptor" />
+		<property name="typeCode" value="Passenger" />
+	</bean>
 
 	<bean id="volumeAwareProductPriceValueProvider" class="it.uiip.airport.core.search.solrfacetsearch.provider.impl.VolumeAwareProductPriceValueProvider"  parent="abstractPropertyFieldValueProvider">
         <property name="fieldNameProvider" ref="solrFieldNameProvider"/>

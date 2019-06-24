@@ -44,6 +44,7 @@
 	</enumtypes>
 	
 	<relations>
+		<!-- 
 		<relation localized="false" code="PassengerRouteRelation" autocreate="true" generate="true">
 		<deployment table="Pass2Rout" typecode="21099"/>
 			<sourceElement qualifier="passenger" type="Passenger" cardinality="many" 
@@ -55,6 +56,7 @@
 			<modifiers read="true" write="true" search="true" optional="true"/>	
 			</targetElement>
 		</relation>
+		 -->
 		<relation localized="false" code="TicketRouteRelation" autocreate="true" generate="true">
 			<sourceElement qualifier="route" type="Route" cardinality="one" >
 				<modifiers read="true" write="true" search="true" optional="true"/>		
