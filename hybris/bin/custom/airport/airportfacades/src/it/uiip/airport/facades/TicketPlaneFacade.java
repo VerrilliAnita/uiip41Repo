@@ -12,7 +12,7 @@ import it.uiip.airport.facades.data.TicketData;
  * @author soprasteria
  *
  */
-public interface TicketFacade
+public interface TicketPlaneFacade
 {
-	public List<TicketData> getTicketsForCodeTicket(String codeTicket);
+	public List<TicketData> getTicketsForRoute(String code);
 }

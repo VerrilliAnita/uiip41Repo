@@ -15,7 +15,9 @@ import java.util.List;
  * @author soprasteria
  *
  */
-public interface TicketDao extends GenericDao<TicketModel>
+public interface TicketPlaneDao extends GenericDao<TicketModel>
 {
-	public List<TicketModel> findTicketsByCodeTicket(String codeTicket);
+	public List<TicketModel> findTicketsByRoute(String code);
+	public List<TicketModel> findsTicketsPlaneByPassenger(String codePassenger);
+
 }

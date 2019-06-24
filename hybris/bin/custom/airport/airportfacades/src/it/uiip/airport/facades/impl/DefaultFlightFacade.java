@@ -59,6 +59,11 @@ public class DefaultFlightFacade implements FlightFacade
 		this.flightConverter = flightConverter;
 	}
 
+	@Override
+	public FlightData getFlightById(String codeFlight) {
+		return flightConverter.convert(flightService.getFlightForId(codeFlight));
+	}
+
 
 
 }

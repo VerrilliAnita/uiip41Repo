@@ -23,10 +23,11 @@ import it.uiip.airport.facades.data.TicketData;
  * @author soprasteria
  *
  */
-public class TicketPopulator implements Populator<TicketModel, TicketData>
+public class TicketPlanePopulator implements Populator<TicketModel, TicketData>
 {
 	private Converter<PassengerModel, PassengerData> passengerConverter;
-	private Converter<RouteModel, RouteData> routeConverter;
+
+
 
 
 	@Override
@@ -34,7 +35,7 @@ public class TicketPopulator implements Populator<TicketModel, TicketData>
 	{
 		target.setCodeTicket(source.getCodeTicket());
 		target.setPassenger(passengerConverter.convert(source.getPassenger()));
-		target.setRoute(routeConverter.convert(source.getRoute()));
+		
 		target.setPrice(source.getPrice());
 		target.setSit(source.getSit());
 	}
@@ -55,21 +56,7 @@ public class TicketPopulator implements Populator<TicketModel, TicketData>
 	}
 
 
-	/**
-	 * @return the routeConverter
-	 */
-	public Converter<RouteModel, RouteData> getRouteConverter()
-	{
-		return routeConverter;
-	}
-
-
-	@Required
-	public void setRouteConverter(final Converter<RouteModel, RouteData> routeConverter)
-	{
-		this.routeConverter = routeConverter;
-	}
-
+	
 
 
 }
