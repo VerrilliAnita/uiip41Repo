@@ -75,6 +75,19 @@
 	<bean id="defaultFlightService" class="it.uiip.airport.core.service.impl.DefaultFlightService" >
 		<property name="flightDao" ref="flightDao"></property>
 	</bean>
+	
+	<alias name="defaultTicketDao" alias="ticketDao"/>
+	<bean id="defaultTicketDao" class="it.uiip.airport.core.dao.impl.DefaultTicketDao">
+		<constructor-arg value="#{T(it.uiip.airport.core.model.TicketModel)._TYPECODE}"/>
+	</bean>
+	
+	<alias name="defaultTicketService" alias="ticketService"/>
+	<bean id="defaultTicketService" class="it.uiip.airport.core.service.impl.DefaultTicketService">
+		<property name="ticketDao" ref="ticketDao"></property>
+	</bean>
+	
+	
+	
 
 	<bean id="volumeAwareProductPriceValueProvider" class="it.uiip.airport.core.search.solrfacetsearch.provider.impl.VolumeAwareProductPriceValueProvider"  parent="abstractPropertyFieldValueProvider">
         <property name="fieldNameProvider" ref="solrFieldNameProvider"/>

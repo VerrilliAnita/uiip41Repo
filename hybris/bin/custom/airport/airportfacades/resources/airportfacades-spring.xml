@@ -136,6 +136,51 @@
 		alias="passengerPopulator" />
 	<bean id="defaultPassengerPopulator"
 		class="it.uiip.airport.facades.populators.PassengerPopulator"></bean>
+		
+		<alias alias="routeConverter" name="defaultRouteConverter" />
+	<bean id="defaultRouteConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.RouteData" />
+		<property name="populators">
+			<list>
+				<ref bean="routePopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultRoutePopulator" alias="routePopulator" />
+	<bean id="defaultRoutePopulator"
+		class="it.uiip.airport.facades.populators.RoutePopulator">
+		<property name="flightConverter" ref="flightConverter"/>
+	</bean>
+
+
+	<alias alias="ticketFacade" name="defaultTicketFacade" />
+	<bean id="defaultTicketFacade"
+		class="it.uiip.airport.facades.impl.DefaultTicketFacade">
+		<property name="ticketService" ref="ticketService" />
+		<property name="ticketConverter" ref="ticketConverter" />
+	</bean>
+
+	<alias alias="ticketConverter" name="defaultTicketConverter" />
+	<bean id="defaultTicketConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.TicketData" />
+		<property name="populators">
+			<list>
+				<ref bean="ticketPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultTicketPopulator" alias="ticketPopulator" />
+	<bean id="defaultTicketPopulator"
+		class="it.uiip.airport.facades.populators.TicketPopulator">
+		<property name="passengerConverter" ref="passengerConverter" />
+		<property name="routeConverter" ref="routeConverter" />
+	</bean>
 
 
 	<alias alias="simpleSuggestionFacade"
