@@ -55,7 +55,29 @@
 			<modifiers read="true" write="true" search="true" optional="true"/>	
 			</targetElement>
 		</relation>
-	</relations>
+	
+	
+<relation generate="true" autocreate="true" code="TicketRouteRelation" localized="false">
+
+
+
+
+<sourceElement type="Route" cardinality="one" qualifier="route">
+
+<modifiers optional="true" search="true" write="true" read="true"/>
+
+</sourceElement>
+
+
+<targetElement type="Ticket" collectiontype="set" cardinality="many" qualifier="ticket">
+
+<modifiers optional="true" search="true" write="true" read="true"/>
+
+</targetElement>
+
+</relation>
+
+</relations>
 	<itemtypes>
 
 		<!-- Add your item definitions here -->
@@ -143,7 +165,7 @@
 		</itemtype>
 		
 		<itemtype code="Route" generate="true" autocreate="true">
-			<deployment table="route" typecode="21348" />
+			<deployment table="route" typecode="21340" />
 			<attributes>
 				<attribute qualifier="codeRoute" type="java.lang.String">
 						<persistence type="property"></persistence>
@@ -153,17 +175,39 @@
 						<persistence type="property"></persistence>
 						<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="dateRouteDep" type="java.util.Date">
+				<attribute qualifier="dataRouteDep" type="java.util.Date">
 						<persistence type="property"></persistence>
 						<modifiers optional="true"/>
 				</attribute>
-				<attribute qualifier="dateRouteArr" type="java.util.Date">
+				<attribute qualifier="dataRouteArr" type="java.util.Date">
 						<persistence type="property"></persistence>
 						<modifiers optional="true"/>
 				</attribute>
 			</attributes>
 		</itemtype>
 		
+			<itemtype code="Ticket" generate="true" autocreate="true">
+			<deployment table="ticket" typecode="21358" />
+			<attributes>
+				<attribute qualifier="codeTicket" type="java.lang.String">
+						<persistence type="property"></persistence>
+						<modifiers optional="false"/>
+				</attribute>
+			
+				<attribute qualifier="passenger" type="Passenger">
+						<persistence type="property"></persistence>
+						<modifiers optional="true"/>
+				</attribute>
+				<attribute qualifier="price" type="java.lang.Double">
+						<persistence type="property"></persistence>
+						<modifiers optional="true"/>
+				</attribute>
+				<attribute qualifier="sit" type="java.lang.Integer">
+						<persistence type="property"></persistence>
+						<modifiers optional="true"/>
+				</attribute>
+			</attributes>
+		</itemtype>
 		
 		<itemtype code="Passenger" extends="User" generate="true" autocreate="true">
 			<deployment table="passenger" typecode="23000" />

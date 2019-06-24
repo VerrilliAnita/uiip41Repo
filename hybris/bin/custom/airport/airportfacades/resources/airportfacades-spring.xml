@@ -136,6 +136,78 @@
 		alias="passengerPopulator" />
 	<bean id="defaultPassengerPopulator"
 		class="it.uiip.airport.facades.populators.PassengerPopulator"></bean>
+		
+		<alias alias="routePlaneFacade" name="defaultRoutePlaneFacade" />
+	<bean id="defaultRoutePlaneFacade"
+		class="it.uiip.airport.facades.impl.DefaultRoutePlaneFacade">
+		<property name="routePlaneService" ref="routePlaneService" />
+		<property name="routePlaneConverter" ref="routePlaneConverter" />
+	</bean>
+
+
+	<alias alias="routePlaneConverter" name="defaultRouteConverter" />
+	<bean id="defaultRouteConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.RouteData" />
+		<property name="populators">
+			<list>
+				<ref bean="routePlanePopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultRoutePlanePopulator" alias="routePlanePopulator" />
+	<bean id="defaultRoutePlanePopulator"
+		class="it.uiip.airport.facades.populators.RoutePlanePopulator">
+		<property name="flightConverter" ref="flightConverter" />
+		<property name="ticketPlaneConverter" ref="ticketPlaneConverter" />
+	</bean>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		<alias alias="ticketPlaneFacade" name="defaultTicketPlaneFacade" />
+	<bean id="defaultTicketPlaneFacade"
+		class="it.uiip.airport.facades.impl.DefaultTicketPlaneFacade">
+		<property name="ticketPlaneService" ref="ticketPlaneService" />
+		<property name="ticketPlaneConverter" ref="ticketPlaneConverter" />
+	</bean>
+
+
+	<alias alias="ticketPlaneConverter" name="defaultTicketPlaneConverter" />
+	<bean id="defaultTicketPlaneConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.TicketData" />
+		<property name="populators">
+			<list>
+				<ref bean="ticketPlanePopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultTicketPlanePopulator" alias="ticketPlanePopulator" />
+	<bean id="defaultTicketPlanePopulator"
+		class="it.uiip.airport.facades.populators.TicketPlanePopulator">
+		<property name="passengerConverter" ref="passengerConverter" />
+	</bean>
+		
+		
+		
 
 
 	<alias alias="simpleSuggestionFacade"

@@ -53,6 +53,11 @@ public class DefaultFlightService implements FlightService {
 		this.flightDao = flightDao;
 	}
 
+	@Override
+	public FlightModel getFlightForId(String codeFlight) {
+		return flightDao.findFlightById(codeFlight);
+	}
+
 
 
 
