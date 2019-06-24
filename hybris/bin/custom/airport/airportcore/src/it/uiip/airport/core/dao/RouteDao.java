@@ -8,5 +8,6 @@ import it.uiip.airport.core.model.RouteModel;
 public interface RouteDao extends GenericDao<RouteModel>{
 	
 	public RouteModel findRouteByFlight(String codeFlight);
+	public RouteModel findRouteByCode(String codeRoute);
 
 }

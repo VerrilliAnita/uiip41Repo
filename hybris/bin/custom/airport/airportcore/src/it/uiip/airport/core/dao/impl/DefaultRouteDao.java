@@ -30,5 +30,19 @@ public class DefaultRouteDao extends DefaultGenericDao<RouteModel> implements Ro
 		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
 		return result.getResult().get(0);
 	}
+	
+	@Override
+	public RouteModel findRouteByCode(String codeRoute) {
+		LOG.info("call method ---> findRouteByCode(String codeRoute) in DefaultRouteDao class");
+		final StringBuilder queryStr= new StringBuilder();
+		queryStr.append("SELECT {r.pk} FROM {Route as r} ");
+		queryStr.append("WHERE {r.codeRoute} = ?codeRoute");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("codeRoute", codeRoute);
+		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		if(result.getResult().isEmpty()) 
+			return null;
+		return result.getResult().get(0);
+	}
 
 }

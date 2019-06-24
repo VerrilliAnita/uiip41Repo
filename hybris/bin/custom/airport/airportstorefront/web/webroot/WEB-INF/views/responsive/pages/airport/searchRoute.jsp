@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>Flight Info</h1>
-	<p> Flight code: "${flight.codeFlight}"</p>
+	<p> Flight code: "${flight}"</p>
 	<br>
 	<h1>TRATTA</h1>
 	<p>Departure Date: ${dateDep}</p><br>

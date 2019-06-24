@@ -9,6 +9,7 @@ import de.hybris.platform.servicelayer.search.SearchResult;
 
 import java.util.Date;
 import java.util.List;
+import org.apache.log4j.Logger;
 
 import it.uiip.airport.core.dao.PassengerDao;
 import it.uiip.airport.core.model.PassengerModel;
@@ -19,7 +20,8 @@ import it.uiip.airport.core.model.PassengerModel;
  */
 public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> implements PassengerDao
 {
-
+	private static final Logger LOG = Logger.getLogger(DefaultPassengerDao.class);
+	
 	/**
 	 * @param typecode
 	 */
@@ -37,6 +39,7 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 	@Override
 	public List<PassengerModel> findPassengersByFlightDate(final Date date)
 	{
+		LOG.info("Invoke method findPassengersByFlightDate(final Date date) in DefaultPassengerDao");
 		final StringBuilder queryStr = new StringBuilder();
 		queryStr.append("SELECT {P:PK}");
 		queryStr.append("FROM{Passenger as P JOIN PassengerRouteRelation as rel");
@@ -57,6 +60,7 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 	@Override
 	public List<PassengerModel> findAllPassengers()
 	{
+		LOG.info("Invoke method findAllPassengers() in DefaultPassengerDao");
 		final StringBuilder queryString = new StringBuilder();
 		final StringBuilder queryStr = new StringBuilder();
 		queryStr.append("SELECT {P:PK}");
@@ -68,6 +72,7 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 
 	@Override
 	public List<PassengerModel> findPassengersByRoute(String codeRoute) {
+		LOG.info("Invoke method findPassengersByRoute(String codeRoute) in DefaultPassengerDao");
 		final StringBuilder queryStr = new StringBuilder();
 		queryStr.append("SELECT {p.PK} FROM { Passenger AS p ");
 		queryStr.append("JOIN PassengerRouteRelation AS pr ON {pr.source} = {p.pk} ");
@@ -81,6 +86,7 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 
 	@Override
 	public PassengerModel findPassengerById(String uid) {
+		LOG.info("Invoke method findPassengerById(String uid) in DefaultPassengerDao");
 		final StringBuilder queryStr = new StringBuilder();
 		queryStr.append("SELECT {p.pk} FROM { Passenger AS p ");
 		queryStr.append("} WHERE {p.uid} = ?uid");

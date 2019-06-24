@@ -18,9 +18,6 @@ import de.hybris.platform.servicelayer.dto.converter.Converter;
 public class TicketPlanePopulator implements Populator<TicketModel, TicketData>{
 	
 	private static final Logger LOG = Logger.getLogger(TicketPlanePopulator.class);
-
-	@Resource
-	private Converter<RouteModel, RouteData> routeConverter;
 	
 	@Resource
 	private Converter<PassengerModel, PassengerData> passengerConverter;
@@ -30,7 +27,6 @@ public class TicketPlanePopulator implements Populator<TicketModel, TicketData>{
 		LOG.info("call method populate in TicketPopulator");
 		target.setCodeTicket(source.getCodeTicket());
 		target.setAirlineCompany(source.getAirlineCompany());
-		target.setRoute(routeConverter.convert(source.getRoute()));
 		target.setPassenger(passengerConverter.convert(source.getPassenger()));
 		target.setClassTicket(source.getClassTicket());
 		target.setFlightTime(source.getFlightTime());
@@ -38,14 +34,6 @@ public class TicketPlanePopulator implements Populator<TicketModel, TicketData>{
 		target.setSeatNumber(source.getSeatNumber());
 	}
 
-	public Converter<RouteModel, RouteData> getRouteConverter() {
-		return routeConverter;
-	}
-
-	@Required
-	public void setRouteConverter(Converter<RouteModel, RouteData> routeConverter) {
-		this.routeConverter = routeConverter;
-	}
 
 	public Converter<PassengerModel, PassengerData> getPassengerConverter() {
 		return passengerConverter;

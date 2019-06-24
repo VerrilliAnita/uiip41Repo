@@ -35,6 +35,7 @@ public class DefaultFlightFacade implements FlightFacade
 	@Override
 	public List<FlightData> getAllFlight()
 	{
+		LOG.info("call facade method --> getAllFlight() in DefaultFlightFacade");
 		return flightConverter.convertAll(flightService.getAllFlight());
 	}
 
@@ -64,9 +65,9 @@ public class DefaultFlightFacade implements FlightFacade
 	}
 
 	@Override
-	public List<FlightData> findFlightById(String codeFlight) {
+	public List<FlightData> getFlightForCode(String codeFlight) {
 		LOG.info("call method --> findFlightById(String codeFlight) in DefaultFlightFacade");
-		return flightConverter.convertAll(flightService.findFlightById(codeFlight));
+		return flightConverter.convertAll(flightService.getFlightForCode(codeFlight));
 	}
 
 

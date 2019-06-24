@@ -7,5 +7,6 @@ import it.uiip.airport.core.model.RouteModel;
 public interface RoutePlaneService {
 
 	public RouteModel getRouteForFlight(String codeFlight);
+	public RouteModel getRouteForCode(String codeRoute);
 	
 }

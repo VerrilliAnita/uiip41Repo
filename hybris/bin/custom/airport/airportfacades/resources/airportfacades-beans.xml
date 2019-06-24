@@ -52,8 +52,6 @@
 	<bean class="it.uiip.airport.facades.data.TicketData">
 		<property name="codeTicket" type="String"/>
 		<property name="airlineCompany" type="String"/>
-		<property name="route" 
-		type="it.uiip.airport.facades.data.RouteData"/>
 		<property name="passenger" 
 		type="it.uiip.airport.facades.data.PassengerData"/>
 		<property name="flightTime" type="Integer"/>
@@ -62,11 +60,14 @@
 		<property name="seatNumber" type="String"/>
 	</bean>
 	
+	
 	<!-- ROUTE DATA -->
 	<bean class="it.uiip.airport.facades.data.RouteData">
 		<property name="codeRoute" type="String"/>
 		<property name="flight" 
 		type="it.uiip.airport.facades.data.FlightData"/>
+		<property name="tickets" 
+		type="java.util.List&lt;it.uiip.airport.facades.data.TicketData>"/>
 		<property name="dateRouteDep" type="java.util.Date"/>
 		<property name="dateRouteArr" type="java.util.Date"/>
 	</bean>

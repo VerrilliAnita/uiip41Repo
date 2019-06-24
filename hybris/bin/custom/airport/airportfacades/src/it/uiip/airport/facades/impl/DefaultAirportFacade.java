@@ -7,6 +7,7 @@ import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.model.AirportModel;
@@ -20,6 +21,8 @@ import it.uiip.airport.facades.data.AirportData;
  */
 public class DefaultAirportFacade implements AirportFacade
 {
+	private static final Logger LOG = Logger.getLogger(DefaultAirportFacade.class);
+	
 	private AirportService airportService;
 
 	private Converter<AirportModel, AirportData> airportConverter;
@@ -30,6 +33,7 @@ public class DefaultAirportFacade implements AirportFacade
 	@Override
 	public List<AirportData> getAllAirport()
 	{
+		LOG.info("call facade method --> getAllAirport() in DefaultAirportFacade");
 		return airportConverter.convertAll(airportService.getAllAirport());
 	}
 
@@ -68,6 +72,7 @@ public class DefaultAirportFacade implements AirportFacade
 	@Override
 	public List<AirportData> getAirportsforCity(final String city)
 	{
+		LOG.info("call facade method --> getAirportsforCity(final String city) in DefaultAirportFacade");
 		return airportConverter.convertAll(airportService.getAirportsForCity(city));
 	}
 

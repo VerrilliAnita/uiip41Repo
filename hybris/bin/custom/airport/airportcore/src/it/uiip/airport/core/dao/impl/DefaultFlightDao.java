@@ -31,6 +31,7 @@ public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements 
 
 	@Override
 	public List<FlightModel> findFlightsByDepartureCity(final String city) {
+		LOG.info("Invoke method findFlightsByDepartureCity(final String city) in DefaultFlightDao");
 		final StringBuilder queryString = new StringBuilder();
 		queryString.append("SELECT {f.pk}");
 		queryString.append("FROM {Flight AS f");
@@ -44,6 +45,7 @@ public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements 
 
 	@Override
 	public List<FlightModel> findFlightsByDepartureDate(final Date date) {
+		LOG.info("Invoke method findFlightsByDepartureDate(final Date date) in DefaultFlightDao");
 		final StringBuilder queryString = new StringBuilder();
 		queryString.append("SELECT {f.pk} ");
 		queryString.append("FROM {Flight AS f");
@@ -63,6 +65,7 @@ public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements 
 	@Override
 	public List<FlightModel> findAllFlight()
 	{
+		LOG.info("Invoke method findAllFlight() in DefaultFlightDao");
 		final StringBuilder queryString = new StringBuilder();
 		queryString.append("SELECT {f.pk} ");
 		queryString.append("FROM {Flight AS f}}");
@@ -72,7 +75,7 @@ public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements 
 	}
 
 	@Override
-	public List<FlightModel> findFlightById(String codeFlight) {
+	public List<FlightModel> findFlightByCode(String codeFlight) {
 		LOG.info("Invoke method findFlightById(String codeFlight) in DefaultFlightDao");
 		final StringBuilder queryString = new StringBuilder();
 		queryString.append("SELECT {f.pk} FROM {Flight AS f}");

@@ -7,6 +7,7 @@ import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.model.PlaneModel;
@@ -21,7 +22,8 @@ import it.uiip.airport.facades.data.PlaneData;
  */
 public class DefaultPlaneFacade implements PlaneFacade
 {
-
+	private static final Logger LOG = Logger.getLogger(DefaultPlaneFacade.class);
+	
 	private PlaneService planeService;
 
 	private Converter<PlaneModel, PlaneData> planeConverter;
@@ -29,7 +31,7 @@ public class DefaultPlaneFacade implements PlaneFacade
 	@Override
 	public List<PlaneData> getAllPlane()
 	{
-		// XXX Auto-generated method stub
+		LOG.info("call facade method --> getAllPlane() in DefaultPlaneFacade");
 		return planeConverter.convertAll(planeService.getAllPlanes());
 
 	}
@@ -37,7 +39,7 @@ public class DefaultPlaneFacade implements PlaneFacade
 	@Override
 	public List<PlaneData> getPlanesForCity(final String city)
 	{
-		// XXX Auto-generated method stub
+		LOG.info("call facade method --> getPlanesForCity(final String city) in DefaultPlaneFacade");
 		return planeConverter.convertAll(planeService.getPlanesForCity(city));
 	}
 

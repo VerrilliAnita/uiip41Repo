@@ -7,6 +7,7 @@ import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.Abstrac
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -68,7 +69,7 @@ public class AirportController extends AbstractPageController
 		return ControllerConstants.Views.Pages.Airport.AirportSearchPage;
 
 	}
-	
+	/*
 	@RequestMapping(value = "/searchflight/{codeFlight}", method = RequestMethod.GET)
 	public String searchFlightById(@PathVariable("codeFlight")
 	final String codeFlight, final Model model, final HttpServletResponse response)
@@ -97,6 +98,32 @@ public class AirportController extends AbstractPageController
 		model.addAttribute("dateArr", route.getDateRouteArr());
 		model.addAttribute("ticketPassengers", ticketPassengers);
 		return ControllerConstants.Views.Pages.Airport.FlightSearchPage;
+
+	}
+	*/
+	@RequestMapping(value = "/searchroute/{codeRoute}", method = RequestMethod.GET)
+	public String searchRouteByCode(@PathVariable("codeRoute")
+	final String codeRoute, final Model model, final HttpServletResponse response)
+	{
+		LOG.info("Search route by code in controller airport");
+		
+		final RouteData route = routePlaneFacade.getRouteForCode(codeRoute);
+		
+		final FlightData flight = route.getFlight();
+		final String dateDep = route.getDateRouteDep().toString();
+		final String dateArr = route.getDateRouteArr().toString();
+		final ArrayList<TicketData> tickets = (ArrayList<TicketData>) route.getTickets();
+		
+		final HashMap<TicketData, PassengerData> ticketPassengers = new HashMap<TicketData, PassengerData>(); 
+		for(TicketData td : tickets) {
+			ticketPassengers.put(td, td.getPassenger());
+		}
+		
+		model.addAttribute("flight", flight.getCodeFlight());
+		model.addAttribute("dateDep", dateDep);
+		model.addAttribute("dateArr", dateArr);
+		model.addAttribute("ticketPassengers", ticketPassengers);
+		return ControllerConstants.Views.Pages.Airport.RouteSearchPage;
 
 	}
 

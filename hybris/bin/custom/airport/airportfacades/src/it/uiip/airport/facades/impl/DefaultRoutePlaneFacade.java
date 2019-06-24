@@ -46,6 +46,12 @@ public class DefaultRoutePlaneFacade implements RoutePlaneFacade {
 	public void setRouteConverter(Converter<RouteModel, RouteData> routeConverter) {
 		this.routeConverter = routeConverter;
 	}
+
+	@Override
+	public RouteData getRouteForCode(String codeRoute) {
+		LOG.info("call method --> getRouteForCode(String codeRoute) in DefaultRouteFacade");
+		return routeConverter.convert(routePlaneService.getRouteForCode(codeRoute));
+	}
 	
 	
 

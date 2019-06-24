@@ -15,5 +15,5 @@ import it.uiip.airport.facades.data.FlightData;
 public interface FlightFacade
 {
 	public List<FlightData> getAllFlight();
-	public List<FlightData> findFlightById(String codeFlight);
+	public List<FlightData> getFlightForCode(String codeFlight);
 }

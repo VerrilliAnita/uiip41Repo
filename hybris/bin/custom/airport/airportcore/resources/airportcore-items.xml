@@ -55,6 +55,15 @@
 			<modifiers read="true" write="true" search="true" optional="true"/>	
 			</targetElement>
 		</relation>
+		<relation localized="false" code="TicketRouteRelation" autocreate="true" generate="true">
+			<sourceElement qualifier="route" type="Route" cardinality="one" >
+				<modifiers read="true" write="true" search="true" optional="true"/>		
+			</sourceElement>
+			<targetElement qualifier="tickets" type="Ticket" 
+						   cardinality="many" collectiontype="set">
+			<modifiers read="true" write="true" search="true" optional="true"/>	
+			</targetElement>
+		</relation>
 	</relations>
 	<itemtypes>
 
@@ -192,10 +201,6 @@
 					<modifiers optional="false"/>
 				</attribute>
 				<attribute qualifier="airlineCompany" type="java.lang.String">
-					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
-				</attribute>
-				<attribute qualifier="route" type="Route">
 					<persistence type="property"></persistence>
 					<modifiers optional="true"/>
 				</attribute>

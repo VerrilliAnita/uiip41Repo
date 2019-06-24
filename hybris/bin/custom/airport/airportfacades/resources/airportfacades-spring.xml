@@ -65,7 +65,6 @@
 	<alias name="defaultTicketPlanePopulator" alias="ticketPlanePopulator" />
 	<bean id="defaultTicketPlanePopulator"
 		class="it.uiip.airport.facades.populators.TicketPlanePopulator">
-		<property name="routeConverter" ref="routeConverter"/>
 		<property name="passengerConverter" ref="passengerConverter"/>
 	</bean>
 	
@@ -95,6 +94,7 @@
 	<bean id="defaultRoutePlanePopulator"
 		class="it.uiip.airport.facades.populators.RoutePlanePopulator">
 		<property name="flightConverter" ref="flightConverter" />
+		<property name="ticketConverter" ref="ticketConverter" />
 	</bean>
 	
 
