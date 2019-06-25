@@ -19,7 +19,7 @@ public class PassengerRemoveInterceptor implements RemoveInterceptor<PassengerMo
 	
 	@Override
 	public void onRemove(PassengerModel passengerModel, InterceptorContext context) throws InterceptorException {
-		final List<TicketModel> tickets =ticketPlaneService.getTicketsPlaneForPassenger(passengerModel.getUid());
+		final List<TicketModel> tickets = ticketPlaneService.getTicketsPlaneForPassenger(passengerModel.getUid());
 		final Date today=new Date();
 		for(TicketModel ticket : tickets) {
 			if(ticket.getRoute().getDataRouteDep().after(today)) 

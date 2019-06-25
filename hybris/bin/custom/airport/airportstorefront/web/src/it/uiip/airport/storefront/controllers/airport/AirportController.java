@@ -77,6 +77,7 @@ public class AirportController extends AbstractPageController
 		
 		final RouteData route = routePlaneFacade.getRouteForCodeRoute(codeRoute);
 		
+		
 		model.addAttribute("route", route);
 		
 		return ControllerConstants.Views.Pages.Airport.RouteSearchPage;

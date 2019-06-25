@@ -30,7 +30,14 @@
 			<value code="WHITE" />
 			<value code="YELLOW" />
 		</enumtype>
-
+		
+		<enumtype generate="true" code="routeStatus" autocreate="true" dynamic="true">
+			<value code="boarding" />
+			<value code="cancelled" />
+		</enumtype>
+		
+	
+		
 		<enumtype generate="true" code="daysEnum" autocreate="true"
 			dynamic="true">
 			<value code="lunedi" />
@@ -44,17 +51,7 @@
 	</enumtypes>
 	
 	<relations>
-		<relation localized="false" code="PassengerRouteRelation" autocreate="true" generate="true">
-		<deployment table="Pass2Rout" typecode="21099"/>
-			<sourceElement qualifier="passenger" type="Passenger" cardinality="many" 
-							collectiontype="set">
-			<modifiers read="true" write="true" search="true" optional="true"/>		
-			</sourceElement>
-			<targetElement qualifier="route" type="Route" 
-						   cardinality="many" collectiontype="set">
-			<modifiers read="true" write="true" search="true" optional="true"/>	
-			</targetElement>
-		</relation>
+		
 	
 	
 <relation generate="true" autocreate="true" code="TicketRouteRelation" localized="false">
@@ -94,7 +91,7 @@
 				</attribute>
 				<attribute qualifier="city" type="localized:java.lang.String">
 					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
+					<modifiers optional="false"/>
 				</attribute>
 				<attribute qualifier="country" type="localized:java.lang.String">
 					<persistence type="property"></persistence>
@@ -183,6 +180,10 @@
 						<persistence type="property"></persistence>
 						<modifiers optional="true"/>
 				</attribute>
+				<attribute qualifier="status" type="routeStatus">
+						<persistence type="property"></persistence>
+						<modifiers optional="true"/>
+				</attribute>
 			</attributes>
 		</itemtype>
 		
@@ -196,13 +197,17 @@
 			
 				<attribute qualifier="passenger" type="Passenger">
 						<persistence type="property"></persistence>
-						<modifiers optional="true"/>
+						<modifiers optional="false"/>
 				</attribute>
 				<attribute qualifier="price" type="java.lang.Double">
 						<persistence type="property"></persistence>
-						<modifiers optional="true"/>
+						<modifiers optional="false"/>
 				</attribute>
 				<attribute qualifier="sit" type="java.lang.Integer">
+						<persistence type="property"></persistence>
+						<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="status" type="routeStatus">
 						<persistence type="property"></persistence>
 						<modifiers optional="true"/>
 				</attribute>

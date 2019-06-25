@@ -10,7 +10,7 @@ INSERT_UPDATE Airport; codeAirport[unique=true]; name; city[lang=en]; city[lang=
 ;AR9;Narita;Tokyo;Tokyo;Japan;Giappone;12
 
 INSERT_UPDATE Plane; codePlane[unique=true];typePlane;numOfSits;goods
-;A1;Boeing 337;400;150
+;A1;Boeing 337;13;150
 ;A2;Boeing 436;560;200
 ;A3;Airbus A300-200;600;150
 ;A4;Airbus A380-200;900;400
@@ -62,23 +62,26 @@ INSERT_UPDATE Passenger; uid[unique=true];codeFiscal[unique=true];name;birthday[
 ;29;CRLV55555E;CrystalMinichiello;11.06.1928
 ;30;POMMIN6839;PompilioMorante;03.12.1986
 
-INSERT_UPDATE Route; codeRoute[unique=true];  flight(codeFlight); dataRouteDep [dateformat = dd.MM.yyyy hh:mm:ss, allownull=true]; dataRouteArr[dateformat = dd.MM.yyyy hh:mm:ss, allownull=true] 
-	;R1	;v1	;12.03.2018 12:12:12; 12.03.2018 16:12:12
-	;R3	;v3	;14.04.2018 16:05:00; 14.04.2018 22:15:00
-	;R4	;v4	;15.04.2018 07:00:35; 15.04.2018 23:30:45
-	;R5	;v5	;16.04.2018 09:30:45; 16.04.2018 17:45:15
-	;R6	;v6	;17.04.2018 17:45:35; 18.04.2018 05:35:10
-	;R7	;v7	;18.04.2018 18:35:15; 19.04.2018 06:15:45
-	;R8	;v8	;19.04.2018 07:11:45; 19.04.2018 16:45:12
+INSERT_UPDATE Route; codeRoute[unique=true];  flight(codeFlight); dataRouteDep [dateformat = dd.MM.yyyy hh:mm:ss, allownull=true]; dataRouteArr[dateformat = dd.MM.yyyy hh:mm:ss, allownull=true] ; status(code)
+	;R1	;v1	;12.03.2018 12:12:12; 12.03.2018 16:12:12 ;cancelled
+	;R3	;v3	;14.04.2018 16:05:00; 14.04.2018 22:15:00 ;boarding
+	;R4	;v4	;15.04.2018 07:00:35; 15.04.2018 23:30:45 ;cancelled
+	;R5	;v5	;16.04.2018 09:30:45; 16.04.2018 17:45:15 ;boarding
+	;R6	;v6	;17.04.2018 17:45:35; 18.04.2018 05:35:10 ;cancelled
+	;R7	;v7	;18.04.2018 18:35:15; 19.04.2018 06:15:45 ;boarding
+	;R8	;v8	;19.04.2018 07:11:45; 19.04.2018 16:45:12 ;boarding
 
 
 INSERT_UPDATE Ticket; codeTicket[unique=true]; route(codeRoute); passenger(uid); price; sit
-	;T1;R1;1;  56.99; 1B
-	;T2;R1;2;  56.99; 2B
-	;T3;R1;3;  56.99; 3B
-	;T4;R1;4; 76.99; 1A
+	;T1;R1;1;  56.99; 1B 
+	;T2;R1;2;  56.99; 2B 
+	;T3;R1;3;  56.99; 3B 
+	;T4;R1;4; 76.99; 1A	
 	;T5;R1;5; 76.99; 2A
 	;T6;R1;6; 76.99; 3A
 	;T7;R1;7; 76.99; 4A
 	;T8;R1;8; 35.99; 1C
 	;T9;R1;9;  35.99; 4A
+	;T23;R3;7; 76.99; 4A
+	;T24;R3;8; 35.99; 1C
+	;T25;R3;9;  35.99; 4A

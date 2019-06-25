@@ -14,8 +14,10 @@
 		<h4> Arrivo : "${route.dataRouteArr}"</h4>
 		
 		<c:forEach var="ticket" items="${route.tickets}">
+			
 			<h6>${ticket.passenger.name}</h6>
 			<h6>${ticket.sit}</h6>
+		
 		</c:forEach>
 	
 

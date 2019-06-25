@@ -38,9 +38,9 @@ public class DefaultTicketPlaneDao extends DefaultGenericDao<TicketModel> implem
 	public List<TicketModel> findTicketsByRoute(final String code)
 	{
 		final StringBuilder queryStr = new StringBuilder();
-		queryStr.append("SELECT * FROM {Ticket as T JOIN Route AS R ");
-		queryStr.append("ON {T.route} = {T.PK} }");
-		queryStr.append("WHERE {R.codeRoute} = ?codeRoute");
+		queryStr.append("SELECT {T.PK} FROM {Ticket as T JOIN Route AS R ");
+		queryStr.append("ON {T.route} = {R.PK} }");
+		queryStr.append("WHERE {R.codeRoute} = ?code");
 		
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		
@@ -53,8 +53,8 @@ public class DefaultTicketPlaneDao extends DefaultGenericDao<TicketModel> implem
 	public List<TicketModel> findsTicketsPlaneByPassenger(String codePassenger) {
 		final StringBuilder queryStr = new StringBuilder();		
 		queryStr.append("SELECT {T.PK} ");
-		queryStr.append("FROM {Passenger as P JOIN Ticket as T ON {P.pk}= {T.passenger} }");
-		queryStr.append("WHERE {P.pk} = ?codePassenger");
+		queryStr.append("FROM {Passenger as P JOIN Ticket as T ON {P.PK}= {T.passenger} }");
+		queryStr.append("WHERE {P.uid} = ?codePassenger");
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		
 		fsq.addQueryParameter("codePassenger", codePassenger);

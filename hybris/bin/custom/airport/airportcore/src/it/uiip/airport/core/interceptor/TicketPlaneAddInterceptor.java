@@ -14,17 +14,17 @@ public class TicketPlaneAddInterceptor implements ValidateInterceptor<TicketMode
 
 	@Override
 	public void onValidate(TicketModel ticketModel, InterceptorContext context) throws InterceptorException {
-		if(ticketModel.getRoute().getFlight().getPlane().getNumOfSits() < 
-		   ticketModel.getRoute().getPassenger().size())
-		{
+		if(ticketModel.getRoute().getFlight().getPlane().getNumOfSits() <=
+		   ticketModel.getRoute().getTicket().size())
+			{
 			
 			LOG.info("TicketPlane not added for sold-out");
 			throw new InterceptorException("sit sold-out");
-		}
+			}
 		else
-		{
+			{
 			LOG.info("TicketPlane added ");
-		}
+			}
 	}
 
 }

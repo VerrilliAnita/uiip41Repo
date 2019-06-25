@@ -1,5 +1,7 @@
 package it.uiip.airport.core.dao.impl;
 
+import java.util.List;
+
 import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.SearchResult;
@@ -22,10 +24,23 @@ public class DefaultRoutePlaneDao extends DefaultGenericDao<FlightModel> impleme
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryString);
 		fsq.addQueryParameter("codeRoute", codeRoute);
 		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		
 		if(result.getResult().isEmpty()) {
 			return null;
 		}
 		return result.getResult().get(0);
+	}
+
+	@Override
+	public List<RouteModel> findRouteByStatus(String status) {
+		final StringBuilder queryString = new StringBuilder();
+		queryString.append("SELECT {R.PK}");
+		queryString.append("FROM {Route as R JOIN routeStatus as s ON {R.status} = {s.pk}}");
+		queryString.append(" WHERE {s.code} = ?status");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryString);
+		fsq.addQueryParameter("status", status);
+		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
 	}
 
 }

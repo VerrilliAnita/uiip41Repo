@@ -118,7 +118,11 @@
 	<property name="typeCode" value="Ticket"/>
 	</bean>
 	
-	
+		<!--__________________________________ Cronjob_________________________________ -->
+		
+		<bean id="routeJob" class="it.uiip.airport.core.job.RouteJob" parent="abstractJobPerformable">
+		<property name ="routePlaneService" ref="routePlaneService"/>
+		</bean>
 	
 	
 	
