@@ -25,25 +25,27 @@ public class AddTicketInterceptor implements ValidateInterceptor<AirportTicketMo
 	public void onValidate(final AirportTicketModel ticket, final InterceptorContext context) throws InterceptorException
 	{
 		LOG.info("Call onValidate----------");
-		try
+		int sitsTotal = 0, sitsRoute = 0;
+		if (ticket.getRoute() != null && ticket.getRoute().getFlight() != null && ticket.getRoute().getFlight().getPlane() != null
+				&& ticket.getRoute().getAirportTickets() != null)
 		{
-			final int sitsTotal = ticket.getRoute().getFlight().getPlane().getNumOfSits();
-			final int sitsRoute = ticket.getRoute().getAirportTickets().size();
-			if (sitsTotal > sitsRoute)
-			{
-				LOG.info("Ticket added");
-			}
-			else
-			{
-				LOG.error("Ticket not added");
-				throw new ValidationException("seats sold-out");
-			}
+			sitsTotal = ticket.getRoute().getFlight().getPlane().getNumOfSits();
+			sitsRoute = ticket.getRoute().getAirportTickets().size();
 		}
-		catch (final NullPointerException e)
+		else
 		{
-			//object null
+			throw new ValidationException("Object null");
 		}
 
+		if (sitsTotal > sitsRoute)
+		{
+			LOG.info("Ticket added");
+		}
+		else
+		{
+			LOG.error("Ticket not added");
+			throw new ValidationException("seats sold-out");
+		}
 	}
 
 }
