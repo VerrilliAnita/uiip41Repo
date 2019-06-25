@@ -46,7 +46,7 @@
 	<bean id="addTicketInterceptorMapping"
 		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
 		<property name="interceptor" ref="addTicketInterceptor"/>
-		<property name="typeCode" value="Ticket"/>
+		<property name="typeCode" value="AirportTicket"/>
 	</bean>
 	
 

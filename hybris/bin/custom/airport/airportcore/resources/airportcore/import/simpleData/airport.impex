@@ -10,7 +10,7 @@ INSERT_UPDATE Airport; codeAirport[unique=true]; name; city[lang=en]; city[lang=
 ;AR9;Narita;Tokyo;Tokyo;Japan;Giappone;12
 
 INSERT_UPDATE Plane; codePlane[unique=true];typePlane;numOfSits;goods
-;A1;Boeing 337;400;150
+;A1;Boeing 337;6;150
 ;A2;Boeing 436;560;200
 ;A3;Airbus A300-200;600;150
 ;A4;Airbus A380-200;900;400

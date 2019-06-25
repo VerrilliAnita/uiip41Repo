@@ -62,7 +62,7 @@
 			</sourceElement>
 			<targetElement qualifier="airportTickets" type="AirportTicket" 
 						   cardinality="many" collectiontype="set">
-				<modifiers read="true" write="true" search="true" optional="true"/>	
+				<modifiers read="true" write="true" search="true" optional="false"/>	
 			</targetElement>
 		</relation>
 	</relations>
