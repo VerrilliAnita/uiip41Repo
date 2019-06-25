@@ -30,6 +30,26 @@
 	       parent="abstractCoreSystemSetup"/>
 
 	<!-- Solr field value providers -->
+	
+	<bean id="removePassengerInterceptor" class="it.uiip.airport.core.interceptor.RemovePassengerInterceptor">
+	<property name="airportTicketService" ref="airportTicketService"></property>
+	</bean>
+	
+	<bean id="removePassengerInterceptor" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+	<property name="interceptor" ref="removePassengerInterceptor"/>
+	<property name="typecode" value="passenger"/>
+	</bean>
+	
+	<bean id="validateTicketInterceptor" class="it.uiip.airport.core.interceptor.ValidateTicketInterceptor">
+	<property name="airportTicketService" ref="airportTicketService"></property>
+	</bean>
+	
+	<bean id="validateTicketInterceptor" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+	<property name="interceptor" ref="validateTicketInterceptor"/>
+	<property name="typecode" value="ticket"/>
+	</bean>
+	
+	
 
 	<bean id="agePassengerHandler" class="it.uiip.airport.core.handler.AgePassengerHandler"></bean>
 	
@@ -76,18 +96,26 @@
 		<property name="flightDao" ref="flightDao"></property>
 	</bean>
 	
-	<alias name="defaultTicketDao" alias="ticketDao"/>
-	<bean id="defaultTicketDao" class="it.uiip.airport.core.dao.impl.DefaultTicketDao">
+	<alias name="defaultAirportTicketDao" alias="airportTicketDao"/>
+	<bean id="defaultAirportTicketDao" class="it.uiip.airport.core.dao.impl.DefaultAirportTicketDao">
 		<constructor-arg value="#{T(it.uiip.airport.core.model.TicketModel)._TYPECODE}"/>
 	</bean>
 	
-	<alias name="defaultTicketService" alias="ticketService"/>
-	<bean id="defaultTicketService" class="it.uiip.airport.core.service.impl.DefaultTicketService">
+	<alias name="defaultAirportTicketService" alias="airportTicketService"/>
+	<bean id="defaultAirportTicketService" class="it.uiip.airport.core.service.impl.DefaultAirportTicketService">
 		<property name="ticketDao" ref="ticketDao"></property>
 	</bean>
 	
+	<alias name="defaultAirportRouteDao" alias="airportRouteDao"/>
+	<bean id="defaultAirportRouteDao" class="it.uiip.airport.core.dao.impl.DefaultAirportRouteDao">
+		<constructor-arg value="#{T(it.uiip.airport.core.model.AirportRouteModel)._TYPECODE}"/>
+	</bean>
 	
-	
+	<alias name="defaultAirportRouteService" alias="airportRouteService"/>
+	<bean id="defaultAirportRouteService" class="it.uiip.airport.core.service.impl.DefaultAirportRouteService">
+		<property name="airportRouteDao" ref="airportRouteDao"></property>
+	</bean>
+
 
 	<bean id="volumeAwareProductPriceValueProvider" class="it.uiip.airport.core.search.solrfacetsearch.provider.impl.VolumeAwareProductPriceValueProvider"  parent="abstractPropertyFieldValueProvider">
         <property name="fieldNameProvider" ref="solrFieldNameProvider"/>
