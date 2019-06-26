@@ -59,4 +59,5 @@ public class DefaultAirportRouteService implements AirportRouteService
 	{
 		this.airportRouteDao = airportRouteDao;
 	}
+
 }
