@@ -14,8 +14,7 @@
 	<h3>Date Arrival: "${route.dateRouteArr}"</h3>
 	
 	<c:forEach var="ticket" items="${route.tickets}">
-		<li>Passenger: "${ticket.passenger.name}"	</li>
-		<li>Idseat: "${ticket.idSit}"</li>
+		<li>Passenger: ${ticket.passenger.name} --- Seat Id: ${ticket.idSit}</li>
 		</c:forEach>
 	
 </body>

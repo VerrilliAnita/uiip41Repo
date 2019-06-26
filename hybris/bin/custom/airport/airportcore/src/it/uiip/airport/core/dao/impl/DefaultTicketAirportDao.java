@@ -23,7 +23,7 @@ public class DefaultTicketAirportDao extends DefaultGenericDao<TicketAirportMode
 		queryStr.append("JOIN Route AS r ON {r.pk} = {t.route} ");
 		queryStr.append("}   WHERE {r.codeRoute} = ?codeRoute");
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
-		fsq.addQueryParameter("route", route);
+		fsq.addQueryParameter("codeRoute", route);
 		final SearchResult<TicketAirportModel> result = getFlexibleSearchService().search(fsq);
 		return result.getResult();
 	}

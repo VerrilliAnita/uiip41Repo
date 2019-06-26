@@ -18,7 +18,7 @@ public class AddTicketAirportInterceptor implements ValidateInterceptor{
 			if (ticketAirportModel.getRoute().getFlight().getPlane().getNumOfSits()<
 					ticketAirportModel.getRoute().getPassenger().size()) {
 				
-				LOG.info("Impossible to add Ticket");
+				LOG.error("Impossible to add Ticket");
 				throw new InterceptorException("plane's seats sold-out");
 			}
 			else {

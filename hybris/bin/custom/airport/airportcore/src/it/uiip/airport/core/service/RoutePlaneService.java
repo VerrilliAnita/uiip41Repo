@@ -9,5 +9,6 @@ public interface RoutePlaneService {
 	public RouteModel getRouteForFlight(String codeFlight);
 	public RouteModel getRouteForCodeRoute(String codeRoute);
 	public List<RouteModel> getAllRoutes();
+	public List<RouteModel> getRoutesForFlightStatus(String status);
 
 }

@@ -49,4 +49,17 @@ public class DefaultRouteDao extends DefaultGenericDao<RouteModel> implements Ro
 			return null;
 		return result.getResult().get(0);
 	}
+	
+	
+	@Override
+	public List<RouteModel> findRouteByFlightStatus(String status) {
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("SELECT {r.pk} FROM {Route AS r JOIN flightStatusEnum AS f ");
+		queryStr.append("ON {r.flightStatus} = {f.pk} } ");
+		queryStr.append("WHERE {f.code} = ?status");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("status", status);
+		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
 }

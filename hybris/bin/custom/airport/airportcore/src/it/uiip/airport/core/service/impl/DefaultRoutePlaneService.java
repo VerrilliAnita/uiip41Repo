@@ -40,6 +40,11 @@ public class DefaultRoutePlaneService implements RoutePlaneService{
 		this.routeDao = routeDao;
 	}
 
+	@Override
+	public List<RouteModel> getRoutesForFlightStatus(String status) {
+		return routeDao.findRouteByFlightStatus(status);
+	}
+
 	
 	
 

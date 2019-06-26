@@ -14,25 +14,16 @@ import it.uiip.airport.facades.data.PassengerData;
 
 public class TicketAirportPopulator implements Populator <TicketAirportModel,TicketAirportData>{
 	
-	private Converter<RouteModel,RouteData>routePlaneConverter;
 	private Converter<PassengerModel,PassengerData>passengerConverter;
 
 	@Override
 	public void populate(TicketAirportModel source, TicketAirportData target) throws ConversionException {
 		target.setCodeTicketAirport(source.getCodeTicketAirport());
-		target.setRoute(routePlaneConverter.convert(source.getRoute()));
 		target.setPassenger(passengerConverter.convert(source.getPassenger()));
 		target.setIdSit(source.getIdSit());
 		target.setPrice(source.getPrice());	
 	}
 
-	public Converter<RouteModel, RouteData> getRoutePlaneConverter() {
-		return routePlaneConverter;
-	}
-	@Required
-	public void setRoutePlaneConverter(Converter<RouteModel, RouteData> routePlaneConverter) {
-		this.routePlaneConverter = routePlaneConverter;
-	}
 
 	public Converter<PassengerModel, PassengerData> getPassengerConverter() {
 		return passengerConverter;

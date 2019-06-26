@@ -107,14 +107,30 @@
 		<property name="typeCode" value="Passenger" />
 	</bean>
 	
+	<alias name="defaultUpdateSaveTicketInterceptor" alias="updateSaveTicketInterceptor"/>
+	<bean id="defaultTicketUpdateSaveTicketnterceptor" class="it.uiip.airport.core.interceptors.UpdateSaveTicketInterceptor">
+		<property name="ticketAirportService" ref="ticketAirportService"/>
+	</bean>
+	
+	<bean id ="UpdateSaveTicketInterceptorMapping" 
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="updateSaveTicketInterceptor" />
+		<property name="typeCode" value="TicketAirport" />
+	</bean>
+	
 	<alias name="defaultAddTicketAirportInterceptor" alias="addTicketAirportInterceptor"/>
 	<bean id="defaultAddTicketAirportInterceptor" class="it.uiip.airport.core.interceptors.AddTicketAirportInterceptor">
 	</bean>
 
-	<bean id="AddTicketAirportInterceptorMapping" 
+	<bean id ="AddTicketAirportInterceptorMapping" 
 	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
 		<property name="interceptor" ref="addTicketAirportInterceptor" />
 		<property name="typeCode" value="TicketAirport" />
+	</bean>
+	
+	<bean id = "routePlaneJob" class="it.uiip.airport.core.job.RoutePlaneJob"
+	 parent="abstractJobPerformable">
+	<property name="routePlaneService" ref="routePlaneService"></property>
 	</bean>
 
 	<bean id="volumeAwareProductPriceValueProvider" class="it.uiip.airport.core.search.solrfacetsearch.provider.impl.VolumeAwareProductPriceValueProvider"  parent="abstractPropertyFieldValueProvider">

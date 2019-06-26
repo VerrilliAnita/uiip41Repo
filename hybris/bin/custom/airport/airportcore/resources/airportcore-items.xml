@@ -15,8 +15,9 @@
 	</collectiontypes>
 
 	<enumtypes>
-		<enumtype generate="true" code="SwatchColorEnum" autocreate="true"
-			dynamic="true">
+	
+		<enumtype generate="true" code="SwatchColorEnum"
+			autocreate="true" dynamic="true">
 			<value code="BLACK" />
 			<value code="BLUE" />
 			<value code="BROWN" />
@@ -30,6 +31,17 @@
 			<value code="WHITE" />
 			<value code="YELLOW" />
 		</enumtype>
+		
+		
+		<enumtype generate="true" code="flightStatusEnum" autocreate="true"
+			dynamic="true">
+			<value code="ON_ROUTE" />
+			<value code="DELETED" />
+			<value code="SCHEDULED" />
+			<value code="DEPARTING" />
+			<value code="DELAYED"/>
+			<value code="ARRIVING"/>
+		</enumtype>
 
 		<enumtype generate="true" code="daysEnum" autocreate="true"
 			dynamic="true">
@@ -40,6 +52,12 @@
 			<value code="venerdi" />
 			<value code="sabato" />
 			<value code="domenica" />
+		</enumtype>
+		
+		<enumtype generate="true" code="ticketAirportStatusEnum" autocreate="true"
+			dynamic="true">
+			<value code="DELETED" />
+			<value code="VALIDATED"/>
 		</enumtype>
 	</enumtypes>
 	
@@ -164,6 +182,10 @@
 						<persistence type="property"></persistence>
 						<modifiers optional="true"/>
 				</attribute>
+				<attribute qualifier="flightStatus" type="flightStatusEnum">
+				<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
 				<attribute qualifier="dateRouteDep" type="java.util.Date">
 						<persistence type="property"></persistence>
 						<modifiers optional="true"/>
@@ -198,6 +220,10 @@
 			<deployment table="ticketAirport" typecode="21350" />
 			<attributes>
 				<attribute qualifier="codeTicketAirport" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="ticketAirportStatus" type="ticketAirportStatusEnum">
 					<persistence type="property"></persistence>
 					<modifiers optional="false"/>
 				</attribute>
