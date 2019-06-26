@@ -9,5 +9,7 @@ public interface RouteDao extends GenericDao<RouteModel>{
 	
 	public RouteModel findRouteByFlight(String codeFlight);
 	public RouteModel findRouteByCode(String codeRoute);
+	public List<RouteModel> findAllRoutes();
+	public List<RouteModel> findRoutesByState(String state);
 
 }

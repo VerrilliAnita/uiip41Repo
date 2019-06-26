@@ -72,7 +72,7 @@ INSERT_UPDATE Route; codeRoute[unique=true];  flight(codeFlight)[unique=true]; d
 	;R7	;v7	;18.04.2018 18:35:15; 19.04.2018 06:15:45
 	;R8	;v8	;19.11.2019 07:11:45; 19.11.2019 16:45:12
 
-INSERT_UPDATE Ticket; codeTicket[unique=true];  airlineCompany; route(codeRoute); passenger(uid); flightTime; classTicket; price; seatNumber
+INSERT_UPDATE Ticket; codeTicket[unique=true];  airlineCompany; route(codeRoute); passenger(uid); flightTime; classTicket; price; seatNumber; state[default='ACTIVE']
 	;T1;SISA;R1;1; 4; B; 56.99; 1B
 	;T2;SISA;R1;2; 4; B; 56.99; 2B
 	;T3;SISA;R1;3; 4; B; 56.99; 3B

@@ -112,11 +112,24 @@
 	<bean id="defaultTicketValidateInterceptor" class="it.uiip.airport.core.interceptors.TicketValidateInterceptor">
 	</bean>
 	
-	<!-- HANDLER INTERCEPTOR -->
+	<!-- TICKET PREPARE -->
+	<alias name="defaultTicketPrepareInterceptor" alias="ticketPrepareInterceptor"/>
+	<bean id="defaultTicketPrepareInterceptor" class="it.uiip.airport.core.interceptors.TicketPrepareInterceptor">
+	<property name="eventService" ref="eventService"/>
+	</bean>
+	
+	<!-- HANDLER PASSENGER REMOVE INTERCEPTOR -->
 	<bean id="passengerInterceptorMapping" 
 	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
 		<property name="interceptor" ref="passengerRemoveInterceptor" />
 		<property name="typeCode" value="Passenger" />
+	</bean>
+	
+	<!-- HANDLER TICKET PREPARE INTERCEPTOR -->
+	<bean id="TicketPrepareInterceptorMapping" 
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="ticketPrepareInterceptor" />
+		<property name="typeCode" value="Ticket" />
 	</bean>
 	
 	<!-- HANDLER INTERCEPTOR -->
@@ -124,6 +137,18 @@
 	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
 		<property name="interceptor" ref="ticketValidateInterceptor" />
 		<property name="typeCode" value="Ticket" />
+	</bean>
+	
+	<!-- TICKET EVENT LISTENER -->
+	<bean id="ticketEventListener" class="it.uiip.airport.core.event.airport.listener.TicketEventListener"
+		parent="abstractEventListener">
+		<property name="configurationService" ref="configurationService"/>
+		</bean>
+	
+	<!-- CRONJOBS -->
+	<!-- ROUTE STATE JOB -->
+	<bean id="routeStateJob" class="it.uiip.airport.core.job.RouteStateJob" parent="abstractJobPerformable">
+		<property name="routePlaneService" ref="routePlaneService"/>
 	</bean>
 
 	<bean id="volumeAwareProductPriceValueProvider" class="it.uiip.airport.core.search.solrfacetsearch.provider.impl.VolumeAwareProductPriceValueProvider"  parent="abstractPropertyFieldValueProvider">

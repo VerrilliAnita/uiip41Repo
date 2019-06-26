@@ -45,4 +45,35 @@ public class DefaultRouteDao extends DefaultGenericDao<RouteModel> implements Ro
 		return result.getResult().get(0);
 	}
 
+	@Override
+	public List<RouteModel> findAllRoutes() {
+		LOG.info("call method ---> findAllRoutes() in DefaultRouteDao class");
+		final StringBuilder queryStr= new StringBuilder();
+		queryStr.append("SELECT {r.pk} FROM {Route as r} ");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
+
+	@Override
+	public List<RouteModel> findRoutesByState(String state) {
+		LOG.info("call method ---> findAllRoutes() in DefaultRouteDao class");
+		final StringBuilder queryStr= new StringBuilder();
+		/*
+		queryStr.append("SELECT {r.pk} FROM { Route AS r } ");
+		queryStr.append("WHERE {r.state} =  ({{ ");
+		queryStr.append("SELECT {s.pk} FROM {stateRoute AS s} ");
+		queryStr.append("WHERE {s.code} = ?state ");
+		queryStr.append("}}) ");
+		*/
+		queryStr.append("SELECT {r.pk} FROM {Route AS r ");
+		queryStr.append("JOIN stateRoute AS s ON {s.pk} = {r.state} ");
+		queryStr.append("} WHERE {s.code} = ?state  ");
+		
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("state", state);
+		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
+
 }

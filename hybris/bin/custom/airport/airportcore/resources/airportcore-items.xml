@@ -41,6 +41,18 @@
 			<value code="sabato" />
 			<value code="domenica" />
 		</enumtype>
+		
+		<enumtype generate="true" code="stateRoute" autocreate="true"
+			dynamic="true">
+			<value code="CANCELLED" />
+			<value code="ACTIVE" />
+		</enumtype>
+		
+		<enumtype generate="true" code="stateTicket" autocreate="true"
+			dynamic="true">
+			<value code="CANCELLED" />
+			<value code="ACTIVE" />
+		</enumtype>
 	</enumtypes>
 	
 	<relations>
@@ -59,7 +71,7 @@
 		 -->
 		<relation localized="false" code="TicketRouteRelation" autocreate="true" generate="true">
 			<sourceElement qualifier="route" type="Route" cardinality="one" >
-				<modifiers read="true" write="true" search="true" optional="true"/>		
+				<modifiers read="true" write="true" search="true" optional="false"/>		
 			</sourceElement>
 			<targetElement qualifier="tickets" type="Ticket" 
 						   cardinality="many" collectiontype="set">
@@ -172,6 +184,10 @@
 						<persistence type="property"></persistence>
 						<modifiers optional="true"/>
 				</attribute>
+				<attribute qualifier="state" type="stateRoute">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
 			</attributes>
 		</itemtype>
 		
@@ -204,27 +220,31 @@
 				</attribute>
 				<attribute qualifier="airlineCompany" type="java.lang.String">
 					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
+					<modifiers optional="false"/>
 				</attribute>
 				<attribute qualifier="passenger" type="Passenger">
 					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
+					<modifiers optional="false"/>
 				</attribute>
 				<attribute qualifier="flightTime" type="java.lang.Integer">
 					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
+					<modifiers optional="false"/>
 				</attribute>
 				<attribute qualifier="classTicket" type="java.lang.String">
 					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
+					<modifiers optional="false"/>
 				</attribute>
 				<attribute qualifier="price" type="java.lang.Float">
 					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
+					<modifiers optional="false"/>
 				</attribute>
 				<attribute qualifier="seatNumber" type="java.lang.String">
 					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="state" type="stateTicket">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
 				</attribute>
 			</attributes>
 		</itemtype>

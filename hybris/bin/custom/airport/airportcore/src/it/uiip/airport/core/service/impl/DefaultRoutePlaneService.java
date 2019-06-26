@@ -39,4 +39,16 @@ public class DefaultRoutePlaneService implements RoutePlaneService {
 		this.routeDao = routeDao;
 	}
 
+	@Override
+	public List<RouteModel> getAllRoutes() {
+		LOG.info("call method --> getAllRoutes() in DefaultRoutePlaneService class");
+		return routeDao.findAllRoutes();
+	}
+
+	@Override
+	public List<RouteModel> getRoutesForState(String state) {
+		LOG.info("call method --> getAllRoutes() in DefaultRoutePlaneService class");
+		return routeDao.findRoutesByState(state);
+	}
+
 }
