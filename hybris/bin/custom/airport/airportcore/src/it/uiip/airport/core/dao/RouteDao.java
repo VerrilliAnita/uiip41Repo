@@ -11,5 +11,6 @@ public interface RouteDao extends GenericDao<RouteModel>{
 	public RouteModel findRouteByCode(String codeRoute);
 	public List<RouteModel> findAllRoutes();
 	public List<RouteModel> findRoutesByState(String state);
+	public List<RouteModel> findRouteByCityAndDate(String city , String date);
 
 }
