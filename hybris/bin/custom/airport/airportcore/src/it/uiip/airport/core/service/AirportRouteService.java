@@ -18,4 +18,6 @@ public interface AirportRouteService
 
 	public List<RouteModel> getRoutesForCode(String codeRoute);
 
+	public List<RouteModel> getRoutesForStatus(String status);
+
 }

@@ -41,6 +41,20 @@
 			<value code="sabato" />
 			<value code="domenica" />
 		</enumtype>
+		
+		<enumtype generate="true" code="statusRouteEnum" autocreate="true"
+			dynamic="true">
+			<value code="ARRIVING" />
+			<value code="DELETED" />
+			<value code="OUTGOING" />
+		</enumtype>
+		
+		<enumtype generate="true" code="statusTicketEnum" autocreate="true"
+			dynamic="true">
+			<value code="CONFIRMED"/>
+			<value code="DELETED" />
+		</enumtype>
+		
 	</enumtypes>
 	
 	<relations>
@@ -76,6 +90,10 @@
 					<persistence type="property"></persistence>
 					<modifiers optional="false"/>
 				</attribute>
+				<attribute qualifier="statusTicket" type="statusTicketEnum">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
 				<attribute qualifier="passenger" type="Passenger">
 					<persistence type="property"></persistence>
 					<modifiers optional="false"/>
@@ -86,7 +104,7 @@
 				</attribute>
 				<attribute qualifier="seat" type="java.lang.String">
 					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
+					<modifiers optional="false"/>
 				</attribute>
 			</attributes>
 		</itemtype>
@@ -179,6 +197,10 @@
 				<attribute qualifier="codeRoute" type="java.lang.String">
 						<persistence type="property"></persistence>
 						<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="statusRoute" type="statusRouteEnum">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
 				<attribute qualifier="flight" type="Flight">
 						<persistence type="property"></persistence>

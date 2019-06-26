@@ -41,6 +41,21 @@
 		<property name="typeCode" value="Passenger"/>
 	</bean>
 	
+		<bean id="saveUpdateTicketInterceptor" class="it.uiip.airport.core.interceptor.SaveUpdateTicketInterceptor" >
+		<property name="eventService" ref="eventService" />
+	</bean>
+	
+	<bean id="afterTicketCreationEventListener" class="it.uiip.airport.core.event.AfterTicketCreationEventListener"
+			parent="abstractEventListener">
+		<property name="configurationService" ref="configurationService"/>		
+	</bean>
+	
+	<bean id="saveUpdateTicketInterceptorMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="saveUpdateTicketInterceptor"/>
+		<property name="typeCode" value="AirportTicket"/>
+	</bean>
+	
 	<bean id="addTicketInterceptor" class="it.uiip.airport.core.interceptor.AddTicketInterceptor" />
 		
 	<bean id="addTicketInterceptorMapping"
@@ -48,7 +63,10 @@
 		<property name="interceptor" ref="addTicketInterceptor"/>
 		<property name="typeCode" value="AirportTicket"/>
 	</bean>
-	
+		
+	<bean id="updateStatusTicketJob" class="it.uiip.airport.core.job.UpdateStatusTicketJob" parent="abstractJobPerformable">
+		<property name="airportRouteService" ref="airportRouteService"></property>
+	</bean>
 
 	<bean id="agePassengerHandler" class="it.uiip.airport.core.handler.AgePassengerHandler"></bean>
 	

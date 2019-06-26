@@ -17,4 +17,6 @@ public interface AirportRouteDao
 	public List<RouteModel> findAllAirportRoute();
 
 	public List<RouteModel> findAirportRouteByCode(String codeRoute);
+
+	public List<RouteModel> findAirportRouteDeleted(String status);
 }

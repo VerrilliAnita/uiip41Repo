@@ -52,4 +52,16 @@ public class DefaultAirportRouteDao extends DefaultGenericDao<RouteModel> implem
 		return result.getResult();
 	}
 
+	@Override
+	public List<RouteModel> findAirportRouteDeleted(final String status)
+	{
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("SELECT {R.pk} FROM {Route AS R join statusRouteEnum as E on {E.pk}={R.statusRoute} }");
+		queryStr.append("Where {E.code}= ?status");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("status", status);
+		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
+
 }

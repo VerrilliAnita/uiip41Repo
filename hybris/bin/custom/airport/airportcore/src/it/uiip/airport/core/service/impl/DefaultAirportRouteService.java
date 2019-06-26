@@ -29,6 +29,13 @@ public class DefaultAirportRouteService implements AirportRouteService
 		return airportRouteDao.findAllAirportRoute();
 	}
 
+	@Override
+	public List<RouteModel> getRoutesForStatus(final String status)
+	{
+		LOG.info("Invoke method findAirportRouteDeleted in DefaultAirportRouteService");
+		return airportRouteDao.findAirportRouteDeleted(status);
+	}
+
 
 	@Override
 	public List<RouteModel> getRoutesForCode(final String codeRoute)
@@ -52,6 +59,4 @@ public class DefaultAirportRouteService implements AirportRouteService
 	{
 		this.airportRouteDao = airportRouteDao;
 	}
-
-
 }
