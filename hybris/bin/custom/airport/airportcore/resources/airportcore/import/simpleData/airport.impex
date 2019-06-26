@@ -28,7 +28,8 @@ INSERT_UPDATE Flight; codeFlight[unique=true];weekDay(code);airportDep(codeAirpo
 ;v6;sabato;AR6;AR7;A6;5;18
 ;v7;domenica;AR7;AR8;A7;16;23
 ;v8;lunedi;AR8;AR9;A1;14;19
-
+;v9;martedi;AR2;AR3;A2;15;18
+;v10;mercoledi;AR3;AR4;A3;16;23
 
 INSERT_UPDATE Passenger; uid[unique=true];codeFiscal[unique=true];name;birthday[dateformat = dd.MM.yyyy, allownull=true]
 ;1;ASB34HD56S;Mario Rossi;04.12.1988
@@ -71,14 +72,16 @@ INSERT_UPDATE Route; codeRoute[unique=true];  flight(codeFlight)[unique=true]; d
 	;R6	;v6	;17.04.2018 17:45:35; 18.04.2018 05:35:10
 	;R7	;v7	;18.04.2018 18:35:15; 19.04.2018 06:15:45
 	;R8	;v8	;19.11.2019 07:11:45; 19.11.2019 16:45:12
+	;R9	;v9	;19.11.2019 07:11:45; 19.11.2019 16:45:12
+	;R10;v10;19.11.2019 07:11:45; 19.11.2019 16:45:12
 
-INSERT_UPDATE Ticket; codeTicket[unique=true];  airlineCompany; route(codeRoute); passenger(uid); flightTime; classTicket; price; seatNumber; state[default='ACTIVE']
-	;T1;SISA;R1;1; 4; B; 56.99; 1B
-	;T2;SISA;R1;2; 4; B; 56.99; 2B
-	;T3;SISA;R1;3; 4; B; 56.99; 3B
-	;T4;SISA;R1;4; 4; A; 76.99; 1A
-	;T5;SISA;R1;5; 4; A; 76.99; 2A
-	;T6;SISA;R1;6; 4; A; 76.99; 3A
-	;T7;SISA;R1;7; 4; A; 76.99; 4A
-	;T8;SISA;R1;8; 4; C; 35.99; 1C
-	;T9;SISA;R1;9; 4; C; 35.99; 4A
+INSERT_UPDATE Ticket; codeTicket[unique=true];  airlineCompany; route(codeRoute); passenger(uid); flightTime; classTicket; price; seatNumber; state(code)
+	;T1;SISA;R10;1; 4; B; 56.99; 1B;ACTIVE
+	;T2;SISA;R10;2; 4; B; 56.99; 2B;ACTIVE
+	;T3;SISA;R10;3; 4; B; 56.99; 3B;ACTIVE
+	;T4;SISA;R10;4; 4; A; 76.99; 1A;ACTIVE
+	;T5;SISA;R10;5; 4; A; 76.99; 2A;ACTIVE
+	;T6;SISA;R9;6; 4; A; 76.99; 3A;ACTIVE
+	;T7;SISA;R9;7; 4; A; 76.99; 4A;ACTIVE
+	;T8;SISA;R9;8; 4; C; 35.99; 1C;ACTIVE
+	;T9;SISA;R9;9; 4; C; 35.99; 4A;ACTIVE

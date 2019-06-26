@@ -59,13 +59,7 @@ public class DefaultRouteDao extends DefaultGenericDao<RouteModel> implements Ro
 	public List<RouteModel> findRoutesByState(String state) {
 		LOG.info("call method ---> findAllRoutes() in DefaultRouteDao class");
 		final StringBuilder queryStr= new StringBuilder();
-		/*
-		queryStr.append("SELECT {r.pk} FROM { Route AS r } ");
-		queryStr.append("WHERE {r.state} =  ({{ ");
-		queryStr.append("SELECT {s.pk} FROM {stateRoute AS s} ");
-		queryStr.append("WHERE {s.code} = ?state ");
-		queryStr.append("}}) ");
-		*/
+		
 		queryStr.append("SELECT {r.pk} FROM {Route AS r ");
 		queryStr.append("JOIN stateRoute AS s ON {s.pk} = {r.state} ");
 		queryStr.append("} WHERE {s.code} = ?state  ");
@@ -74,6 +68,22 @@ public class DefaultRouteDao extends DefaultGenericDao<RouteModel> implements Ro
 		fsq.addQueryParameter("state", state);
 		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
 		return result.getResult();
+	}
+
+	@Override
+	public List<RouteModel> findRouteByCityAndDate(String city, String date) {
+		LOG.info("call method ---> findAllRoutes() in DefaultRouteDao class");
+		final StringBuilder queryStr= new StringBuilder();
+		queryStr.append("SELECT {R.PK}");
+		queryStr.append("FROM {Route as R JOIN Flight as F ON {R.flight}={F.PK} JOIN Airport as A ON {F.airportDep}={A.PK}}");
+		queryStr.append("WHERE {R.dateRouteDep} like '?date%' AND {A.city}= ?city");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("date", date);
+		fsq.addQueryParameter("city", city);
+		
+		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+		
 	}
 
 }
