@@ -7,7 +7,6 @@ import java.util.List;
 
 import it.uiip.airport.facades.data.FlightData;
 
-
 /**
  * @author soprasteria
  *

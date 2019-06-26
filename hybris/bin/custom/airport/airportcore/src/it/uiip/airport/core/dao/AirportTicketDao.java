@@ -3,10 +3,10 @@ package it.uiip.airport.core.dao;
 import java.util.List;
 
 import de.hybris.platform.servicelayer.internal.dao.GenericDao;
-import it.uiip.airport.core.model.TicketModel;
+import it.uiip.airport.core.model.AirportTicketModel;
 
-public interface TicketDao extends GenericDao<TicketModel> {
+public interface AirportTicketDao extends GenericDao<AirportTicketModel> {
 	
-	public List<TicketModel> findTicketsByCodeRoute(String codeRoute);
+	public List<AirportTicketModel> findTicketsByCodeRoute(String codeRoute);
 
 }

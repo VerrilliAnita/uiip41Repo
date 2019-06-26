@@ -2,8 +2,10 @@ package it.uiip.airport.facades;
 
 import java.util.List;
 
-public interface TicketFacade {
+import it.uiip.airport.facades.data.AirportTicketData;
+
+public interface AirportTicketFacade {
 	
-	public List<TicketData> getTicketsForCodeFlight(String codeFlight);
+	public List<AirportTicketData> getTicketsForCodeFlight(String codeFlight);
 
 }

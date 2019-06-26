@@ -2,56 +2,55 @@ package it.uiip.airport.facades.impl;
 
 import java.util.List;
 
-import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
+import org.springframework.beans.factory.annotation.Required;
 
-import com.fasterxml.jackson.databind.util.Converter;
+import de.hybris.platform.servicelayer.dto.converter.Converter;
+import it.uiip.airport.core.model.AirportTicketModel;
+import it.uiip.airport.core.service.AirportTicketService;
+import it.uiip.airport.facades.AirportTicketFacade;
+import it.uiip.airport.facades.data.AirportTicketData;
 
-import de.hybris.platform.ticket.service.TicketService;
-import it.uiip.airport.core.model.TicketModel;
-import it.uiip.airport.facades.TicketData;
-import it.uiip.airport.facades.TicketFacade;
-
-public class DefaultTicketFacade implements TicketFacade {
+public class DefaultAirportTicketFacade implements AirportTicketFacade {
 	
-	private TicketService ticketService;
-	private Converter<TicketModel, TicketData> ticketConverter;
+	private AirportTicketService airportTicketService;
+	private Converter<AirportTicketModel, AirportTicketData> airportTicketConverter;
 
 
 @Override
-public List<TicketData> getTicketsForCodeFlight(final String codeFlight)
+public List<AirportTicketData> getTicketsForCodeFlight(final String codeFlight)
 {
-	return ticketConverter.convertAll(ticketService.getTicketsForCodeRoute(codeFlight));
+	return airportTicketConverter.convertAll(airportTicketService.getTicketsForCodeRoute(codeFlight));
 
 }
 
 /**
  * @return the ticketService
  */
-public TicketService getTicketService()
+public AirportTicketService getAirportTicketService()
 {
-	return ticketService;
+	return airportTicketService;
 }
 
 
 @Required
-public void setTicketService(final TicketService ticketService)
+public void setAirportTicketService(final AirportTicketService airportTicketService)
 {
-	this.ticketService = ticketService;
+	this.airportTicketService = airportTicketService;
 }
 
 /**
  * @return the ticketConverter
  */
-public Converter<TicketModel, TicketData> getTicketConverter()
+public Converter<AirportTicketModel, AirportTicketData> getAirportTicketConverter()
 {
-	return ticketConverter;
+	return airportTicketConverter;
 }
 
 
 @Required
-public void setTicketConverter(final Converter<TicketModel, TicketData> ticketConverter)
+public void setAirportTicketConverter(final Converter<AirportTicketModel, AirportTicketData> airportTicketConverter)
 {
-	this.ticketConverter = ticketConverter;
+	this.airportTicketConverter = airportTicketConverter;
 }
 
 

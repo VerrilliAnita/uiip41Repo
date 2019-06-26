@@ -44,18 +44,29 @@
 	</enumtypes>
 	
 	<relations>
-		<relation localized="false" code="PassengerRouteRelation" autocreate="true" generate="true">
+		<relation localized="false" code="PassengerFlightRouteRelation" autocreate="true" generate="true">
 		<deployment table="Pass2Rout" typecode="21099"/>
 			<sourceElement qualifier="passenger" type="Passenger" cardinality="many" 
 							collectiontype="set">
 			<modifiers read="true" write="true" search="true" optional="true"/>		
 			</sourceElement>
-			<targetElement qualifier="route" type="Route" 
+			<targetElement qualifier="flightRoute" type="FlightRoute" 
 						   cardinality="many" collectiontype="set">
 			<modifiers read="true" write="true" search="true" optional="true"/>	
 			</targetElement>
 		</relation>
+		<relation localized="false" code="AirportTicketFlightRouteRelation" autocreate="false" generate="false">
+			<sourceElement qualifier="airportTicket" type="AirportTicket" cardinality="many" 
+							collectiontype="set">
+			<modifiers read="true" write="true" search="true" optional="true"/>		
+			</sourceElement>
+			<targetElement qualifier="flightRoute" type="FlightRoute" 
+						   cardinality="one">
+			<modifiers read="true" write="true" search="true" optional="true"/>	
+			</targetElement>
+		</relation>
 	</relations>
+	
 	<itemtypes>
 
 		<!-- Add your item definitions here -->
@@ -142,7 +153,7 @@
 			</attributes>
 		</itemtype>
 		
-		<itemtype code="Route" generate="true" autocreate="true">
+		<itemtype code="FlightRoute" generate="true" autocreate="true">
 			<deployment table="route" typecode="21348" />
 			<attributes>
 				<attribute qualifier="codeRoute" type="java.lang.String">
@@ -183,7 +194,7 @@
 			</attributes>
 		</itemtype>
 		
-		<itemtype code="Ticket" generate="true" autocreate="true">
+		<itemtype code="AirportTicket" generate="true" autocreate="true">
 			<deployment table="ticket" typecode="21350" />
 			<attributes>
 				<attribute qualifier="codeTicket" type="java.lang.String">
@@ -192,10 +203,6 @@
 				</attribute>
 				<attribute qualifier="passenger" type="Passenger">
 					<persistence type="property"></persistence>
-				</attribute>
-				<attribute qualifier="route" type="Route">
-					<persistence type="property"></persistence>
-					<modifiers optional="true"/>
 				</attribute>
 				<attribute qualifier="price" type="java.lang.Integer">
 					<persistence type="property"></persistence>

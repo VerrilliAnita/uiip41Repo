@@ -4,36 +4,37 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
+import org.springframework.beans.factory.annotation.Required;
 
 import com.sun.istack.internal.logging.Logger;
 
-import de.hybris.platform.ticket.dao.TicketDao;
-import it.uiip.airport.core.model.TicketModel;
-import it.uiip.airport.core.service.TicketService;
+import it.uiip.airport.core.dao.AirportTicketDao;
+import it.uiip.airport.core.model.AirportTicketModel;
+import it.uiip.airport.core.service.AirportTicketService;
 
-public class DefaultTicketService implements TicketService {
 
-	private static final Logger LOG = Logger.getLogger(DefaultTicketService.class);
+public class DefaultAirportTicketService implements AirportTicketService {
+
+	private static final Logger LOG = Logger.getLogger(DefaultAirportTicketService.class);
 	@Resource
-	private TicketDao ticketDao;
+	private AirportTicketDao airportTicketDao;
 
 	@Override
-	public List<TicketModel> getTicketsForCodeRoute(final String codeRoute)
+	public List<AirportTicketModel> getTicketsForCodeRoute(final String codeRoute)
 	{
-		LOG.info("Invoke method findTicketsByCodeFlight in DefaultTicketService");
-		return ticketDao.findTicketsByCodeRoute(codeRoute);
+		LOG.info("Invoke method findTicketsByCodeFlight in DefaultAirportTicketService");
+		return airportTicketDao.findTicketsByCodeRoute(codeRoute);
 	}
 
-	public TicketDao getTicketDao()
+	public AirportTicketDao getAirportTicketDao()
 	{
-		return ticketDao;
+		return airportTicketDao;
 	}
 
 	@Required
-	public void setTicketDao(final TicketDao ticketDao)
+	public void setAirportTicketDao(final AirportTicketDao airportTicketDao)
 	{
-		this.ticketDao = ticketDao;
+		this.airportTicketDao = airportTicketDao;
 	}
 
 }
