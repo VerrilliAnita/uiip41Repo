@@ -1,5 +1,6 @@
 package it.uiip.airport.core.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -72,6 +73,21 @@ public class DefaultRouteDao extends DefaultGenericDao<RouteModel> implements Ro
 		
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		fsq.addQueryParameter("state", state);
+		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
+
+	@Override
+	public List<RouteModel> findRoutesByCityAndDate(String city, Date date) {
+		LOG.info("call method ---> findRoutesByCityAndDate(String city, Date date) in DefaultRouteDao class");
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("SELECT {r.pk} FROM {Route AS r ");
+		queryStr.append("JOIN Flight AS f ON {f.pk} = {r.flight} ");
+		queryStr.append("JOIN Airport AS a ON {a.pk} = {f.airportDep} } ");
+		queryStr.append("WHERE {a.city} = ?city AND {r.dateRouteDep} LIKE ?date%");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("city", city);
+		fsq.addQueryParameter("date", date);
 		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
 		return result.getResult();
 	}
