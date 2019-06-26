@@ -1,0 +1,20 @@
+import java.util.Date;
+import java.util.List;
+import it.uiip.airport.core.model.RouteModel;
+import it.uiip.airport.core.dao.impl.DefaultAirportRouteDao;
+import de.hybris.platform.servicelayer.model.ModelService;
+import it.uiip.airport.core.enums.StatusRouteEnum;
+
+DefaultAirportRouteDao routeDao=spring.getBean("airportRouteDao");
+ModelService modelService=spring.getBean("modelService");
+
+String city="Milano";
+Date date=new Date();
+List routes=routeDao.findAirportRouteByCityAndDay(city,date);
+
+for(RouteModel r:routes)
+{
+  System.out.println(""+r.getCodeRoute());
+  r.setStatusRoute(StatusRouteEnum.DELETED);
+  modelService.save(r);
+}
