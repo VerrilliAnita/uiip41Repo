@@ -7,6 +7,7 @@ import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.SearchResult;
 
+import java.util.Date;
 import java.util.List;
 
 import it.uiip.airport.core.dao.AirportRouteDao;
@@ -60,6 +61,21 @@ public class DefaultAirportRouteDao extends DefaultGenericDao<RouteModel> implem
 		queryStr.append("Where {E.code}= ?status");
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		fsq.addQueryParameter("status", status);
+		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
+
+
+	@Override
+	public List<RouteModel> findAirportRouteByCityAndDay(String city, Date day) {
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("Select {R.pk}");
+		queryStr.append("FROM {Route AS R JOIN Flight as F ON {R.flight}={F.pk}");
+		queryStr.append("JOIN Airport AS A ON {F.airportDep}={A.pk} }");
+		queryStr.append("WHERE {A.city}=?city AND {R.dateRouteDep} LIKE ? day%");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("city", city);
+		fsq.addQueryParameter("day", day);
 		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
 		return result.getResult();
 	}

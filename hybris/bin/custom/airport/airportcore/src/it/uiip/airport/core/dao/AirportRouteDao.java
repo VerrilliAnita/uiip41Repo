@@ -3,6 +3,7 @@
  */
 package it.uiip.airport.core.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import it.uiip.airport.core.model.RouteModel;
@@ -15,6 +16,8 @@ import it.uiip.airport.core.model.RouteModel;
 public interface AirportRouteDao
 {
 	public List<RouteModel> findAllAirportRoute();
+	
+	public List<RouteModel> findAirportRouteByCityAndDay(String city,Date day);
 
 	public List<RouteModel> findAirportRouteByCode(String codeRoute);
 
