@@ -15,8 +15,9 @@
 	</collectiontypes>
 
 	<enumtypes>
-		<enumtype generate="true" code="SwatchColorEnum" autocreate="true"
-			dynamic="true">
+	
+		<enumtype generate="true" code="SwatchColorEnum"
+			autocreate="true" dynamic="true">
 			<value code="BLACK" />
 			<value code="BLUE" />
 			<value code="BROWN" />
@@ -30,6 +31,17 @@
 			<value code="WHITE" />
 			<value code="YELLOW" />
 		</enumtype>
+		
+		
+		<enumtype generate="true" code="flightStatusEnum" autocreate="true"
+			dynamic="true">
+			<value code="ON_ROUTE" />
+			<value code="DELETED" />
+			<value code="SCHEDULED" />
+			<value code="DEPARTING" />
+			<value code="DELAYED"/>
+			<value code="ARRIVING"/>
+		</enumtype>
 
 		<enumtype generate="true" code="daysEnum" autocreate="true"
 			dynamic="true">
@@ -41,11 +53,17 @@
 			<value code="sabato" />
 			<value code="domenica" />
 		</enumtype>
+		
+		<enumtype generate="true" code="ticketAirportStatusEnum" autocreate="true"
+			dynamic="true">
+			<value code="DELETED" />
+			<value code="VALIDATED"/>
+		</enumtype>
 	</enumtypes>
 	
 	<relations>
 		<relation localized="false" code="PassengerRouteRelation" autocreate="true" generate="true">
-		<deployment table="Pass2Rout" typecode="21099"/>
+		<deployment table="Pass2Rout" typecode="21340"/>
 			<sourceElement qualifier="passenger" type="Passenger" cardinality="many" 
 							collectiontype="set">
 			<modifiers read="true" write="true" search="true" optional="true"/>		
@@ -55,7 +73,18 @@
 			<modifiers read="true" write="true" search="true" optional="true"/>	
 			</targetElement>
 		</relation>
+		
+		
+		<relation localized="false" code="TicketRouteRelation" autocreate="true" generate="true">
+			<sourceElement qualifier="route" type="Route" cardinality="one" >
+				<modifiers read="true" write="true" search="true" optional="true"/>		
+			</sourceElement>
+			<targetElement qualifier="tickets" type="TicketAirport" cardinality="many" collectiontype="set">
+			<modifiers read="true" write="true" search="true" optional="true"/>	
+			</targetElement>
+		</relation>
 	</relations>
+	
 	<itemtypes>
 
 		<!-- Add your item definitions here -->
@@ -153,6 +182,10 @@
 						<persistence type="property"></persistence>
 						<modifiers optional="true"/>
 				</attribute>
+				<attribute qualifier="flightStatus" type="flightStatusEnum">
+				<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
 				<attribute qualifier="dateRouteDep" type="java.util.Date">
 						<persistence type="property"></persistence>
 						<modifiers optional="true"/>
@@ -166,7 +199,7 @@
 		
 		
 		<itemtype code="Passenger" extends="User" generate="true" autocreate="true">
-			<deployment table="passenger" typecode="23000" />
+			<deployment table="passenger" typecode="21349" />
 			<attributes>
 				<attribute qualifier="codeFiscal" type="java.lang.String">
 					<persistence type="property"></persistence>
@@ -182,6 +215,33 @@
 				</attribute>
 			</attributes>
 		</itemtype>
+		
+		<itemtype code="TicketAirport" generate="true" autocreate="true">
+			<deployment table="ticketAirport" typecode="21350" />
+			<attributes>
+				<attribute qualifier="codeTicketAirport" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="ticketAirportStatus" type="ticketAirportStatusEnum">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="passenger" type="Passenger">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
+				<attribute qualifier="idSit" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
+				<attribute qualifier="price" type="java.lang.Double">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+		
 
 		<!-- TypeGroups are for structure of this file only -->
 

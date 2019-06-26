@@ -12,6 +12,7 @@ import java.util.List;
 
 import it.uiip.airport.core.dao.FlightDao;
 import it.uiip.airport.core.model.FlightModel;
+import it.uiip.airport.core.model.RouteModel;
 
 /**
  * @author soprasteria
@@ -65,5 +66,23 @@ public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements 
 		final SearchResult<FlightModel> result = getFlexibleSearchService().search(fsq);
 		return result.getResult();
 	}
+
+	@Override
+	public FlightModel findFlightByCodeFlight(String codeFlight) {
+		FlightModel result = null;
+		final StringBuilder queryString = new StringBuilder();
+		queryString.append("SELECT {f.pk} ");
+		queryString.append("FROM {Flight AS f}");
+		queryString.append("WHERE {f.codeFlight} = ?codeFlight");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryString);
+		fsq.addQueryParameter("codeFlight", codeFlight);
+		result = (FlightModel) getFlexibleSearchService().search(fsq);
+		return result;
+	}
+
+	
+	
+	
+	
 
 }

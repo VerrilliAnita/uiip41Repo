@@ -10,4 +10,5 @@ public interface FlightService {
 	public List<FlightModel> getFlightsForCity(String city);
 	public List<FlightModel> getFlightsForDate(Date date);
 	public List<FlightModel> getAllFlight();
+	public FlightModel getFlightForCodeFlight(String codeFlight);
 }

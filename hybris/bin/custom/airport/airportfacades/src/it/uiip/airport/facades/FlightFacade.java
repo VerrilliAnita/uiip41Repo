@@ -5,7 +5,9 @@ package it.uiip.airport.facades;
 
 import java.util.List;
 
+
 import it.uiip.airport.facades.data.FlightData;
+
 
 
 /**
@@ -15,4 +17,5 @@ import it.uiip.airport.facades.data.FlightData;
 public interface FlightFacade
 {
 	public List<FlightData> getAllFlight();
+	public FlightData getFlightForCodeFlight(String codeFlight);
 }

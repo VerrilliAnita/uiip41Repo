@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import it.uiip.airport.core.model.FlightModel;
+import it.uiip.airport.core.model.RouteModel;
 
 
 /**
@@ -19,6 +20,7 @@ public interface FlightDao extends GenericDao<FlightModel>{
 
 	public List<FlightModel> findFlightsByDepartureCity(String city);
 	public List<FlightModel> findFlightsByDepartureDate(Date date);
+	public FlightModel findFlightByCodeFlight(String codeFlight);
 	public List<FlightModel> findAllFlight();
 
 }

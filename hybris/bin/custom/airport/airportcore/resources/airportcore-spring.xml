@@ -75,6 +75,63 @@
 	<bean id="defaultFlightService" class="it.uiip.airport.core.service.impl.DefaultFlightService" >
 		<property name="flightDao" ref="flightDao"></property>
 	</bean>
+	
+	<alias name="defaultTicketAirportDao" alias="ticketAirportDao"/>
+	<bean id="defaultTicketAirportDao" class="it.uiip.airport.core.dao.impl.DefaultTicketAirportDao">
+		<constructor-arg value="#{T(it.uiip.airport.core.model.TicketAirportModel)._TYPECODE}"/>
+	</bean>
+	
+	<alias alias="ticketAirportService" name="defaultTicketAirportService"/>
+	<bean id="defaultTicketAirportService" class="it.uiip.airport.core.service.impl.DefaultTicketAirportService" >
+		<property name="ticketAirportDao" ref="ticketAirportDao"></property>
+	</bean>
+	
+	<alias name="defaultRouteDao" alias="routeDao"/>
+	<bean id="defaultRouteDao" class="it.uiip.airport.core.dao.impl.DefaultRouteDao">
+		<constructor-arg value="#{T(it.uiip.airport.core.model.RouteModel)._TYPECODE}"/>
+	</bean>
+	
+	<alias alias="routePlaneService" name="defaultRoutePlaneService"/>
+	<bean id="defaultRoutePlaneService" class="it.uiip.airport.core.service.impl.DefaultRoutePlaneService" >
+		<property name="routeDao" ref="routeDao"></property>
+	</bean>
+	
+	<alias name="defaultRemovePassengerInterceptor" alias="removePassengerInterceptor"/>
+	<bean id="defaultRemovePassengerInterceptor" class="it.uiip.airport.core.interceptors.RemovePassengerInterceptor">
+		<property name="ticketAirportService" ref="ticketAirportService"/>
+	</bean>
+
+	<bean id="RemovePassengerInterceptorMapping" 
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="removePassengerInterceptor" />
+		<property name="typeCode" value="Passenger" />
+	</bean>
+	
+	<alias name="defaultUpdateSaveTicketInterceptor" alias="updateSaveTicketInterceptor"/>
+	<bean id="defaultTicketUpdateSaveTicketnterceptor" class="it.uiip.airport.core.interceptors.UpdateSaveTicketInterceptor">
+		<property name="ticketAirportService" ref="ticketAirportService"/>
+	</bean>
+	
+	<bean id ="UpdateSaveTicketInterceptorMapping" 
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="updateSaveTicketInterceptor" />
+		<property name="typeCode" value="TicketAirport" />
+	</bean>
+	
+	<alias name="defaultAddTicketAirportInterceptor" alias="addTicketAirportInterceptor"/>
+	<bean id="defaultAddTicketAirportInterceptor" class="it.uiip.airport.core.interceptors.AddTicketAirportInterceptor">
+	</bean>
+
+	<bean id ="AddTicketAirportInterceptorMapping" 
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="addTicketAirportInterceptor" />
+		<property name="typeCode" value="TicketAirport" />
+	</bean>
+	
+	<bean id = "routePlaneJob" class="it.uiip.airport.core.job.RoutePlaneJob"
+	 parent="abstractJobPerformable">
+	<property name="routePlaneService" ref="routePlaneService"></property>
+	</bean>
 
 	<bean id="volumeAwareProductPriceValueProvider" class="it.uiip.airport.core.search.solrfacetsearch.provider.impl.VolumeAwareProductPriceValueProvider"  parent="abstractPropertyFieldValueProvider">
         <property name="fieldNameProvider" ref="solrFieldNameProvider"/>
