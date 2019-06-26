@@ -30,6 +30,43 @@
 	       parent="abstractCoreSystemSetup"/>
 
 	<!-- Solr field value providers -->
+	
+	<bean id="removePassengerInterceptor" class="it.uiip.airport.core.interceptor.RemovePassengerInterceptor" >
+		<property name="airportTicketService" ref="airportTicketService" />
+	</bean>
+	
+	<bean id="removePassengerInterceptorMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="removePassengerInterceptor"/>
+		<property name="typeCode" value="Passenger"/>
+	</bean>
+	
+		<bean id="saveUpdateTicketInterceptor" class="it.uiip.airport.core.interceptor.SaveUpdateTicketInterceptor" >
+		<property name="eventService" ref="eventService" />
+	</bean>
+	
+	<bean id="afterTicketCreationEventListener" class="it.uiip.airport.core.event.AfterTicketCreationEventListener"
+			parent="abstractEventListener">
+		<property name="configurationService" ref="configurationService"/>		
+	</bean>
+	
+	<bean id="saveUpdateTicketInterceptorMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="saveUpdateTicketInterceptor"/>
+		<property name="typeCode" value="AirportTicket"/>
+	</bean>
+	
+	<bean id="addTicketInterceptor" class="it.uiip.airport.core.interceptor.AddTicketInterceptor" />
+		
+	<bean id="addTicketInterceptorMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="addTicketInterceptor"/>
+		<property name="typeCode" value="AirportTicket"/>
+	</bean>
+		
+	<bean id="updateStatusTicketJob" class="it.uiip.airport.core.job.UpdateStatusTicketJob" parent="abstractJobPerformable">
+		<property name="airportRouteService" ref="airportRouteService"></property>
+	</bean>
 
 	<bean id="agePassengerHandler" class="it.uiip.airport.core.handler.AgePassengerHandler"></bean>
 	
@@ -37,25 +74,45 @@
 	<bean id="defaultAirportDao" class="it.uiip.airport.core.dao.impl.DefaultAirportDao">
 		<constructor-arg value="#{T(it.uiip.airport.core.model.AirportModel)._TYPECODE}"/>
 	</bean>
-
-	<alias alias="passengerService" name="defaultPassengerService"/>
-	<bean id="defaultPassengerService" class="it.uiip.airport.core.service.impl.DefaultPassengerService" 
-					parent="defaultUserService">
-					<property name="passengerDao" ref="passengerDao"></property>
-	
-	</bean>
 	
 	<alias alias="airportService" name="defaultAirportService"/>
 	<bean id="defaultAirportService" class="it.uiip.airport.core.service.impl.DefaultAirportService" >
 		<property name="airportDao" ref="airportDao"></property>
 	</bean>
 	
-	
-	<alias name="defaultFlightDao" alias="flightDao"/>
-	<bean id="defaultFlightDao" class="it.uiip.airport.core.dao.impl.DefaultFlightDao">
-		<constructor-arg value="#{T(it.uiip.airport.core.model.FlightModel)._TYPECODE}"/>
+
+	<alias name="defaultPassengerDao" alias="passengerDao"/>
+	<bean id="defaultPassengerDao" class="it.uiip.airport.core.dao.impl.DefaultPassengerDao">
+		<constructor-arg value="#{T(it.uiip.airport.core.model.PassengerModel)._TYPECODE}"/>
 	</bean>
 	
+	<alias alias="passengerService" name="defaultPassengerService"/>
+	<bean id="defaultPassengerService" class="it.uiip.airport.core.service.impl.DefaultPassengerService" 
+					parent="defaultUserService">
+					<property name="passengerDao" ref="passengerDao"></property>
+	</bean>
+	
+	<alias name="defaultAirportRouteDao" alias="airportRouteDao"/>
+	<bean id="defaultAirportRouteDao" class="it.uiip.airport.core.dao.impl.DefaultAirportRouteDao">
+		<constructor-arg value="#{T(it.uiip.airport.core.model.RouteModel)._TYPECODE}"/>
+	</bean>
+	
+	<alias name="defaultAirportRouteService" alias="airportRouteService"/>
+	<bean id="defaultAirportRouteService" class="it.uiip.airport.core.service.impl.DefaultAirportRouteService">
+		<property name="airportRouteDao" ref="airportRouteDao"></property>
+	</bean>
+	
+
+	<alias name="defaultAirportTicketDao" alias="airportTicketDao"/>
+	<bean id="defaultAirportTicketDao" class="it.uiip.airport.core.dao.impl.DefaultAirportTicketDao">
+		<constructor-arg value="#{T(it.uiip.airport.core.model.AirportTicketModel)._TYPECODE}"/>
+	</bean>
+	
+	<alias name="defaultAirportTicketService" alias="airportTicketService"/>
+	<bean id="defaultAirportTicketService" class="it.uiip.airport.core.service.impl.DefaultAirportTicketService">
+		<property name="airportTicketDao" ref="airportTicketDao"></property>
+	</bean>
+		
 	<alias name="defaultPlaneDao" alias="planeDao"/>
 	<bean id="defaultPlaneDao" class="it.uiip.airport.core.dao.impl.DefaultPlaneDao">
 		<constructor-arg value="#{T(it.uiip.airport.core.model.PlaneModel)._TYPECODE}"/>
@@ -66,9 +123,9 @@
 	<property name="planeDao" ref="planeDao"></property>
 	</bean>
 	
-	<alias name="defaultPassengerDao" alias="passengerDao"/>
-	<bean id="defaultPassengerDao" class="it.uiip.airport.core.dao.impl.DefaultPassengerDao">
-		<constructor-arg value="#{T(it.uiip.airport.core.model.PassengerModel)._TYPECODE}"/>
+		<alias name="defaultFlightDao" alias="flightDao"/>
+	<bean id="defaultFlightDao" class="it.uiip.airport.core.dao.impl.DefaultFlightDao">
+		<constructor-arg value="#{T(it.uiip.airport.core.model.FlightModel)._TYPECODE}"/>
 	</bean>
 	
 	<alias alias="flightService" name="defaultFlightService"/>

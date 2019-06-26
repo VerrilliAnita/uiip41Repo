@@ -29,11 +29,6 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 		// XXX Auto-generated constructor stub
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see it.uiip.airport.core.dao.PassengerDao#findPassengerByFlightDay(java.lang.String)
-	 */
 	@Override
 	public List<PassengerModel> findPassengersByFlightDate(final Date date)
 	{
@@ -53,7 +48,7 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see it.uiip.airport.core.dao.PassengerDao#findAllPassengers()
 	 */
 	@Override
@@ -67,7 +62,4 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
 		return result.getResult();
 	}
-
-
-
 }

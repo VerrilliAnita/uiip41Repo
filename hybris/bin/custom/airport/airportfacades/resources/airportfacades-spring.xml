@@ -13,6 +13,61 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<context:annotation-config />
+	
+	<alias alias="airportRouteFacade" name="defaultAirportRouteFacade" />
+	<bean id="defaultAirportRouteFacade"
+		class="it.uiip.airport.facades.impl.DefaultAirportRouteFacade">
+		<property name="airportRouteService" ref="airportRouteService" />
+		<property name="airportRouteConverter" ref="airportRouteConverter" />
+	</bean>
+
+	<alias alias="airportRouteConverter" name="defaultAirportRouteConverter" />
+	<bean id="defaultAirportRouteConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.AirportRouteData" />
+		<property name="populators">
+			<list>
+				<ref bean="airportRoutePopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultAirportRoutePopulator" alias="airportRoutePopulator" />
+	<bean id="defaultAirportRoutePopulator"
+		class="it.uiip.airport.facades.populators.AirportRoutePopulator">
+		<property name="flightConverter" ref="flightConverter"/>
+		<property name="airportTicketConverter" ref="airportTicketConverter"/>
+	</bean>
+	
+	
+	<alias alias="airportTicketFacade" name="defaultAirportTicketFacade" />
+	<bean id="defaultAirportTicketFacade"
+		class="it.uiip.airport.facades.impl.DefaultAirportTicketFacade">
+		<property name="airportTicketService" ref="airportTicketService" />
+		<property name="airportTicketConverter" ref="airportTicketConverter" />
+	</bean>
+
+	<alias alias="airportTicketConverter" name="defaultAirportTicketConverter" />
+	<bean id="defaultAirportTicketConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.AirportTicketData" />
+		<property name="populators">
+			<list>
+				<ref bean="airportTicketPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultAirportTicketPopulator" alias="airportTicketPopulator" />
+	<bean id="defaultAirportTicketPopulator"
+		class="it.uiip.airport.facades.populators.AirportTicketPopulator">
+		<property name="passengerConverter" ref="passengerConverter" />
+	</bean>
+	
+	
+	
 
 	<alias alias="airportFacade" name="defaultAirportFacade" />
 	<bean id="defaultAirportFacade"
@@ -20,7 +75,6 @@
 		<property name="airportService" ref="airportService" />
 		<property name="airportConverter" ref="airportConverter" />
 	</bean>
-
 
 	<alias alias="airportConverter" name="defaultAirportConverter" />
 	<bean id="defaultAirportConverter"
@@ -38,7 +92,6 @@
 	<bean id="defaultAirportPopulator"
 		class="it.uiip.airport.facades.populators.AirportPopulator">
 	</bean>
-
 
 
 	<alias alias="planeFacade" name="defaultPlaneFacade" />

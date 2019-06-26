@@ -96,6 +96,7 @@ public interface ControllerConstants
 			interface Airport
 			{
 				String AirportSearchPage = "pages/airport/searchAirport";
+				String AirportInfoPage = "pages/airport/viewInfoFlight";
 			}
 
 			interface Checkout // NOSONAR

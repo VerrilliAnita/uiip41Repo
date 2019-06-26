@@ -41,6 +41,20 @@
 			<value code="sabato" />
 			<value code="domenica" />
 		</enumtype>
+		
+		<enumtype generate="true" code="statusRouteEnum" autocreate="true"
+			dynamic="true">
+			<value code="ARRIVING" />
+			<value code="DELETED" />
+			<value code="OUTGOING" />
+		</enumtype>
+		
+		<enumtype generate="true" code="statusTicketEnum" autocreate="true"
+			dynamic="true">
+			<value code="CONFIRMED"/>
+			<value code="DELETED" />
+		</enumtype>
+		
 	</enumtypes>
 	
 	<relations>
@@ -55,10 +69,45 @@
 			<modifiers read="true" write="true" search="true" optional="true"/>	
 			</targetElement>
 		</relation>
+		
+		<relation localized="false" code="Ticket2Route">
+			<sourceElement qualifier="route" type="Route" cardinality="one">
+				<modifiers read="true" write="true" search="true" optional="false"/>		
+			</sourceElement>
+			<targetElement qualifier="airportTickets" type="AirportTicket" 
+						   cardinality="many" collectiontype="set">
+				<modifiers read="true" write="true" search="true" optional="false"/>	
+			</targetElement>
+		</relation>
 	</relations>
 	<itemtypes>
 
 		<!-- Add your item definitions here -->
+		<itemtype code="AirportTicket" generate="true" autocreate="true">
+			<deployment table="airportTicket" typecode="21350" />
+			<attributes>
+				<attribute qualifier="codeAirportTicket" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="statusTicket" type="statusTicketEnum">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="passenger" type="Passenger">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="price" type="java.lang.Integer">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="seat" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+			</attributes>
+		</itemtype>
 
 		<itemtype code="Airport" generate="true" autocreate="true">
 			<deployment table="airport" typecode="21345" />
@@ -148,6 +197,10 @@
 				<attribute qualifier="codeRoute" type="java.lang.String">
 						<persistence type="property"></persistence>
 						<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="statusRoute" type="statusRouteEnum">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
 				</attribute>
 				<attribute qualifier="flight" type="Flight">
 						<persistence type="property"></persistence>

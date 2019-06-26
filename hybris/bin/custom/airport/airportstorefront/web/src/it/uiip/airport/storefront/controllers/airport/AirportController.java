@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uiip.airport.facades.AirportFacade;
+import it.uiip.airport.facades.AirportRouteFacade;
+import it.uiip.airport.facades.AirportTicketFacade;
 import it.uiip.airport.facades.data.AirportData;
+import it.uiip.airport.facades.data.AirportRouteData;
 import it.uiip.airport.storefront.controllers.ControllerConstants;
 
 @Controller
@@ -27,6 +30,10 @@ public class AirportController extends AbstractPageController
 {
 	@Resource(name = "airportFacade")
 	private AirportFacade airportFacade;
+	@Resource(name = "airportTicketFacade")
+	private AirportTicketFacade ticketFacade;
+	@Resource(name = "airportRouteFacade")
+	private AirportRouteFacade routeFacade;
 
 	private static final Logger LOG = Logger.getLogger(AirportController.class);
 
@@ -44,6 +51,24 @@ public class AirportController extends AbstractPageController
 
 		model.addAttribute("airports", airports);
 		return ControllerConstants.Views.Pages.Airport.AirportSearchPage;
+
+	}
+
+
+
+	@RequestMapping(value = "/infoFlight/{codeRoute}", method = RequestMethod.GET)
+
+	public String viewInfoFlight(@PathVariable("codeRoute")
+
+	final String codeRoute, final Model model, final HttpServletResponse response)
+	{
+		final List<AirportRouteData> routes = routeFacade.getRoutesForCode(codeRoute);
+		if (routes == null)
+		{
+			LOG.info("Lists of routes null");
+		}
+		model.addAttribute("route", routes.get(0));
+		return ControllerConstants.Views.Pages.Airport.AirportInfoPage;
 
 	}
 
