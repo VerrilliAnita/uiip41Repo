@@ -5,7 +5,11 @@ package it.uiip.airport.facades.impl;
 
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Required;
 
@@ -30,6 +34,19 @@ public class DefaultAirportRouteFacade implements AirportRouteFacade
 		return airportRouteConverter.convertAll(airportRouteService.getAllRoutes());
 	}
 
+	@Override
+	public Map<String, List<AirportRouteData>> getRouteAirportAToAirportB(final String cityDep, final String cityArr,
+			final Date date)
+	{
+		final Map<String, ArrayList<RouteModel>> routesModel = airportRouteService.getRoutesForCityAndDate(cityDep, cityArr, date);
+		final Map<String, List<AirportRouteData>> result = new HashMap<String, List<AirportRouteData>>();
+
+		for (final Map.Entry<String, ArrayList<RouteModel>> entry : routesModel.entrySet())
+		{
+			result.put(entry.getKey(), airportRouteConverter.convertAll(entry.getValue()));
+		}
+		return result;
+	}
 
 	@Override
 	public List<AirportRouteData> getRoutesForCode(final String codeRoute)
@@ -58,7 +75,5 @@ public class DefaultAirportRouteFacade implements AirportRouteFacade
 	{
 		this.airportRouteConverter = airportRouteConverter;
 	}
-
-
 
 }

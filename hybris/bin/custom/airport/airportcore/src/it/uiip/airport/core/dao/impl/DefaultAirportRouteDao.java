@@ -81,4 +81,22 @@ public class DefaultAirportRouteDao extends DefaultGenericDao<RouteModel> implem
 		return result.getResult();
 	}
 
+
+
+	@Override
+	public List<RouteModel> findAirportRouteByCityDep(final String city, final String date)
+	{
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("SELECT {R.pk} ");
+		queryStr.append("From {route as R ");
+		queryStr.append("Join Flight as F on {R.flight}={F.pk}");
+		queryStr.append("Join Airport as A on {F.airportDep}={A.pk} }");
+		queryStr.append("Where {A.city}=?city And {R.dateRouteDep} Like ?date%");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("city", city);
+		fsq.addQueryParameter("date", date);
+		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
+
 }

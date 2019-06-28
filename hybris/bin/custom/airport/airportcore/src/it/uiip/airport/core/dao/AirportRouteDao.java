@@ -22,4 +22,6 @@ public interface AirportRouteDao
 	public List<RouteModel> findAirportRouteDeleted(String status);
 
 	public List<RouteModel> findAirportRouteByCityAndDay(String city,Date date);
+
+	public List<RouteModel> findAirportRouteByCityDep(String city, String date);
 }

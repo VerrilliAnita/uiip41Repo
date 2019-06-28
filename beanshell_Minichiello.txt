@@ -4,17 +4,23 @@ import it.uiip.airport.core.model.RouteModel;
 import it.uiip.airport.core.dao.impl.DefaultAirportRouteDao;
 import de.hybris.platform.servicelayer.model.ModelService;
 import it.uiip.airport.core.enums.StatusRouteEnum;
+import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 
-DefaultAirportRouteDao routeDao=spring.getBean("airportRouteDao");
+
+
+flexibleSearchService = spring.getBean("flexibleSearchService");
 ModelService modelService=spring.getBean("modelService");
+  
+query = new FlexibleSearchQuery("SELECT {R.pk} FROM {Route AS R 
+	JOIN Flight AS F ON {F.pk} = {R.flight} 
+	JOIN Airport AS A ON {A.pk} = {F.airportDep} } 
+	WHERE {A.city} = 'Londra' AND {R.dateRouteDep} LIKE '2019-06-27%'");
+  
+List routes = flexibleSearchService.search(query).result;
 
-String city="Milano";
-Date date=new Date();
-List routes=routeDao.findAirportRouteByCityAndDay(city,date);
 
 for(RouteModel r:routes)
 {
-  System.out.println(""+r.getCodeRoute());
   r.setStatusRoute(StatusRouteEnum.DELETED);
   modelService.save(r);
 }
