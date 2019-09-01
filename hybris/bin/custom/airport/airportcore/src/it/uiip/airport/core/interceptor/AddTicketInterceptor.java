@@ -37,7 +37,7 @@ public class AddTicketInterceptor implements ValidateInterceptor<AirportTicketMo
 			throw new ValidationException("Object null");
 		}
 
-		if (sitsTotal > sitsRoute)
+		if (sitsTotal > sitsRoute) // ancora posti liberi
 		{
 			LOG.info("Ticket added");
 		}

@@ -5,6 +5,7 @@ package it.uiip.airport.storefront.controllers.airport;
 
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.AbstractPageController;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -22,6 +23,8 @@ import it.uiip.airport.facades.AirportRouteFacade;
 import it.uiip.airport.facades.AirportTicketFacade;
 import it.uiip.airport.facades.data.AirportData;
 import it.uiip.airport.facades.data.AirportRouteData;
+import it.uiip.airport.facades.data.CabinCrewData;
+import it.uiip.airport.facades.data.CrewData;
 import it.uiip.airport.storefront.controllers.ControllerConstants;
 
 @Controller
@@ -71,5 +74,51 @@ public class AirportController extends AbstractPageController
 		return ControllerConstants.Views.Pages.Airport.AirportInfoPage;
 
 	}
+	
+	@RequestMapping(value = "/searchRoute/cabinCrew/{airportDep}", method = RequestMethod.GET)
+
+	public String searchCabinCrewByAirportDep(@PathVariable("airportDep")
+
+	final String airportDep, final Model model, final HttpServletResponse response)
+	{
+		final List<AirportRouteData> routes = routeFacade.getRoutesForAirportDep(airportDep);
+		if (routes == null)
+		{
+			LOG.info("Lists of routes null");
+		}
+		HashMap<String,List<CabinCrewData>> cabinCrewes = new HashMap<String,List<CabinCrewData>>();
+		
+		for (AirportRouteData route : routes) {
+			CrewData crew = route.getCrew();
+			cabinCrewes.put(route.getCodeRoute(),crew.getCabinCrew());
+		}
+		model.addAttribute("airportDep", airportDep);
+		model.addAttribute("cabinCrewes", cabinCrewes);
+		return ControllerConstants.Views.Pages.Airport.CabinCrewesPage;
+
+	}
+	
+	@RequestMapping(value = "/searchRoute/commander/{commander}/{month}", method = RequestMethod.GET)
+
+	public String searchRouteByCommander(@PathVariable("commander")final String commander,
+			@PathVariable("month") final String month,
+			final Model model, final HttpServletResponse response)
+	{
+		final List<AirportRouteData> routes = routeFacade.getRoutesForCommander(commander,month);
+		if (routes == null)
+		{
+			LOG.info("Lists of routes null");
+		}
+		
+		model.addAttribute("routes", routes);
+		model.addAttribute("commander",commander);
+		model.addAttribute("month",month);
+		return ControllerConstants.Views.Pages.Airport.CommanderRoutePage;
+
+	}
+	
+	
+	
+	
 
 }

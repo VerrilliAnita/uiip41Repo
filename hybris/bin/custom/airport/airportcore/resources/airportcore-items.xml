@@ -76,9 +76,20 @@
 			</sourceElement>
 			<targetElement qualifier="airportTickets" type="AirportTicket" 
 						   cardinality="many" collectiontype="set">
-				<modifiers read="true" write="true" search="true" optional="false"/>	
+				<modifiers read="true" write="true" search="true" optional="true"/>	
 			</targetElement>
 		</relation>
+		
+		<relation localized="false" code="CrewCabinCrewRelation" autocreate="true" generate="true">
+			<sourceElement qualifier="crew" type="Crew" cardinality="one" >
+				<modifiers read="true" write="true" search="true" optional="false"/>		
+			</sourceElement>
+			<targetElement qualifier="cabinCrew" type="CabinCrew" 
+						   cardinality="many" collectiontype="set">
+			<modifiers read="true" write="true" search="true" optional="true"/>	
+			</targetElement>
+		</relation>
+	
 	</relations>
 	<itemtypes>
 
@@ -214,6 +225,10 @@
 						<persistence type="property"></persistence>
 						<modifiers optional="true"/>
 				</attribute>
+				<attribute qualifier="crew" type="Crew">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
 			</attributes>
 		</itemtype>
 		
@@ -232,6 +247,67 @@
 				<attribute qualifier="age" type="java.lang.Integer">
 					<persistence type="dynamic" attributeHandler="agePassengerHandler"></persistence>
 					<modifiers write="false"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+		<!-- PILOT -->
+		<itemtype code="Pilot"  extends="User" generate="true" autocreate="true">
+			<deployment table="pilot" typecode="21351" />
+			<attributes>
+				<attribute qualifier="codeFiscal" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="birthday" type="java.util.Date">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
+				<attribute qualifier="age" type="java.lang.Integer">
+					<persistence type="dynamic" attributeHandler="agePilotHandler"></persistence>
+					<modifiers write="false"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+		<!-- CABIN CREW -->
+		<itemtype code="CabinCrew" extends="User" generate="true" autocreate="true">
+			<deployment table="cabinCrew" typecode="21352" />
+			<attributes>
+				<attribute qualifier="codeFiscal" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="birthday" type="java.util.Date">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
+				<attribute qualifier="age" type="java.lang.Integer">
+					<persistence type="dynamic" attributeHandler="ageCabinCrewHandler"></persistence>
+					<modifiers write="false"/>
+				</attribute>
+				<attribute qualifier="isBest" type="java.lang.Boolean">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+		<!-- CREW -->
+		<itemtype code="Crew" generate="true" autocreate="true">
+			<deployment table="crew" typecode="21353" />
+			<attributes>
+				<attribute qualifier="codeCrew" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="commander" type="Pilot">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="pilotAide" type="Pilot">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
 				</attribute>
 			</attributes>
 		</itemtype>

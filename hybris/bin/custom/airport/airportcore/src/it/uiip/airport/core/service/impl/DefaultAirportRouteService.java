@@ -59,4 +59,16 @@ public class DefaultAirportRouteService implements AirportRouteService
 	{
 		this.airportRouteDao = airportRouteDao;
 	}
+
+	@Override
+	public List<RouteModel> getRoutesForAirportDep(String airportDep) {
+		LOG.info("Invoke method getRoutesByAirportDep in DefaultAirportRouteService");
+		return airportRouteDao.findRoutesByAirportDep(airportDep);
+	}
+
+	@Override
+	public List<RouteModel> getRoutesForCommander(String commander,String month) {
+		LOG.info("Invoke method getRoutesByCommander in DefaultAirportRouteService");
+		return airportRouteDao.findRoutesByCommander(commander,month);
+	}
 }

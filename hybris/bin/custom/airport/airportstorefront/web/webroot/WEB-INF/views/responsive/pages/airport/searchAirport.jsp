@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>AirportList</title>
+<title>Airport List</title>
 </head>
 <body>
 	<h1>Airport Listing</h1>

@@ -60,5 +60,17 @@ public class DefaultAirportRouteFacade implements AirportRouteFacade
 	}
 
 
+	@Override
+	public List<AirportRouteData> getRoutesForAirportDep(String airportDep) {
+		return airportRouteConverter.convertAll(airportRouteService.getRoutesForAirportDep(airportDep));
+	}
+
+
+	@Override
+	public List<AirportRouteData> getRoutesForCommander(String commander,String month) {	
+		return airportRouteConverter.convertAll(airportRouteService.getRoutesForCommander(commander,month));
+	}
+
+
 
 }

@@ -80,4 +80,34 @@ public class DefaultAirportRouteDao extends DefaultGenericDao<RouteModel> implem
 		return result.getResult();
 	}
 
+
+	@Override
+	public List<RouteModel> findRoutesByAirportDep(String airport) {
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("Select {R.pk}");
+		queryStr.append("FROM {Route AS R JOIN Flight as F ON {R.flight}={F.pk}");
+		queryStr.append("JOIN Airport AS A ON {F.airportDep}={A.pk} }");
+		queryStr.append("WHERE {F.airportDep}=?airport");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("airport", airport);
+		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
+
+
+	@Override
+	public List<RouteModel> findRoutesByCommander(String commander,String month) {
+		final StringBuilder queryStr = new StringBuilder();
+		queryStr.append("Select {R.pk}");
+		queryStr.append("FROM {ROUTE AS R JOIN CREW AS C ON {R.crew}={C.pk}");
+		queryStr.append("JOIN PILOT AS P ON {C.commander}={P.pk} }");
+		queryStr.append("WHERE {P.name}=?commander AND {R.dateRouteDep} LIKE '%-?month%'");
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("commander", commander);
+		final SearchResult<RouteModel> result = getFlexibleSearchService().search(fsq);
+		return result.getResult();
+	}
+	
+	
+
 }

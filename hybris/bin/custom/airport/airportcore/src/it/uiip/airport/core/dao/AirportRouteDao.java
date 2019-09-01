@@ -22,4 +22,9 @@ public interface AirportRouteDao
 	public List<RouteModel> findAirportRouteByCode(String codeRoute);
 
 	public List<RouteModel> findAirportRouteDeleted(String status);
+	
+	public List<RouteModel> findRoutesByAirportDep(String airport);
+	
+	public List<RouteModel> findRoutesByCommander(String commander,String month);
+	
 }

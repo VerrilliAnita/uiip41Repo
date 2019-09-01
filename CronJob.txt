@@ -1,0 +1,9 @@
+	
+Insert_Update ServicelayerJob	;code[unique=true]	;springId
+								;BestCabinCrewJob	;BestCabinCrewJob
+
+Insert_Update CronJob	;code[unique=true]		;job(code)		;singleExecutable ;sessionLanguage(isocode)
+			;BestCabinCrewCronJob	;BestCabinCrewJob	;false		  ;it
+
+Insert_Update Trigger	;cronjob(code)[unique=true]		;cronExpression
+			;BestCabinCrewCronJob		;0 0 12 1 * ?

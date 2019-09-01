@@ -87,7 +87,7 @@
 	<context type="AirportTicket" component="listview">
 		<list:list-view
 			xmlns:list="http://www.hybris.com/cockpitng/component/listView">
-			<list:column qualifier="codeTicket" />
+			<list:column qualifier="codeAirportTicket" />
 			<list:column qualifier="passenger" />
 			<list:column qualifier="price" />
 			<list:column qualifier="seat" />
