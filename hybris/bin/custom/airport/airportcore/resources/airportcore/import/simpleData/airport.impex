@@ -62,7 +62,7 @@ INSERT_UPDATE Passenger; uid[unique=true];codeFiscal[unique=true];name;birthday[
 ;29;CRLV55555E;Crystal Minichiello;11.06.1928
 ;30;POMMIN6839;Pompilio Morante;03.12.1986
 
-INSERT_UPDATE Route; codeRoute[unique=true];  flight(codeFlight)[unique=true]; dateRouteDep [dateformat = dd.MM.yyyy hh:mm:ss, allownull=true]; dateRouteArr[dateformat = dd.MM.yyyy hh:mm:ss, allownull=true]
+INSERT_UPDATE Route; codeRoute[unique=true];  flight(codeFlight)[unique=true]; dateRouteDep [dateformat = dd.MM.yyyy hh:mm:ss, allownull=true]; dateRouteArr[dateformat = dd.MM.yyyy hh:mm:ss, allownull=true]; state(code)[default='ACTIVE']
 	;R1	;v1	;12.03.2018 12:12:12; 12.03.2018 16:12:12
 	;R2	;v2	;12.03.2018 15:10:15; 12.03.2018 18:30:35
 	;R3	;v3	;14.04.2018 16:05:00; 14.04.2018 22:15:00
@@ -72,7 +72,7 @@ INSERT_UPDATE Route; codeRoute[unique=true];  flight(codeFlight)[unique=true]; d
 	;R7	;v7	;18.04.2018 18:35:15; 19.04.2018 06:15:45
 	;R8	;v8	;19.11.2019 07:11:45; 19.11.2019 16:45:12
 
-INSERT_UPDATE Ticket; codeTicket[unique=true];  airlineCompany; route(codeRoute); passenger(uid); flightTime; classTicket; price; seatNumber; state[default='ACTIVE']
+INSERT_UPDATE Ticket; codeTicket[unique=true];  airlineCompany; route(codeRoute); passenger(uid); flightTime; classTicket; price; seatNumber; state(code)[default='ACTIVE']
 	;T1;SISA;R1;1; 4; B; 56.99; 1B
 	;T2;SISA;R1;2; 4; B; 56.99; 2B
 	;T3;SISA;R1;3; 4; B; 56.99; 3B

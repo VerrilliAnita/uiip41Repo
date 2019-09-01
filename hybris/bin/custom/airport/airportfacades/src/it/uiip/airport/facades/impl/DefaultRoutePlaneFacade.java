@@ -52,6 +52,18 @@ public class DefaultRoutePlaneFacade implements RoutePlaneFacade {
 		LOG.info("call method --> getRouteForCode(String codeRoute) in DefaultRouteFacade");
 		return routeConverter.convert(routePlaneService.getRouteForCode(codeRoute));
 	}
+
+	@Override
+	public List<RouteData> getRoutesForAirportDep(String airportDep) {
+		LOG.info("call method --> getRoutesForAirportDep(String airportDep) in DefaultRouteFacade");
+		return routeConverter.convertAll(routePlaneService.getRoutesForAirportDep(airportDep));
+	}
+
+	@Override
+	public List<RouteData> getRoutesForCommander(String commander, String month) {
+		LOG.info("call method --> getRoutesForCommander(String commander) in DefaultRouteFacade");
+		return routeConverter.convertAll(routePlaneService.getRoutesForCommander(commander, month));
+	}
 	
 	
 

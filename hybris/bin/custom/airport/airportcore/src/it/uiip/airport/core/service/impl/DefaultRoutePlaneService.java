@@ -51,4 +51,16 @@ public class DefaultRoutePlaneService implements RoutePlaneService {
 		return routeDao.findRoutesByState(state);
 	}
 
+	@Override
+	public List<RouteModel> getRoutesForAirportDep(String airportDep) {
+		LOG.info("call method --> getRoutesForAirportDep(String airportDep) in DefaultRoutePlaneService class");
+		return routeDao.findRoutesByAirportDep(airportDep);
+	}
+
+	@Override
+	public List<RouteModel> getRoutesForCommander(String commander, String month) {
+		LOG.info("call method --> getRoutesForCommander(String commander) in DefaultRoutePlaneService class");
+		return routeDao.findRoutesByCommander(commander, month);
+	}
+
 }

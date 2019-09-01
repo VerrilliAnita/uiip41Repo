@@ -11,4 +11,7 @@ public interface RoutePlaneService {
 	public List<RouteModel> getAllRoutes();
 	public List<RouteModel> getRoutesForState(String state);
 	
+	public List<RouteModel> getRoutesForAirportDep(String airportDep);
+	public List<RouteModel> getRoutesForCommander(String commander, String month);
+	
 }
