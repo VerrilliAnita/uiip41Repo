@@ -45,11 +45,34 @@
 	
 	</bean>
 	
+	<!-- TICKET DAO-->
+	<alias name="defaultTicketPlaneDao" alias="ticketPlaneDao"/>
+	<bean id="defaultTicketPlaneDao" class="it.uiip.airport.core.dao.impl.DefaultTicketPlaneDao">
+		<constructor-arg value="#{T(it.uiip.airport.core.model.TicketModel)._TYPECODE}"/>
+	</bean>
+	
+	<!-- TICKET SERVICE -->
+	<alias name="defaultTicketPlaneService" alias="ticketPlaneService"/>
+	<bean id="defaultTicketPlaneService" class="it.uiip.airport.core.service.impl.DefaultTicketPlaneService">
+		<property name="ticketPlaneDao" ref="ticketPlaneDao"></property>
+	</bean>
+	
+	<!-- ROUTE DAO -->
+	<alias name="defaultRouteDao" alias="routeDao"/>
+	<bean id="defaultRouteDao" class="it.uiip.airport.core.dao.impl.DefaultRouteDao">
+		<constructor-arg value="#{T(it.uiip.airport.core.model.RouteModel)._TYPECODE}"/>
+	</bean>
+	
+	<!-- ROUTE SERVICE -->
+	<alias name="defaultRoutePlaneService" alias="routePlaneService"/>
+	<bean id="defaultRoutePlaneService" class="it.uiip.airport.core.service.impl.DefaultRoutePlaneService">
+		<property name="routeDao" ref="routeDao"></property>
+	</bean>
+	
 	<alias alias="airportService" name="defaultAirportService"/>
 	<bean id="defaultAirportService" class="it.uiip.airport.core.service.impl.DefaultAirportService" >
 		<property name="airportDao" ref="airportDao"></property>
 	</bean>
-	
 	
 	<alias name="defaultFlightDao" alias="flightDao"/>
 	<bean id="defaultFlightDao" class="it.uiip.airport.core.dao.impl.DefaultFlightDao">
@@ -74,6 +97,58 @@
 	<alias alias="flightService" name="defaultFlightService"/>
 	<bean id="defaultFlightService" class="it.uiip.airport.core.service.impl.DefaultFlightService" >
 		<property name="flightDao" ref="flightDao"></property>
+	</bean>
+	
+	<!-- PASSENGER INTERCEPTOR -->
+	<!-- PASSENGER REMOVE -->
+	<alias name="defaultPassengerRemoveInterceptor" alias="passengerRemoveInterceptor"/>
+	<bean id="defaultPassengerRemoveInterceptor" class="it.uiip.airport.core.interceptors.PassengerRemoveInterceptor">
+		<property name="ticketPlaneService" ref="ticketPlaneService"/>
+	</bean>
+	
+	<!-- TICKET INTERCEPTOR -->
+	<!-- TICKET VALIDATE -->
+	<alias name="defaultTicketValidateInterceptor" alias="ticketValidateInterceptor"/>
+	<bean id="defaultTicketValidateInterceptor" class="it.uiip.airport.core.interceptors.TicketValidateInterceptor">
+	</bean>
+	
+	<!-- TICKET PREPARE -->
+	<alias name="defaultTicketPrepareInterceptor" alias="ticketPrepareInterceptor"/>
+	<bean id="defaultTicketPrepareInterceptor" class="it.uiip.airport.core.interceptors.TicketPrepareInterceptor">
+	<property name="eventService" ref="eventService"/>
+	</bean>
+	
+	<!-- HANDLER PASSENGER REMOVE INTERCEPTOR -->
+	<bean id="passengerInterceptorMapping" 
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="passengerRemoveInterceptor" />
+		<property name="typeCode" value="Passenger" />
+	</bean>
+	
+	<!-- HANDLER TICKET PREPARE INTERCEPTOR -->
+	<bean id="TicketPrepareInterceptorMapping" 
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="ticketPrepareInterceptor" />
+		<property name="typeCode" value="Ticket" />
+	</bean>
+	
+	<!-- HANDLER INTERCEPTOR -->
+	<bean id="ticketInterceptorMapping" 
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="ticketValidateInterceptor" />
+		<property name="typeCode" value="Ticket" />
+	</bean>
+	
+	<!-- TICKET EVENT LISTENER -->
+	<bean id="ticketEventListener" class="it.uiip.airport.core.event.airport.listener.TicketEventListener"
+		parent="abstractEventListener">
+		<property name="configurationService" ref="configurationService"/>
+		</bean>
+	
+	<!-- CRONJOBS -->
+	<!-- ROUTE STATE JOB -->
+	<bean id="routeStateJob" class="it.uiip.airport.core.job.RouteStateJob" parent="abstractJobPerformable">
+		<property name="routePlaneService" ref="routePlaneService"/>
 	</bean>
 
 	<bean id="volumeAwareProductPriceValueProvider" class="it.uiip.airport.core.search.solrfacetsearch.provider.impl.VolumeAwareProductPriceValueProvider"  parent="abstractPropertyFieldValueProvider">

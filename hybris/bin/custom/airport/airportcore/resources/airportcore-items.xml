@@ -41,9 +41,22 @@
 			<value code="sabato" />
 			<value code="domenica" />
 		</enumtype>
+		
+		<enumtype generate="true" code="stateRoute" autocreate="true"
+			dynamic="true">
+			<value code="CANCELLED" />
+			<value code="ACTIVE" />
+		</enumtype>
+		
+		<enumtype generate="true" code="stateTicket" autocreate="true"
+			dynamic="true">
+			<value code="CANCELLED" />
+			<value code="ACTIVE" />
+		</enumtype>
 	</enumtypes>
 	
 	<relations>
+		<!-- 
 		<relation localized="false" code="PassengerRouteRelation" autocreate="true" generate="true">
 		<deployment table="Pass2Rout" typecode="21099"/>
 			<sourceElement qualifier="passenger" type="Passenger" cardinality="many" 
@@ -51,6 +64,16 @@
 			<modifiers read="true" write="true" search="true" optional="true"/>		
 			</sourceElement>
 			<targetElement qualifier="route" type="Route" 
+						   cardinality="many" collectiontype="set">
+			<modifiers read="true" write="true" search="true" optional="true"/>	
+			</targetElement>
+		</relation>
+		 -->
+		<relation localized="false" code="TicketRouteRelation" autocreate="true" generate="true">
+			<sourceElement qualifier="route" type="Route" cardinality="one" >
+				<modifiers read="true" write="true" search="true" optional="false"/>		
+			</sourceElement>
+			<targetElement qualifier="tickets" type="Ticket" 
 						   cardinality="many" collectiontype="set">
 			<modifiers read="true" write="true" search="true" optional="true"/>	
 			</targetElement>
@@ -161,6 +184,10 @@
 						<persistence type="property"></persistence>
 						<modifiers optional="true"/>
 				</attribute>
+				<attribute qualifier="state" type="stateRoute">
+					<persistence type="property"></persistence>
+					<modifiers optional="true"/>
+				</attribute>
 			</attributes>
 		</itemtype>
 		
@@ -179,6 +206,45 @@
 				<attribute qualifier="age" type="java.lang.Integer">
 					<persistence type="dynamic" attributeHandler="agePassengerHandler"></persistence>
 					<modifiers write="false"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+		<!-- TICKET -->
+		<itemtype code="Ticket" generate="true" autocreate="true">
+			<deployment table="ticket" typecode="21349" />
+			<attributes>
+				<attribute qualifier="codeTicket" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="airlineCompany" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="passenger" type="Passenger">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="flightTime" type="java.lang.Integer">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="classTicket" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="price" type="java.lang.Float">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="seatNumber" type="java.lang.String">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
+				</attribute>
+				<attribute qualifier="state" type="stateTicket">
+					<persistence type="property"></persistence>
+					<modifiers optional="false"/>
 				</attribute>
 			</attributes>
 		</itemtype>

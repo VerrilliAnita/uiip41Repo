@@ -40,6 +40,63 @@
 	</bean>
 
 
+	<!-- TICKET FACADE -->
+	<alias alias="ticketPlaneFacade" name="defaultTicketPlaneFacade" />
+	<bean id="defaultTicketPlaneFacade"
+		class="it.uiip.airport.facades.impl.DefaultTicketPlaneFacade">
+		<property name="ticketPlaneService" ref="ticketPlaneService" />
+		<property name="ticketConverter" ref="ticketConverter" />
+	</bean>
+
+	<!-- TICKET CONVERTER -->
+	<alias alias="ticketConverter" name="defaultTicketConverter" />
+	<bean id="defaultTicketConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.TicketData" />
+		<property name="populators">
+			<list>
+				<ref bean="ticketPlanePopulator" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- TICKET POPULATOR -->
+	<alias name="defaultTicketPlanePopulator" alias="ticketPlanePopulator" />
+	<bean id="defaultTicketPlanePopulator"
+		class="it.uiip.airport.facades.populators.TicketPlanePopulator">
+		<property name="passengerConverter" ref="passengerConverter"/>
+	</bean>
+	
+	<!-- ROUTE FACADE -->
+	<alias alias="routePlaneFacade" name="defaultRoutePlaneFacade" />
+	<bean id="defaultRoutePlaneFacade"
+		class="it.uiip.airport.facades.impl.DefaultRoutePlaneFacade">
+		<property name="routePlaneService" ref="routePlaneService" />
+		<property name="routeConverter" ref="routeConverter" />
+	</bean>
+
+	<!-- ROUTE CONVERTER -->
+	<alias alias="routeConverter" name="defaultRouteConverter" />
+	<bean id="defaultRouteConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.RouteData" />
+		<property name="populators">
+			<list>
+				<ref bean="routePlanePopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- ROUTE POPULATOR -->
+	<alias name="defaultRoutePlanePopulator" alias="routePlanePopulator" />
+	<bean id="defaultRoutePlanePopulator"
+		class="it.uiip.airport.facades.populators.RoutePlanePopulator">
+		<property name="flightConverter" ref="flightConverter" />
+		<property name="ticketConverter" ref="ticketConverter" />
+	</bean>
+	
 
 	<alias alias="planeFacade" name="defaultPlaneFacade" />
 	<bean id="defaultPlaneFacade"
