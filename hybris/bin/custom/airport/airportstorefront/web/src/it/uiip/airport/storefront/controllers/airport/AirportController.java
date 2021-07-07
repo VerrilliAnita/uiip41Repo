@@ -25,6 +25,8 @@ import it.uiip.airport.facades.PassengerFacade;
 import it.uiip.airport.facades.RoutePlaneFacade;
 import it.uiip.airport.facades.TicketPlaneFacade;
 import it.uiip.airport.facades.data.AirportData;
+import it.uiip.airport.facades.data.CabinCrewData;
+import it.uiip.airport.facades.data.CrewData;
 import it.uiip.airport.facades.data.FlightData;
 import it.uiip.airport.facades.data.PassengerData;
 import it.uiip.airport.facades.data.RouteData;
@@ -126,5 +128,51 @@ public class AirportController extends AbstractPageController
 		return ControllerConstants.Views.Pages.Airport.RouteSearchPage;
 
 	}
+	
+	@RequestMapping(value = "/searchroute/cabincrew/{airportDep}", method = RequestMethod.GET)
+	public String searchCabinCrewByAirportDep(@PathVariable("airportDep")
+	final String airportDep, final Model model, final HttpServletResponse response)
+	{
+		LOG.info("Search cabinCrew by airportDep in controller airport");
+		
+		final List<RouteData> routes = routePlaneFacade.getRoutesForAirportDep(airportDep);
+		
+		if(routes == null) {
+			LOG.info("List of routes is null");
+			
+		}
+		
+		HashMap<String, List<CabinCrewData>> cabinCrewes = new HashMap<String, List<CabinCrewData>>();
+		
+		for(RouteData route : routes) {
+			CrewData crew = route.getCrew();
+			cabinCrewes.put(route.getCodeRoute(), crew.getCabinCrew());
+		}
+		
+		model.addAttribute("cabinCrewes", cabinCrewes);
+		return ControllerConstants.Views.Pages.Airport.CabinCrewesSearchPage;
 
+	}
+	
+	@RequestMapping(value = "/searchroute/commander/{commander}/{month}", method = RequestMethod.GET)
+	public String searchRoutesByCommander(@PathVariable("commander")
+	final String commander, @PathVariable("month")
+	final String month, final Model model, final HttpServletResponse response)
+	{
+		LOG.info("Search route by commander in controller airport");
+		
+		final List<RouteData> routes = routePlaneFacade.getRoutesForCommander(commander, month);
+		
+		if(routes == null) {
+			LOG.info("List of routes is null");
+			
+		}
+		
+		model.addAttribute("routes", routes);
+		model.addAttribute("commander", commander);
+		model.addAttribute("month", month);
+		return ControllerConstants.Views.Pages.Airport.RouteCommanderSearchPage;
+
+	}
+	
 }

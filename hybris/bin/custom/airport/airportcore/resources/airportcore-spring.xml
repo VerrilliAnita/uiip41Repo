@@ -31,7 +31,13 @@
 
 	<!-- Solr field value providers -->
 
+	<!-- HANDLER -->
 	<bean id="agePassengerHandler" class="it.uiip.airport.core.handler.AgePassengerHandler"></bean>
+	
+	<bean id="agePilotHandler" class="it.uiip.airport.core.handler.AgePilotHandler"></bean>
+	
+	<bean id="ageCabinCrewHandler" class="it.uiip.airport.core.handler.AgeCabinCrewHandler"></bean>
+	
 	
 	<alias name="defaultAirportDao" alias="airportDao"/>
 	<bean id="defaultAirportDao" class="it.uiip.airport.core.dao.impl.DefaultAirportDao">
@@ -67,6 +73,18 @@
 	<alias name="defaultRoutePlaneService" alias="routePlaneService"/>
 	<bean id="defaultRoutePlaneService" class="it.uiip.airport.core.service.impl.DefaultRoutePlaneService">
 		<property name="routeDao" ref="routeDao"></property>
+	</bean>
+	
+	<!-- CABIN CREW DAO -->
+	<alias name="defaultCabinCrewDao" alias="cabinCrewDao"/>
+	<bean id="defaultCabinCrewDao" class="it.uiip.airport.core.dao.impl.DefaultCabinCrewDao">
+		<constructor-arg value="#{T(it.uiip.airport.core.model.CabinCrewModel)._TYPECODE}"/>
+	</bean>
+	
+	<!-- CABIN CREW SERVICE -->
+	<alias name="defaultCabinCrewService" alias="cabinCrewService"/>
+	<bean id="defaultCabinCrewService" class="it.uiip.airport.core.service.impl.DefaultCabinCrewService">
+		<property name="cabinCrewDao" ref="cabinCrewDao"></property>
 	</bean>
 	
 	<alias alias="airportService" name="defaultAirportService"/>
@@ -149,6 +167,11 @@
 	<!-- ROUTE STATE JOB -->
 	<bean id="routeStateJob" class="it.uiip.airport.core.job.RouteStateJob" parent="abstractJobPerformable">
 		<property name="routePlaneService" ref="routePlaneService"/>
+	</bean>
+	
+	<!-- BestCabinCrewJob JOB -->
+	<bean id="bestCabinCrewJob" class="it.uiip.airport.core.job.BestCabinCrewJob" parent="abstractJobPerformable">
+		<property name="cabinCrewService" ref="cabinCrewService"/>
 	</bean>
 
 	<bean id="volumeAwareProductPriceValueProvider" class="it.uiip.airport.core.search.solrfacetsearch.provider.impl.VolumeAwareProductPriceValueProvider"  parent="abstractPropertyFieldValueProvider">

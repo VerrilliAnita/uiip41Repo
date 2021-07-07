@@ -2,6 +2,7 @@ package it.uiip.airport.core.handler;
 
 import java.util.Date;
 
+import de.hybris.platform.core.model.user.UserModel;
 import de.hybris.platform.servicelayer.model.attribute.DynamicAttributeHandler;
 
 import it.uiip.airport.core.model.PassengerModel;

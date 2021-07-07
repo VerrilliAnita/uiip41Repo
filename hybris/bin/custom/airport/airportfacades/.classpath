@@ -5,7 +5,6 @@
 	<classpathentry kind="src" output="eclipsebin/classes" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="/platform"/>
-	<classpathentry kind="src" path="gensrc"/>
 	<classpathentry exported="true" kind="src" path="/airportcore"/>
 	<classpathentry kind="src" output="eclipsebin/classes" path="testsrc"/>
 	<classpathentry kind="output" path="eclipsebin/notused"/>

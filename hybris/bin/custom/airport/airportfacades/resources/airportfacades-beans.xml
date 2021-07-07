@@ -60,6 +60,29 @@
 		<property name="seatNumber" type="String"/>
 	</bean>
 	
+	<bean class="it.uiip.airport.facades.data.PilotData">
+        <property name="uid" type="String"/>
+        <property name="codeFiscal" type="String"/>
+        <property name="name" type="String"/>
+        <property name="birthday" type="java.util.Date"/>
+        <property name="age" type="Integer"/>    
+    </bean>
+	
+	 <bean class="it.uiip.airport.facades.data.CabinCrewData">
+        <property name="uid" type="String"/>
+        <property name="codeFiscal" type="String"/>
+        <property name="name" type="String"/>
+        <property name="birthday" type="java.util.Date"/>
+        <property name="age" type="Integer"/>    
+    </bean>
+	
+	 <bean class="it.uiip.airport.facades.data.CrewData">
+        <property name="codeCrew" type="String"/>
+        <property name="commander" type="it.uiip.airport.facades.data.PilotData"/>
+        <property name="pilotAide" type="it.uiip.airport.facades.data.PilotData"/>
+        <property name="cabinCrew" type="java.util.List&lt;it.uiip.airport.facades.data.CabinCrewData>"/>
+    </bean>
+	
 	
 	<!-- ROUTE DATA -->
 	<bean class="it.uiip.airport.facades.data.RouteData">
@@ -70,6 +93,7 @@
 		type="java.util.List&lt;it.uiip.airport.facades.data.TicketData>"/>
 		<property name="dateRouteDep" type="java.util.Date"/>
 		<property name="dateRouteArr" type="java.util.Date"/>
+		<property name="crew" type="it.uiip.airport.facades.data.CrewData"></property>
 	</bean>
 	
 	<bean class="it.uiip.airport.facades.data.PassengerData">
