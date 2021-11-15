@@ -13,11 +13,8 @@ import java.util.List;
 import it.uiip.airport.core.dao.FlightDao;
 import it.uiip.airport.core.model.FlightModel;
 
-/**
- * @author soprasteria
- *
- */
-public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements FlightDao{
+
+public class DefaultFlightDao extends DefaultGenericDao<FlightRouteModel> implements FlightDao{
 
 	public DefaultFlightDao(final String typecode) {
 		super(typecode);

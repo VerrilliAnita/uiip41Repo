@@ -136,7 +136,58 @@
 		alias="passengerPopulator" />
 	<bean id="defaultPassengerPopulator"
 		class="it.uiip.airport.facades.populators.PassengerPopulator"></bean>
+		
+		<alias alias="flightRouteFacade" name="defaultFlightRouteFacade" />
+	<bean id="defaultFlightRouteFacade"
+		class="it.uiip.airport.facades.impl.DefaultFlightRouteFacade">
+		<property name="FlightRouteService" ref="flightRouteService" />
+		<property name="flightRouteConverter" ref="flightRouteConverter" />
+	</bean>
+		
+		<alias alias="flightRouteConverter" name="defaultFlightRouteConverter" />
+	<bean id="defaultRouteConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.RouteData" />
+		<property name="populators">
+			<list>
+				<ref bean="routePopulator" />
+			</list>
+		</property>
+	</bean>
 
+	<alias name="defaultFlightRoutePopulator" alias="flightRoutePopulator" />
+	<bean id="defaultFlightRoutePopulator"
+		class="it.uiip.airport.facades.populators.FlightRoutePopulator">
+		<property name="flightConverter" ref="flightConverter"/>
+	</bean>
+
+
+	<alias alias="airportTicketFacade" name="defaultAirportTicketFacade" />
+	<bean id="defaultAirportTicketFacade"
+		class="it.uiip.airport.facades.impl.DefaultAirportTicketFacade">
+		<property name="AirportTicketService" ref="airportTicketService" />
+		<property name="airportTicketConverter" ref="airportTicketConverter" />
+	</bean>
+
+	<alias alias="airportTicketConverter" name="defaultAirportTicketConverter" />
+	<bean id="defaultAirportTicketConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.AirportTicketData" />
+		<property name="populators">
+			<list>
+				<ref bean="ticketPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultAirportTicketPopulator" alias="airportTicketPopulator" />
+	<bean id="defaultAirportTicketPopulator"
+		class="it.uiip.airport.facades.populators.AirportTicketPopulator">
+		<property name="passengerConverter" ref="passengerConverter" />
+	</bean>
+	
 
 	<alias alias="simpleSuggestionFacade"
 		name="defaultSimpleSuggestionFacade" />

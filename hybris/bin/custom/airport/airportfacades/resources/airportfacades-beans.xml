@@ -54,5 +54,20 @@
  		<property name="birthday" type="java.util.Date"></property>
  		<property name="age" type="Integer"></property>
 	</bean>
+	
+	<bean class="it.uiip.airport.facades.data.FlightRouteData">
+		<property name="codeRoute" type="String"/>
+		<property name="flight" type="it.uiip.airport.facades.data.FlightData"/>
+		<property name="dateRouteDep" type="java.util.Date"/>
+		<property name="dateRouteArr" type="java.util.Date"/>
+		<property name="airportTicket" type="java.util.List&lt;it.uiip.airport.facades.data.AirportTicketData>"/>
+	</bean>
+	
+	<bean class="it.uiip.airport.facades.data.AirportTicketData">
+		<property name="codeTicket" type="String"/>
+		<property name="passenger" type="it.uiip.airport.facades.data.PassengerData"/>
+		<property name="price" type="Integer"/>
+		<property name="seat" type="String"/>
+	</bean>
 
 </beans>
